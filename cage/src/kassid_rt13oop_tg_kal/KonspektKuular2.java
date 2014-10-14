@@ -5,6 +5,10 @@ import java.awt.event.WindowListener;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
+/**
+ * @author K Salvestab konspekti sulgemisel selles oleva info "konspekt" faili.
+ *
+ */
 public class KonspektKuular2 implements WindowListener {
 	static String konspekt = "UI/Konspekt.txt";
 
@@ -18,33 +22,48 @@ public class KonspektKuular2 implements WindowListener {
 			valja.write(outtekst.getBytes(), 0, outtekst.length());
 			valja.close();
 		} catch (IOException eino) {
-			System.out.println("eino süü");
+			// TODO error_standardization
+			System.out.println("s/v erind");
 		} catch (NullPointerException osi) {
+			// TODO error_standardization
 			System.out.println(osi);// Kui faili ei leia üles
 			System.out.println("ei leia dokumenti \"" + konspekt + "\"");
 		}
 	}
 
 	@Override
-	public void windowActivated(WindowEvent arg0) {}
+	public void windowActivated(WindowEvent arg0) {
+		// TODO Auto-generated method stub
+
+	}
 
 	@Override
-	public void windowClosed(WindowEvent arg0) {}
-	
+	public void windowClosed(WindowEvent arg0) {
+		// TODO Auto-generated method stub
+
+	}
+
 	@Override
 	public void windowDeactivated(WindowEvent arg0) {
+		// TODO Auto-generated method stub
+
 	}
 
 	@Override
 	public void windowDeiconified(WindowEvent arg0) {
+		// TODO Auto-generated method stub
+
 	}
 
 	@Override
 	public void windowIconified(WindowEvent arg0) {
+		// TODO Auto-generated method stub
+
 	}
 
 	@Override
 	public void windowOpened(WindowEvent arg0) {
-	}
+		// TODO Auto-generated method stub
 
+	}
 }

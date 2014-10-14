@@ -21,26 +21,22 @@ public class About implements ActionListener {
 		JEditorPane  tekstlingid = new JEditorPane();
 		tekst.setEditable(false);
 		tekstlingid.setEditable(false);
-		aboutraam.setTitle("Programmist ja autoritest");
+		aboutraam.setTitle(Main.mainbundle.getString("title4"));
 		aboutraam.setVisible(true);
 		aboutraam.setSize(400, 300);
 		aboutraam.getContentPane().setLayout(new BorderLayout());
 		try {
-			tekst.setText(Meetod.loe(about));
+			tekst.setText(FileToString.loe(about));
 		} catch (IOException eee) {
 			System.out.println("upsi");
-		}
-		catch (NullPointerException osi){
-			System.out.println(osi);//Kui faili ei leia üles
+		} catch (NullPointerException osi){ //Kui faili ei leia üles
 			System.out.println("ei leia dokumenti \""+about+"\"");
 		}
 		try {
-			tekstlingid.setText(Meetod.loe(lingid));
+			tekstlingid.setText(FileToString.loe(lingid));
 		} catch (IOException eee) {
 			System.out.println("upsi");
-		}
-		catch (NullPointerException osi){
-			System.out.println(osi);//Kui faili ei leia üles
+		} catch (NullPointerException osi){;//Kui faili ei leia üles
 			System.out.println("ei leia dokumenti \""+lingid+"\"");
 		}
 		aboutraam.add(tekst, BorderLayout.NORTH);

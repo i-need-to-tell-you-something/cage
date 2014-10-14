@@ -13,7 +13,7 @@ import javax.swing.JFileChooser;
 public class FailiValijaKuular implements ActionListener {
 
 	public void actionPerformed(ActionEvent e) {
-		//kõige vöisem JDialog - see, mille lõpuks sulgeda tahame
+		//kõige välisem JDialog - see, mille lõpuks sulgeda tahame
 		JDialog jd = ((JDialog)((JFileChooser)e.getSource()).getParent().getParent().getParent().getParent());
 		//kui vajutad "impordi"
 	    if (e.getActionCommand()=="ApproveSelection") {

@@ -30,12 +30,8 @@ public class Fenotyyp {
 		case 1: {//B lookus.
 			switch (ahel[lookus]) {
 			case 6: x="Roostepruun"; break;        	
-
 			case 0: case 3: x="Shokolaadipruun"; break;
-
 			case 1: case 2: case 4: x="Must"; break;
-
-
 			default: x="viga B lookuses"; break;
 			}break;
 		}
@@ -54,7 +50,7 @@ public class Fenotyyp {
 
 			case 10: x="Siiami ja Birma kassi vahepealne kass"; break; 
 
-			default: x="viga"; break;
+			default: x="viga C lookuses"; break;
 
 			}break;
 		}
@@ -76,6 +72,8 @@ public class Fenotyyp {
 				case 1: case 2: case 4: x="Sinakashall kass"; break;
 				}
 			}
+			//ülejäänud D==3 olukorrad
+			else { x="Lahjenemata, normaalselt värvunud"; break; }
 //			default: x="Lahjenemata, normaalselt värvunud";
 			
 			
@@ -91,7 +89,7 @@ public class Fenotyyp {
 			//                }break;
 			//                }
 			//            }
-			default: x="viga"; break;    
+			default: x="viga D lookuses"; break;    
 			}break;
 		}
 
@@ -99,7 +97,7 @@ public class Fenotyyp {
 			switch (ahel[lookus]) {
 			case 0: x="Pikakarvaline"; break;
 			case 1: case 2: x="Lühikarvaline"; break;
-			default: x="viga"; break;
+			default: x="viga L lookuses"; break;
 			}break;
 		}
 
@@ -108,7 +106,7 @@ public class Fenotyyp {
 			case 0: x="Pole oranž"; break;
 			case 1: x="Kilpkonnamustriga"; break;
 			case 2: x="Oranž kass"; break;
-			default: x="viga"; break;
+			default: x="viga O lookuses"; break;
 			}break;
 		}
 
@@ -117,17 +115,17 @@ public class Fenotyyp {
 			case 0: x="Pole valgeid laike"; break;
 			case 1: x="Alla 50% kehast valgelaiguline"; break;
 			case 2: x="üle 50% kehast valgelaiguline";break;
-			default: x="viga"; break;
+			default: x="viga S lookuses"; break;
 			}break;
 		}
 
 		case 7: {//T lookus
-			switch (ahel[lookus]) {
-			case 6: x="Laienenud vöödid"; break;
+			switch (ahel[lookus]) { // Ta-Abyssinian;T-Mackerel;tb-Classic
+			case 6: x="Laienenud vöödid"; break; //tbtb
 			case 2: case 4: x="Tiigertüüpi vöödid"; break; //TT;Ttb
 			case 0: x="Ainult näos ja käppadel on peened triibud"; break; //TaTa
 			case 1: case 3: x="Vööte on käppadel, sabal ja näos. Osa keha pinnast on ka triibuline"; break; //TaT;Tatb
-			default: x="viga"; break;
+			default: x="viga T lookuses"; break;
 			}break;
 		}
 
@@ -135,7 +133,7 @@ public class Fenotyyp {
 			switch (ahel[lookus]) {
 			case 0: x="Normaalset värvi (pole valge)"; break;
 			case 1: case 2: x="üleni valge kass (mittealbiino)"; break;
-			default: x="viga"; break;
+			default: x="viga W lookuses"; break;
 			}break;
 		}
 
@@ -143,7 +141,7 @@ public class Fenotyyp {
 			switch (ahel[lookus]) {
 			case 0: x="Emane"; break;
 			case 1: x="Isane"; break;
-			default: x="viga"; break;
+			default: x="viga sugulookuses"; break;
 			}break;
 		}
 

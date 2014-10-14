@@ -168,7 +168,7 @@ public class Merge {
 		}
 		
 		//actual raami loomine
-		JFrame raam = new JFrame(kiisu.getNimi());
+		JFrame raam = new JFrame("Kassi " + kiisu.getNimi() + " pilt");
 		raam.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		raam.add(new JLabel(new ImageIcon(combined)));
 

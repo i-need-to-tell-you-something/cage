@@ -16,11 +16,16 @@ import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.filechooser.FileFilter;
 
+/**
+ * @author K Import-eksport haldus
+ *
+ */
 public class MigratsiooniKuular implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// ekspordi osa
+		//TODO testida kas peab ikka string konstant olema v mitte:
 		if (((JMenuItem) e.getSource()).getText() == "Ekspordi kasse") {
 			// valime kõik parajasti valitud kassid
 			for (Kass kiisu : Kassiraam.kassilist.getSelectedValuesList()) {
@@ -29,6 +34,7 @@ public class MigratsiooniKuular implements ActionListener {
 					// ja salvestame igaühe neist omanimelisse faili
 					oos.writeObject(kiisu);
 				} catch (IOException e1) {
+					//TODO error_standardization
 					System.out.println("kiisu salvestamiserind: "
 							+ e1.getMessage());
 				}
@@ -42,7 +48,7 @@ public class MigratsiooniKuular implements ActionListener {
 				// faili valiku lingvistiline kirjeldus
 				@Override
 				public String getDescription() {
-					return "CAGE save files";
+					return Main.mainbundle.getString("label3");
 				}
 
 				// faili valiku loogiline kirjeldus
@@ -64,8 +70,8 @@ public class MigratsiooniKuular implements ActionListener {
 
 			//impordi aknakese conf
 			imp.setMultiSelectionEnabled(true);
-			imp.setApproveButtonText("Impordi");
-			imp.setApproveButtonToolTipText("Impordi valitud kassid kassilisti");
+			imp.setApproveButtonText(Main.mainbundle.getString("button10"));
+			imp.setApproveButtonToolTipText(Main.tipbundle.getString("tt11"));
 			imp.setApproveButtonMnemonic(KeyEvent.VK_I);
 			
 			//impaknakese raamike

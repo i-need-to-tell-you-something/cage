@@ -4,7 +4,7 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 
-public class Meetod {
+public class FileToString {
 	static String loe(String failinimi) throws IOException,
 			NullPointerException {
 		BufferedReader reader = null;

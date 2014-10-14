@@ -13,6 +13,10 @@ import javax.swing.JTextField;
 
 import Visuaal.Merge;
 
+/**
+ * @author K See meetod kirjeldab seda, mis juhtub nupu vajutamise järel.
+ * 
+ */
 public class KassiRaamiNupukuular implements ActionListener {
 
 	@Override
@@ -153,6 +157,7 @@ public class KassiRaamiNupukuular implements ActionListener {
 					}
 				//erindite püüdmine
 				} catch (FileNotFoundException e1) {
+					//TODO error_standardization
 					System.out.println("Viga pildiraami kutsumisel nupukuularis: " + e1.getMessage());
 				} catch (IOException e1) {
 					System.out.println("Viga pildiraami kutsumisel nupukuularis: " + e1.getMessage());
@@ -163,10 +168,12 @@ public class KassiRaamiNupukuular implements ActionListener {
 
 		// error:
 		default:
+			//TODO error_standardization
 			System.out.println("tundmatu käsk: " + e.getActionCommand());
 			break;
 		}
 		
+		//kui vastav option siis fookus listile uuesti
 		if (Menuu.optionFookus) { Kassiraam.kassilist.requestFocusInWindow(); }
 	}
 

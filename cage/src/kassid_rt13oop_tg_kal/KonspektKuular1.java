@@ -17,12 +17,13 @@ public class KonspektKuular1 implements ActionListener {
 		// Kui vajutatakse menuu nuppu tehakse lahti uus aken kuhu pannakse
 		// sisse tekstiväli kuhu saadakse tekst failist "Konspekt.txt"
 		JFrame konspektraam = new JFrame();
-		konspektraam.setTitle("Konspekt");
+		konspektraam.setTitle(Main.mainbundle.getString("title7"));
 		konspektraam.addWindowListener(new KonspektKuular2());
 		tekst.setEditable(true);
 		try {
-			tekst.setText(Meetod.loe(KonspektKuular2.konspekt));
+			tekst.setText(FileToString.loe(KonspektKuular2.konspekt));
 		} catch (IOException eeee) {
+			//TODO error_standardization
 			System.out.println("upsi, IO");
 		} catch (NullPointerException ella) {
 			System.out.println("upsi, nullpointer");
@@ -30,9 +31,7 @@ public class KonspektKuular1 implements ActionListener {
 		konspektraam.setVisible(true);
 		konspektraam.setSize(300, 300);
 		konspektraam.add(tekst);
-		tekst.setToolTipText("See on konspekti koht. "
-				+ "Siia kirjuta märkusi, mida oled täheldanud ja"
-				+ "kui tahad meelde jätta midagi");
+		tekst.setToolTipText(Main.tipbundle.getString("tt10"));
 		// tekst.setBackground(Color.lightGray);
 	}
 
