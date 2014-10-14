@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<classpath>
-	<classpathentry excluding="kassid_rt13oop_tg_kal/KassiNupud.java|kassid_rt13oop_tg_kal/demo.java|kassid_rt13oop_tg_kal/kaivitaMind.java|kassid_rt13oop_tg_kal/StatistilineTest0.java|kassid_rt13oop_tg_kal/StatistilineTest1.java|kassid_rt13oop_tg_kal/algus.java|kassid_rt13oop_tg_kal/MenuTest.java|kassid_rt13oop_tg_kal/StatistilineTest2.java|Visuaal/Peaklass.java|kassid_rt13oop_tg_kal/TestPilt.java|kassid_rt13oop_tg_kal/Test.java" kind="src" path="src"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.7"/>
-	<classpathentry kind="output" path="bin"/>
-</classpath>
