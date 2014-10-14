@@ -8,7 +8,7 @@ import javax.swing.JFrame;
 import javax.swing.JTextArea;
 
 //Kuular menüü nupu jaoks
-public class Konspekt implements ActionListener {
+public class KonspektKuular1 implements ActionListener {
 
 	static JTextArea tekst = new JTextArea();
 
@@ -18,10 +18,10 @@ public class Konspekt implements ActionListener {
 		// sisse tekstiväli kuhu saadakse tekst failist "Konspekt.txt"
 		JFrame konspektraam = new JFrame();
 		konspektraam.setTitle("Konspekt");
-		konspektraam.addWindowListener(new Konspekt2());
+		konspektraam.addWindowListener(new KonspektKuular2());
 		tekst.setEditable(true);
 		try {
-			tekst.setText(Meetod.loe(Konspekt2.konspekt));
+			tekst.setText(Meetod.loe(KonspektKuular2.konspekt));
 		} catch (IOException eeee) {
 			System.out.println("upsi, IO");
 		} catch (NullPointerException ella) {
@@ -41,7 +41,7 @@ public class Konspekt implements ActionListener {
 	}
 
 	public static void setTekst(JTextArea tekst) {
-		Konspekt.tekst = tekst;
+		KonspektKuular1.tekst = tekst;
 	}
 
 }

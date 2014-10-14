@@ -28,8 +28,6 @@ public class Kassiraam extends JFrame {
 	static JButton n7 = new JButton("Muuda nime");
 	static JButton n8 = new JButton("Eemalda");
 
-	static boolean vanemad = false;
-
 	static DefaultListModel<Kass> kassid = new DefaultListModel<Kass>();
 	static JList<Kass> kassilist = new JList<Kass>(kassid);
 

@@ -166,7 +166,8 @@ public class KassiRaamiNupukuular implements ActionListener {
 			System.out.println("tundmatu käsk: " + e.getActionCommand());
 			break;
 		}
-
+		
+		if (Menuu.optionFookus) { Kassiraam.kassilist.requestFocusInWindow(); }
 	}
 
 }
