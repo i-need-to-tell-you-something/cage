@@ -1,0 +1,9 @@
+﻿Programm on loodud aine Tartu Ülikoolis 
+aine Objektorienteeritud programmeerimine 
+(Object-oriented Programming MTAT.03.130 ) raames.
+
+Autorid:
+Karl-Andreas Luik 
+Toomas Ginter
+
+Versioon: 3.dugtrio_R7
