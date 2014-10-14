@@ -15,14 +15,12 @@ public class LoominguKuular implements ActionListener, FocusListener {
 				.ahela1geno());
 		int[] kassiahel2 = KassiNupuKonteiner.genoString2int(KassiNupuKonteiner
 				.ahela2geno());
-		//loome kassi
 		Kass uuskass;
-		//valime konstruktori kas defnimi või ei
 		if (LoomisKonteiner.kassinimi.getText().equals(LoomisKonteiner.deftekst)) {
 			uuskass = new Kass(kassiahel1, kassiahel2);
 		}
 		else {uuskass = new Kass(kassiahel1, kassiahel2, LoomisKonteiner.kassinimi.getText());}
-		demo2.LisatudG(uuskass);
+		demo2.kassid.addElement(uuskass);
 		System.out.println("LoominguKuulari katse lisada kassi: " + uuskass);
 	}
 

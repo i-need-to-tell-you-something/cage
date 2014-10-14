@@ -132,7 +132,7 @@ public class KassiNupuKonteiner extends JFrame {
 		//Ahelatele lookuste kirjeldus
 		String[] lookKir= new String[10];
 		lookKir[0] = "A lookus on akuutivärvuse lookus. Annab kassile hallikas-kollaka varjundi, nn metsikloomavärvuse e aguutivärvuse. Ainult A alleeli olemasolul võivad karvkattes ilmneda vöödid ja triibud";
-		lookKir[1] = "B lookus määrab karva põhivärvuse. ";
+		lookKir[1] = "B lookus määrab karva põhivärvuse. Kui d lookus avaldub, siis on seda värvi mis sealt tuleb (nt must kass pole must vaid sinakashall)";
 		lookKir[2] = "C lookus tagav karvkatte värvumise. Retsessiivne epistaas A,B,D,O,S,T,W suhtes.";
 		lookKir[3] = "D on värvilahjenduslookus. Retsessiivse alleeli korral karvavärv lahjeneb.";
 		lookKir[4] = "L määrab karva pikkuse. Retsessiivse alleeli korral on pikad karvad.";
