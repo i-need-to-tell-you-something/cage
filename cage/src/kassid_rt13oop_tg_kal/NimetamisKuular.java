@@ -4,10 +4,6 @@ import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-/**
- * @author K Kuular kassi ümber nimetamise jaoks.
- *
- */
 public class NimetamisKuular implements ActionListener {
 
 	private Kass kass;

@@ -340,6 +340,7 @@ public class KassiNupuKonteiner extends JFrame {
 			switch (gInt) {
 			case 0: gString="a"; break;
 			case 1: gString="A"; break;
+			//TODO error_standardization
 			default: gString="viga"; break;
 			}
 			break;

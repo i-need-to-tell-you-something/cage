@@ -13,10 +13,6 @@ import javax.swing.JTextField;
 
 import Visuaal.Merge;
 
-/**
- * @author K See meetod kirjeldab seda, mis juhtub nupu vajutamise järel.
- * 
- */
 public class KassiRaamiNupukuular implements ActionListener {
 
 	@Override

@@ -1,8 +1,10 @@
 package kassid_rt13oop_tg_kal;
+import java.io.Serializable;
 import java.util.Arrays;
 
-public class Kass {
+public class Kass implements Serializable{
 
+	
 	//andmeväljad:
 	String ema;
 	String isa;
@@ -12,6 +14,8 @@ public class Kass {
 	String nimi; //kiisu nimi
 	//järgnev on andmeväli, mis sisaldab fenosummade jaoks vajalikku arvujada. arvusüsteem, mis on kasutusel, et summas kajastuksid originaalinfo ilma järjekorrata
 	public static final int[] jada={0,1,3,7,12,20,30,44,65,80,96,122,147,181,203,251,289,360,400,474,564,592,661,774,821,915,969,1015,1158,1311,1394,1395,1525,1650,1851,2019,2227,2353,2573,2735,2871,3106,3336,3424,3594,3811,3969,4125,4547,4667,5016,5295,5419,5748,5995,6350,6661,7026,7259,7474,8133,8266,8465,8693,8956,9306,9804,10574,10842,11141,11472,12071,12143,12437,13894,14110,14419,14752,15273,15819,16348};
+	//serialisatsiooniväli
+	private static final long serialVersionUID = 1L;
 
 
 
@@ -24,6 +28,7 @@ public class Kass {
 			this.nimi=randnimifailist();
 		}
 		catch (java.lang.NoClassDefFoundError e) {
+			//TODO error_standardization
 			System.out.println("randnime ei saa luua vea tõttu: " + e.getMessage());
 		}
 	}
@@ -38,6 +43,7 @@ public class Kass {
 			this.nimi=randnimifailist();
 		}
 		catch (java.lang.NoClassDefFoundError e) {
+			//TODO error_standardization
 			System.out.println("randnime ei saa luua vea tõttu: " + e.getMessage());
 		}
 	}
@@ -80,9 +86,11 @@ public class Kass {
 				} 
 			}
 			catch (ExceptionInInitializerError e) {
+				//TODO error_standardization
 				System.out.println("Andmed.tabel[i][0] = n in Kass.java: " + e.getMessage());
 			}
 			catch (java.lang.NoClassDefFoundError e) {
+				//TODO error_standardization
 				System.out.println("Andmed.tabel[i][0] = n in Kass.java: " + e.getMessage());
 			}
 
@@ -98,16 +106,11 @@ public class Kass {
 			this.nimi=randnimifailist();
 		}
 		catch (java.lang.NoClassDefFoundError e) {
+			//TODO error_standardization
 			System.out.println("randnime ei saa luua vea tõttu: " + e.getMessage());
 		}
 	}
 
-	////meetod listist nime jaoks
-	//String randnimi() {
-	//	int indeks = (int)Math.round(Math.random()*(Andmed.NIMED.length)-0.5);
-	//	Andmed.growNimehulk(indeks);
-	//	return (Andmed.NIMED[indeks] + Andmed.getNimehulk(indeks));
-	//}
 	String randnimifailist() throws java.lang.NoClassDefFoundError {
 		int indeks = (int)Math.round(Math.random()*(Andmed.kassinimed.length)-0.5);
 		Andmed.growNimehulk(indeks);
@@ -135,6 +138,7 @@ public class Kass {
 			}
 		}
 		catch (java.lang.NoClassDefFoundError e) {
+			//TODO error_standardization
 			System.out.println("Sugurakku ei saa moodustada: " + e.getMessage());
 		}
 		return suguRahel;
@@ -161,23 +165,23 @@ public class Kass {
 		StringBuilder kujutus = new StringBuilder();
 		String sugu = "";
 		switch (this.getFenotahel()[9]) {
-		case 0: sugu = " ♀"; break;
-		case 1: sugu = " ♂"; break;
-		case 2: sugu = " YY"; break;
+		case 0: sugu = " " + Main.mainbundle.getString("female"); break;
+		case 1: sugu = " " + Main.mainbundle.getString("male"); break;
+		case 2: sugu = " " + Main.mainbundle.getString("doubleY"); break;
+		//TODO error_standardization
 		default: sugu = " viga"; break;
 		}
 		kujutus.append(this.getNimi() + sugu);
-		if (demo2.vanemad) {
+		if (Menuu.optionVanemad) {
 			kujutus.append(" (");
 			if (this.ema==null) {
-				kujutus.append("in vitro");
+				kujutus.append(Main.mainbundle.getString("invitro"));
 			}
 			else {
-				kujutus.append(this.ema + " ♀; " + this.isa + " ♂");
+				kujutus.append(this.ema + " " + Main.mainbundle.getString("female") +"; " + this.isa + " " + Main.mainbundle.getString("male"));
 			}
 			kujutus.append(")");
 		}
-		//	return (this.getNimi() + sugu + (demo2.vanemad ? (" (" + this.ema + " ♀; " + this.isa + " ♂)") : "") );
 		return kujutus.toString();
 	}
 

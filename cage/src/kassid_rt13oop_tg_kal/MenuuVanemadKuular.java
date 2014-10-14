@@ -9,16 +9,8 @@ public class MenuuVanemadKuular implements ItemListener {
 
 	@Override
 	public void itemStateChanged(ItemEvent e) {
-		demo2.vanemad=( (JCheckBoxMenuItem) e.getItem()).getState();
-		demo2.kassilist.repaint();
-		
-		
-		
-		
-//		if (e.getStateChange()==1) {
-//			demo2.kassilist.setBackground(Color.ORANGE);
-//		}
-
+		Menuu.setOptionVanemad(( (JCheckBoxMenuItem) e.getItem()).getState());
+		Kassiraam.kassilist.repaint();
 	}
 
 }

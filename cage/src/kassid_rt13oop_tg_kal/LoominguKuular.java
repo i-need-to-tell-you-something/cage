@@ -5,12 +5,6 @@ import java.awt.event.ActionListener;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 
-/**
- * @author K Tegeleb esiteks kassi nimega või nimeta loomisega läbi
- *         "loo genotüübiga" valiku. Teiseks kustutab/kirjutab defteksti seal
- *         vastavalt vajadusele.
- * 
- */
 public class LoominguKuular implements ActionListener, FocusListener {
 	public LoominguKuular() {
 	}
@@ -22,14 +16,13 @@ public class LoominguKuular implements ActionListener, FocusListener {
 		int[] kassiahel2 = KassiNupuKonteiner.genoString2int(KassiNupuKonteiner
 				.ahela2geno());
 		Kass uuskass;
-		if (LoomisKonteiner.kassinimi.getText()
-				.equals(LoomisKonteiner.deftekst)) {
+		if (LoomisKonteiner.kassinimi.getText().equals(LoomisKonteiner.deftekst)) {
 			uuskass = new Kass(kassiahel1, kassiahel2);
 		} else {
-			uuskass = new Kass(kassiahel1, kassiahel2,
-					LoomisKonteiner.kassinimi.getText());
+			uuskass = new Kass(kassiahel1, kassiahel2, LoomisKonteiner.kassinimi.getText());
 		}
 		Kassiraam.kassid.addElement(uuskass);
+//		System.out.println("LoominguKuulari katse lisada kassi: " + uuskass);
 	}
 
 	@Override

@@ -3,36 +3,40 @@ package kassid_rt13oop_tg_kal;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 
+/**
+ * Selle klassi funktsioon on fenoraam ja kassiNupuRaa korraga "sulgeda"
+ * (tegelikult peita)
+ */
 public class AknaKuular implements WindowListener {
-//Selle klassi funktsioon on fenoraam ja kassiNupuRaam 
-// korraga "sulgeda" (tegelikult peita)
-	
+
 	@Override
 	public void windowClosing(WindowEvent e) {
-		demo2.fenoraam.setVisible(false);
-		demo2.kassiNupuRaam.setVisible(false);
+		Kassiraam.fenoraam.setVisible(false);
+		Kassiraam.kassiNupuRaam.setVisible(false);
 	}
-	
-	@Override
-	public void windowActivated(WindowEvent e) {}
 
 	@Override
-	public void windowClosed(WindowEvent e) {}
+	public void windowActivated(WindowEvent e) {
+	}
 
 	@Override
-	public void windowDeactivated(WindowEvent e) {}
+	public void windowClosed(WindowEvent e) {
+	}
 
 	@Override
-	public void windowDeiconified(WindowEvent e) {}
+	public void windowDeactivated(WindowEvent e) {
+	}
 
 	@Override
-	public void windowIconified(WindowEvent e) {}
+	public void windowDeiconified(WindowEvent e) {
+	}
 
 	@Override
-	public void windowOpened(WindowEvent e) {}
+	public void windowIconified(WindowEvent e) {
+	}
 
-	
-	
-	
+	@Override
+	public void windowOpened(WindowEvent e) {
+	}
 
 }

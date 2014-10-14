@@ -16,16 +16,11 @@ import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.filechooser.FileFilter;
 
-/**
- * @author K Import-eksport haldus
- *
- */
 public class MigratsiooniKuular implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// ekspordi osa
-		//TODO testida kas peab ikka string konstant olema v mitte:
 		if (((JMenuItem) e.getSource()).getText() == "Ekspordi kasse") {
 			// valime kõik parajasti valitud kassid
 			for (Kass kiisu : Kassiraam.kassilist.getSelectedValuesList()) {

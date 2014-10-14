@@ -6,10 +6,6 @@ import java.awt.event.ActionListener;
 import javax.swing.JFrame;
 import javax.swing.JTextArea;
 
-/**
- * @author K Kuvab abiteksti "kasutusjuhend"
- * 
- */
 public class Kasutusjuhend implements ActionListener {
 
 	@Override

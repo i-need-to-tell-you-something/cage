@@ -16,7 +16,7 @@ public class LoomisKonteiner extends JFrame{
 	
 	
 	static JTextArea fenot = new JTextArea("");
-	static String deftekst= "Sisesta siia oma loodava kassi nimi";
+	static String deftekst= Main.mainbundle.getString("label2");
 	static JTextField kassinimi = new JTextField(deftekst);
 
 	
@@ -33,6 +33,7 @@ public class LoomisKonteiner extends JFrame{
 		loomisasjad.setLayout(new GridLayout(2,1));
 
 		fenotekst.add(fenot,BorderLayout.CENTER);
+		fenot.setEditable(false);
 		
 		//Loomisasjad
 		
@@ -41,7 +42,7 @@ public class LoomisKonteiner extends JFrame{
 		kassinimi.addFocusListener(new LoominguKuular());
 		
 		//Fenotüübi kasti "loo kass" nupp
-		JButton kassiloomisnupp = new JButton("Loo kass");
+		JButton kassiloomisnupp = new JButton(Main.mainbundle.getString("button9"));
 		loomisasjad.add(kassiloomisnupp);
 		kassiloomisnupp.addActionListener(new LoominguKuular());
 		this.getRootPane().setDefaultButton(kassiloomisnupp);
@@ -72,10 +73,5 @@ public class LoomisKonteiner extends JFrame{
 	}
 	public static void setFenot(JTextArea fenot) {
 		LoomisKonteiner.fenot = fenot;
-	}
-	
-	
-	
+	}	
 }
-
-
