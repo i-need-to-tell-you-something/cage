@@ -4,4 +4,4 @@ Autorid:
 Karl-Andreas Luik 
 Toomas Ginter
 
-Versioon: 2.diglet
+Versioon: 2.diglet_R5

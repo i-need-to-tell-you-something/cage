@@ -16,11 +16,11 @@ public class TestPilt {
 		raam.setVisible(true);
 		raam.setSize(400, 400);
 	
-		ImageIcon image = new ImageIcon("image.JPG");
+		ImageIcon image = new ImageIcon("data/gfx/image.JPG");
 		JLabel imageLabel = new JLabel(image);
 		raam.add(imageLabel);
 		
-		ImageIcon oun = new ImageIcon("oun.png");
+		ImageIcon oun = new ImageIcon("data/gfx/oun.png");
 		raam.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		JLabel ounLabel = new JLabel(oun);
 		raam.add(ounLabel);

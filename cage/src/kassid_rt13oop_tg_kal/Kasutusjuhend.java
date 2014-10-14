@@ -8,7 +8,7 @@ import javax.swing.JFrame;
 import javax.swing.JTextArea;
 
 public class Kasutusjuhend implements ActionListener {
-	String kasutusjuhend="Kasutamisjuhend.txt";
+	String kasutusjuhend="UI/Kasutamisjuhend.txt";
 
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
@@ -31,9 +31,4 @@ public class Kasutusjuhend implements ActionListener {
 		// TODO Auto-generated method stub
 
 	}
-
-	/**
-	 * @param args
-	 */
-
 }

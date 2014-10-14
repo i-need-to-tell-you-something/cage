@@ -9,7 +9,7 @@ import javax.swing.JFrame;
 import javax.swing.JTextArea;
 
 public class About implements ActionListener {
-	String about="About.txt";
+	String about="UI/About.txt";
 
 	@Override
 	public void actionPerformed(ActionEvent e) {

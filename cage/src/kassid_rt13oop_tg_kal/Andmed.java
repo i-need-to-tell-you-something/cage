@@ -6,27 +6,6 @@ import java.io.IOException;
 
 public class Andmed {
 
-	// kõige ilusam väli, mis kätkeb endas andmeid lookuste omapärade kohta
-	// public static int[][] tabel = {
-	/*
-	 * [n] erinevate omaduste hulk [k] kromosoom [e] esimese omaduse boonus -
-	 * [2] teise omaduse boonus - deprecated [3] kolmanda omaduse boonus - [4]
-	 * neljanda omaduse boonus - lookus {n,k,e,2,3,4};//lookuse tähis boonuste
-	 * summa on ideaalis 100, aga sobib ka kõik teised variandid, peaasi et
-	 * positiivne täisarv
-	 */
-	// new int[] { 2, 8, 90, 10 }// A
-	// , new int[] { 3, 6, 33, 33, 33 }// B
-	// , new int[] { 4, 7, 5, 85, 5, 5 }// C
-	// , new int[] { 2, 4, 50, 50 }// D
-	// , new int[] { 2, 1, 50, 50 }// L
-	// , new int[] { 2, 0, 95, 5 }// O
-	// , new int[] { 2, 2, 50, 50 }// S
-	// , new int[] { 3, 3, 33, 33, 33 }// T
-	// , new int[] { 2, 5, 95, 5 }// W
-	// , new int[] { 2, 0, 50, 50 } // X
-	// };
-	// public static int[][] tabel;
 	@SuppressWarnings("finally")
 	static int[][] loeboonust(String failinimi) throws IOException {
 		BufferedReader reader = null;
@@ -82,17 +61,10 @@ public class Andmed {
 
 				// Lisan loodud järjendi tabelisse
 				tabel[reaarv] = reaintjarjend;
-				// System.out.println(rida);
-				// System.out.println(reaintjarjend);
-				// tabel[reaarv]=reaintjarjend;
 				for (int i = 0; i < boonusvaljapikkus; i++) {
-					// System.out.println(reajarjend[i]);
-
 					tabel[reaarv][i] = reaintjarjend[i];
-
 				}
 				reaarv++;
-
 			}
 
 		} catch (IOException e) {
@@ -107,7 +79,7 @@ public class Andmed {
 	public static int[][] boonustabel() {
 		int[][] boonustabel = null;
 		try {
-			boonustabel = loeboonust("lookusboonus.txt");
+			boonustabel = loeboonust("data/lookusboonus.txt");
 		} catch (IOException ex) {
 			System.out.println("jou. IO is a ... in boonustabel");
 		} finally {
@@ -167,7 +139,7 @@ public class Andmed {
 	public static String[] kassinimed() {
 		String[] kassinimed = null;
 		try {
-			kassinimed = loe("nimed.txt");
+			kassinimed = loe("data/nimed.txt");
 		} catch (IOException ex) {
 			System.out.println("jou. IO is a ...");
 		} finally {

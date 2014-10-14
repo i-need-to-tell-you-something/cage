@@ -1,6 +1,5 @@
 package kassid_rt13oop_tg_kal;
 
-//import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
@@ -23,21 +22,17 @@ public class Konspekt implements ActionListener {
 		tekst.setEditable(true);
 		try {
 			tekst.setText(Meetod.loe(Konspekt2.konspekt));
-		} 
-		catch (IOException eeee) {
+		} catch (IOException eeee) {
 			System.out.println("upsi, IO");
-		}
-		catch (NullPointerException ella) {
-			System.out.println ("upsi, nullpointer");
+		} catch (NullPointerException ella) {
+			System.out.println("upsi, nullpointer");
 		}
 		konspektraam.setVisible(true);
 		konspektraam.setSize(300, 300);
 		konspektraam.add(tekst);
-		tekst.setToolTipText("Mina olen default konspekt" 
-				+ "Siia kirjuta märkusi mida oled täheldanud ja" 
-				+ "tahad meelde j"
-				+ "Kuidas erinevaid värve saada (helehelehall)"
-				+ "Kuidas mingi rea fonti muu");
+		tekst.setToolTipText("Mina olen default konspekt"
+				+ "Siia kirjuta märkusi mida oled täheldanud ja"
+				+ "tahad meelde jätta midagi");
 		// tekst.setBackground(Color.lightGray);
 	}
 
