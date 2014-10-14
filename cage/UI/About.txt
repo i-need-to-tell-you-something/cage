@@ -1,7 +1,0 @@
-Programm on loodud aine OOP raames.
-
-Autorid:
-Karl-Andreas Luik 
-Toomas Ginter
-
-Versioon: 2.diglet_R5
