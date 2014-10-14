@@ -43,5 +43,18 @@ public class FGKonteiner extends JFrame {
 		}
 		
 	}
+
+
+	//Getterid ja setterid
+	public static int getFenotype() {
+		return FENOTYPE;
+	}
+
+
+	public static int getGenotype() {
+		return GENOTYPE;
+	}
+	
+	
 	
 }

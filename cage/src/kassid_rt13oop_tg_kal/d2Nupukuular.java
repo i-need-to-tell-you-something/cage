@@ -2,15 +2,19 @@ package kassid_rt13oop_tg_kal;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.List;
 
 import javax.swing.JTextField;
+
+import Visuaal.Merge;
 
 
 public class d2Nupukuular implements ActionListener {
 
 	@Override
-	public void actionPerformed(ActionEvent e)  {
+	public void actionPerformed(ActionEvent e) {
 		String prikas = e.getActionCommand();
 		switch (prikas) {
 		
@@ -110,6 +114,28 @@ public class d2Nupukuular implements ActionListener {
 			}
 			break;
 		}
+		
+		case "Kuva pilt": {
+			Kass kass = demo2.kassilist.getSelectedValuesList().get(0);
+			try {
+				Merge.Joonista(kass.getFenotahel());
+			} 
+			catch (javax.imageio.IIOException e1) {
+				System.out.println(e1.getMessage());
+//				System.out.println("1");
+			}
+			catch (FileNotFoundException e1) {
+				System.out.println(e1.getMessage());
+//				System.out.println("2");
+			}
+			catch (IOException e1) {
+				System.out.println(e1.getMessage());
+//				System.out.println("3");
+			}
+			break;			
+		}
+		
+		
 		//error:
 		default: System.out.println("tundmatu käsk: " + e.getActionCommand()); break;
 		}

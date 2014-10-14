@@ -6,12 +6,31 @@ import java.io.IOException;
 
 public class Andmed {
 
+	// kõige ilusam väli, mis kätkeb endas andmeid lookuste omapärade kohta
+	// public static int[][] tabel = {
+	/*
+	 * [n] erinevate omaduste hulk [k] kromosoom [e] esimese omaduse boonus -
+	 * [2] teise omaduse boonus - deprecated [3] kolmanda omaduse boonus - [4]
+	 * neljanda omaduse boonus - lookus {n,k,e,2,3,4};//lookuse tähis boonuste
+	 * summa on ideaalis 100, aga sobib ka kõik teised variandid, peaasi et
+	 * positiivne täisarv
+	 */
+	// new int[] { 2, 8, 90, 10 }// A
+	// , new int[] { 3, 6, 33, 33, 33 }// B
+	// , new int[] { 4, 7, 5, 85, 5, 5 }// C
+	// , new int[] { 2, 4, 50, 50 }// D
+	// , new int[] { 2, 1, 50, 50 }// L
+	// , new int[] { 2, 0, 95, 5 }// O
+	// , new int[] { 2, 2, 50, 50 }// S
+	// , new int[] { 3, 3, 33, 33, 33 }// T
+	// , new int[] { 2, 5, 95, 5 }// W
+	// , new int[] { 2, 0, 50, 50 } // X
+	// };
+	// public static int[][] tabel;
 	@SuppressWarnings("finally")
 	static int[][] loeboonust(String failinimi) throws IOException {
 		BufferedReader reader = null;
 		int[][] tabel = new int[10][];
-		// Vigane. Ei oska järjendi sees olevatele järjenditele õigeid
-		// pikkuseid.
 		try {
 			reader = new BufferedReader(new FileReader(failinimi));
 			int reaarv = 0;
@@ -100,6 +119,7 @@ public class Andmed {
 
 	// Kassinimede failis lugemise meetod
 	@SuppressWarnings("finally")
+	// selle rea pidi panema et hüüumärki poleks kollasel taustal
 	static String[] loe(String failinimi) throws IOException {
 		// See blokk loeb failis ridade arvu
 		BufferedReader reader = null;
@@ -159,7 +179,6 @@ public class Andmed {
 	public static String[] kassinimed = kassinimed();
 
 	// // väli kasside nimede jaoks
-	// public static String[] NIMED = { "Näu", "Nurr", "Miisu", "Kitty" };
 	// // eelmise välja väärtuste hulga loenduri andmed
 	public static int[] nimedehulk = new int[kassinimed.length];
 

@@ -466,4 +466,21 @@ public class KassiNupuKonteiner extends JFrame {
 		KassiNupuKonteiner.ahel2 = ahel2;
 	}
 
+	public static String getAh1() {
+		return ah1;
+	}
+
+	public static void setAh1(String ah1) {
+		KassiNupuKonteiner.ah1 = ah1;
+	}
+
+	public static String getAh2() {
+		return ah2;
+	}
+
+	public static void setAh2(String ah2) {
+		KassiNupuKonteiner.ah2 = ah2;
+	}
+	
+
 }

@@ -31,4 +31,8 @@ public class AknaKuular implements WindowListener {
 	@Override
 	public void windowOpened(WindowEvent e) {}
 
+	
+	
+	
+
 }

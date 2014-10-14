@@ -49,7 +49,8 @@ public class algus {
 			System.out.println(Fenotyyp.valjasta(nya.getFenotahel(),j));	
 		}
 		
-		Kass miisu = new Kass().viljastumine(mäu,näu);
+//		new Kass();
+		Kass miisu = Kass.viljastumine(mäu,näu);
 		System.out.println("miisu: "+ miisu);
 		for (int j=0; j<miisu.getFenotahel().length;j++) {
 			System.out.println(Fenotyyp.valjasta(miisu.getFenotahel(),j));	
@@ -69,7 +70,8 @@ public class algus {
 			System.out.println(Fenotyyp.valjasta(näu.getFenotahel(),j));	
 		}
 		
-		Kass karnäu = new Kass().viljastumine(mäu,näu);
+//		new Kass();
+		Kass karnäu = Kass.viljastumine(mäu,näu);
 		System.out.println(karnäu);
 		for (int j=0; j<karnäu.getFenotahel().length;j++) {
 			System.out.println(Fenotyyp.valjasta(karnäu.getFenotahel(),j));	
@@ -91,12 +93,11 @@ public class algus {
 		System.out.println("Viienda lookuse väärtus 1. ahelas on: " +mia.ahel1[8]);
 		System.out.println("Viienda lookuse väärtus 2. ahelas on: "+mia.ahel2[8]);
 		*/
+		for (int i = 0; i < karnäu.fenotahel.length; i++) {
+			System.out.println(karnäu.fenotahel[i]);
+		}
 
 	}
-
-	private static void ahel1set(int i) {
-		// TODO Auto-generated method stub
-		
-	}
+	
 
 }

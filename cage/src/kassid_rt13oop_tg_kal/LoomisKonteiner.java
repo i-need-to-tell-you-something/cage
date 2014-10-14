@@ -41,9 +41,10 @@ public class LoomisKonteiner extends JFrame{
 		kassinimi.addFocusListener(new LoominguKuular());
 		
 		//Fenotüübi kasti "loo kass" nupp
-		JButton kassilooming = new JButton("Loo kass");
-		loomisasjad.add(kassilooming);
-		kassilooming.addActionListener(new LoominguKuular());
+		JButton kassiloomisnupp = new JButton("Loo kass");
+		loomisasjad.add(kassiloomisnupp);
+		kassiloomisnupp.addActionListener(new LoominguKuular());
+		this.getRootPane().setDefaultButton(kassiloomisnupp);
 		
 		
 	}
@@ -55,6 +56,25 @@ public class LoomisKonteiner extends JFrame{
 	public static void setFenot(String fenot) {
 		LoomisKonteiner.fenot.setText(fenot);
 	}
+	
+	//Muidu getterid ja setterid
+	public static String getDeftekst() {
+		return deftekst;
+	}
+	public static void setDeftekst(String deftekst) {
+		LoomisKonteiner.deftekst = deftekst;
+	}
+	public static JTextField getKassinimi() {
+		return kassinimi;
+	}
+	public static void setKassinimi(JTextField kassinimi) {
+		LoomisKonteiner.kassinimi = kassinimi;
+	}
+	public static void setFenot(JTextArea fenot) {
+		LoomisKonteiner.fenot = fenot;
+	}
+	
+	
 	
 }
 
