@@ -15,7 +15,7 @@ import javax.swing.JToolBar;
 
 
 @SuppressWarnings("serial")
-public class Kassiraam extends JFrame {
+public class Kassiraam extends JFrame implements LocaleChangeListener {
 
 	static JButton n1 = new JButton(Main.mainbundle.getString("button1"));
 	static JButton n2 = new JButton(Main.mainbundle.getString("button2"));
@@ -28,6 +28,8 @@ public class Kassiraam extends JFrame {
 
 	static DefaultListModel<Kass> kassid = new DefaultListModel<Kass>();
 	static JList<Kass> kassilist = new JList<Kass>(kassid);
+	
+	static JLabel sildike = new JLabel(Main.mainbundle.getString("label1"));
 
 	// kaks akent. esialgu nähtamatud. enne olid eraldi klassis KassiNupud
 	static KassiNupuKonteiner kassiNupuRaam = new KassiNupuKonteiner();
@@ -54,10 +56,11 @@ public class Kassiraam extends JFrame {
 		this.addWindowListener(new KassiRaamiSulgemisKuular());
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		try {
-			ImageIcon ikoon = new ImageIcon("data//gfx//icons//icon1.png");
+			ImageIcon ikoon = new ImageIcon("data//gfx//icons//Program-Icon.png");
 			this.setIconImage(ikoon.getImage());
 		}
 		catch (NullPointerException e) {
+			//TODO error standardization
 			System.out.println("Erind ikooniga" + e.getMessage());
 		}
 
@@ -71,7 +74,7 @@ public class Kassiraam extends JFrame {
 		vp.setLayout(new BorderLayout());
 
 		// väike kena sildike
-		vp.add(new JLabel(Main.mainbundle.getString("label1")), BorderLayout.NORTH);
+		vp.add(sildike, BorderLayout.NORTH);
 
 		// paneme kassilisti JList'i, mille paneme JScrollPane'i
 		kassilist.setVisibleRowCount(-1);
@@ -118,5 +121,30 @@ public class Kassiraam extends JFrame {
 		nupp.setToolTipText(Main.tipbundle.getString(tooltipID));
 		nupp.setEnabled(initEnabled);
 		toolbar.add(nupp);
+	}
+
+	@Override
+	public void onLocaleChange() {
+		this.setTitle(Main.mainbundle.getString("title1"));
+		kassiNupuRaam.setTitle(Main.mainbundle.getString("title2"));
+		fenoraam.setTitle(Main.mainbundle.getString("title3"));
+		kassilist.setToolTipText(Main.tipbundle.getString("tt1"));
+		sildike.setText(Main.mainbundle.getString("label1"));
+		n1.setText(Main.mainbundle.getString("button1"));
+		n2.setText(Main.mainbundle.getString("button2"));
+		n3.setText(Main.mainbundle.getString("button3"));
+		n4.setText(Main.mainbundle.getString("button4"));
+		n5.setText(Main.mainbundle.getString("button5"));
+		n6.setText(Main.mainbundle.getString("button6"));
+		n7.setText(Main.mainbundle.getString("button7"));
+		n8.setText(Main.mainbundle.getString("button8"));
+		n1.setToolTipText(Main.tipbundle.getString("tt2"));
+		n2.setToolTipText(Main.tipbundle.getString("tt3"));
+		n3.setToolTipText(Main.tipbundle.getString("tt4"));
+		n4.setToolTipText(Main.tipbundle.getString("tt5"));
+		n5.setToolTipText(Main.tipbundle.getString("tt6"));
+		n6.setToolTipText(Main.tipbundle.getString("tt7"));
+		n7.setToolTipText(Main.tipbundle.getString("tt8"));
+		n8.setToolTipText(Main.tipbundle.getString("tt9"));		
 	}
 }

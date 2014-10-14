@@ -10,6 +10,10 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 
+/**
+ * @author K Konteiner selleks, kui kasutatakse ümber nimetamisfunktsiooni
+ *
+ */
 @SuppressWarnings("serial")
 public class NimetamisKonteiner extends JFrame {
 

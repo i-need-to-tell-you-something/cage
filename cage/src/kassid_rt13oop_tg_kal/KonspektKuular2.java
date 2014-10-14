@@ -5,6 +5,10 @@ import java.awt.event.WindowListener;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
+/**
+ * @author K Salvestab konspekti sulgemisel selles oleva info "konspekt" faili.
+ *
+ */
 public class KonspektKuular2 implements WindowListener {
 	static String konspekt = "UI/Konspekt.txt";
 
@@ -21,6 +25,7 @@ public class KonspektKuular2 implements WindowListener {
 			//TODO error_standardization
 			System.out.println("s/v erind");
 		} catch (NullPointerException osi) {
+			// TODO error_standardization
 			System.out.println(osi);// Kui faili ei leia üles
 			System.out.println("ei leia dokumenti \"" + konspekt + "\"");
 		}
