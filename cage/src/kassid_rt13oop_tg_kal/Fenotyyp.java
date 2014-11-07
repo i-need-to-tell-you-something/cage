@@ -65,7 +65,8 @@ public class Fenotyyp {
 			else if (ahel[5]==1){
 				x="Kilpkonnamustri värvid on lahjendunult"; break;
 				}
-			else if (lookus==3 && ahel[5]==0  && ahel[3]==0 && ahel[0]==0)  { //norm värvi, mitte oranž, lahjendunud, pole akuuti        
+			else if (ahel[5]==0  && ahel[3]==0 && ahel[0]==0)  { //norm värvi, mitte oranž, lahjendunud, pole akuuti
+				System.out.println("elif2");
 				switch (ahel[1]) {
 				case 6: x="Kollakaspruun kass"; break;                   
 				case 0: case 3: x="Sirelililla kass"; break;                           
