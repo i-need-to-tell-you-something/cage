@@ -26,18 +26,6 @@ public class Main {
 		} catch (Exception e2) {
 			e2.printStackTrace();
 		}
-
-		Kassiraam raam = new Kassiraam();
-
-		// peaks valima (windowsi?) hetkel kasutuses oleva lokaadi
-		try {
-//			currentLocale = Locale.getDefault();
-			currentLocale = InputContext.getInstance().getLocale();
-		} catch (Exception e1) {
-			currentLocale = new Locale("en", "GB");
-		}
-		loadLocale(currentLocale);
-		
 		
 		raam = new Kassiraam();
 		// raam.setSize(500, 500);
