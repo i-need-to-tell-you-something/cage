@@ -10,7 +10,7 @@ import java.io.IOException;
  *
  */
 public class KonspektKuular2 implements WindowListener {
-	static String konspekt = "UI/Konspekt.txt";
+	static String konspekt = "ui/Konspekt.txt";
 
 	@Override
 	public void windowClosing(WindowEvent arg0) {

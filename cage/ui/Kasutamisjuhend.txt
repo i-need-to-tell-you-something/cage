@@ -1,7 +1,0 @@
-﻿Peaakna vasakul poolel on kujutatud nimekiri vaatluse all olevatest kassidest.
-Paremal poolel on erinevad võimalikud käsud.
-
-Kogu funktsionaalsus on kirjeldatud tooltippides. 
-Tooltipi nägemiseks hõlju kursoriga 2 sekundit vastava võimaluse kohal.
-(Palun saada meile email kui leiad elemendi, millel võiks olla tooltip aga veel ei ole. Aitäh).
-(Emaile saab saata ka meie kodulehe abil).

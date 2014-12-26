@@ -9,9 +9,9 @@ import java.io.IOException;
 import javax.swing.JEditorPane;
 import javax.swing.JFrame;
 
-public class About implements ActionListener {
-	String about="UI/About.txt";
-	String lingid="UI/Aboutlingid.txt";
+public class AboutListener implements ActionListener {
+	static String about = "ui/About.txt";
+	static String lingid = "ui/Aboutlingid.txt";
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
