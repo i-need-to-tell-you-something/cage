@@ -19,13 +19,14 @@ public class Main {
 		} catch (Exception e1) {
 			currentLocale = new Locale("en", "GB");
 		}
-		try {
-			mainbundle = ResourceBundle.getBundle("kassid_rt13oop_tg_kal.Locale.MainBundle", currentLocale);
-			tipbundle = ResourceBundle.getBundle("kassid_rt13oop_tg_kal.Locale.TooltipBundle", currentLocale);
-			errbundle = ResourceBundle.getBundle( "kassid_rt13oop_tg_kal.Locale.ErrorMessageBundle", currentLocale);
-		} catch (Exception e2) {
-			e2.printStackTrace();
-		}
+		loadLocale(currentLocale);
+//		try {
+//			mainbundle = ResourceBundle.getBundle("kassid_rt13oop_tg_kal.Locale.MainBundle", currentLocale);
+//			tipbundle = ResourceBundle.getBundle("kassid_rt13oop_tg_kal.Locale.Tooltips.TooltipBundle", currentLocale);
+//			errbundle = ResourceBundle.getBundle( "kassid_rt13oop_tg_kal.Locale.ErrorMessages.ErrorMessageBundle", currentLocale);
+//		} catch (Exception e2) {
+//			e2.printStackTrace();
+//		}
 		
 		raam = new Kassiraam();
 		// raam.setSize(500, 500);
@@ -34,13 +35,14 @@ public class Main {
 		raam.setVisible(true);
 	}
 	
-	public static void loadLocale(Locale lokaat) {
+	public static void loadLocale(Locale mainLocale) {
 
 		try {
-			mainbundle = ResourceBundle.getBundle("kassid_rt13oop_tg_kal.Locale.MainBundle", lokaat);
-			tipbundle = ResourceBundle.getBundle("kassid_rt13oop_tg_kal.Locale.Tooltips.TooltipBundle", lokaat);
-			errbundle = ResourceBundle.getBundle( "kassid_rt13oop_tg_kal.Locale.ErrorMessages.ErrorMessageBundle", lokaat);
+			mainbundle = ResourceBundle.getBundle("kassid_rt13oop_tg_kal.Locale.MainBundle", mainLocale);
+			tipbundle = ResourceBundle.getBundle("kassid_rt13oop_tg_kal.Locale.Tooltips.TooltipBundle", mainLocale);
+			errbundle = ResourceBundle.getBundle( "kassid_rt13oop_tg_kal.Locale.ErrorMessages.ErrorMessageBundle", mainLocale);
 		} catch (Exception e2) {
+			//TODO error standardisation
 			e2.printStackTrace();
 		}
 		

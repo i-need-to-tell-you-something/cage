@@ -125,6 +125,7 @@ public class Kassiraam extends JFrame implements LocaleChangeListener {
 
 	@Override
 	public void onLocaleChange() {
+		Main.loadLocale(Main.currentLocale);
 		this.setTitle(Main.mainbundle.getString("title1"));
 		kassiNupuRaam.setTitle(Main.mainbundle.getString("title2"));
 		fenoraam.setTitle(Main.mainbundle.getString("title3"));
@@ -145,6 +146,6 @@ public class Kassiraam extends JFrame implements LocaleChangeListener {
 		n5.setToolTipText(Main.tipbundle.getString("tt6"));
 		n6.setToolTipText(Main.tipbundle.getString("tt7"));
 		n7.setToolTipText(Main.tipbundle.getString("tt8"));
-		n8.setToolTipText(Main.tipbundle.getString("tt9"));		
+		n8.setToolTipText(Main.tipbundle.getString("tt9"));
 	}
 }

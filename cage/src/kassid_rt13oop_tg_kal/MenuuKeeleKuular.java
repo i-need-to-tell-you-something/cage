@@ -9,8 +9,11 @@ public class MenuuKeeleKuular implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 
 		
-//		Main.currentLocale = new Locale(e.getActionCommand());
-//		
+//		Main.raam.setLocale(new Locale(e.getActionCommand()));
+//		Main.currentLocale = new Locale("en", "GB");
+//		ResourceBundle.clearCache();
+//		Main.raam.repaint();
+		
 //		try {
 //			Main.mainbundle = ResourceBundle.getBundle("kassid_rt13oop_tg_kal.Locale.MainBundle", Main.currentLocale);
 ////			Main.tipbundle = ResourceBundle.getBundle("kassid_rt13oop_tg_kal.Locale.Tooltips.TooltipBundle", Main.currentLocale);
@@ -25,14 +28,24 @@ public class MenuuKeeleKuular implements ActionListener {
 		//tundus et ei tee midagi
 //		Main.loadLocale(new Locale(e.getActionCommand()));
 		
-//		//debug output:
-		System.out.println(Main.currentLocale);
-//		System.out.print(Main.mainbundle.getString("title2"));
-		System.out.println(e.getActionCommand());
-		
-		
+//		switch (e.getActionCommand()) {
+//		case "et_EE": {
+//			Main.currentLocale = new Locale("et", "EE"); break;
+//		}
+//		case "en_GB": {
+//			Main.currentLocale = new Locale("en", "GB"); break;
+//		}
+//		}
+//		System.out.println(((MenuuLanguageMenuItem)e.getSource()).getMenuItemLocale() );
+		Main.currentLocale = ((MenuuLanguageMenuItem)e.getSource()).getMenuItemLocale();
+//		Main.currentLocale = new Locale("et", "EE");		
 		Main.raam.onLocaleChange();
-		Main.raam.pack();
+		
+//		//debug output:
+//		System.out.println(e.getActionCommand());
+//		System.out.println(new Locale(e.getActionCommand()));
+//		System.out.println(Main.currentLocale);
+//		System.out.println("raam.getLocale - "+Main.raam.getLocale());
 
 	}
 

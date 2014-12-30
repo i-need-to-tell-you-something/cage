@@ -174,7 +174,7 @@ public class KassiRaamiNupukuular implements ActionListener {
 		}
 		
 		//kui vastav option siis fookus listile uuesti
-		if (Menuu.optionFookus) { Kassiraam.kassilist.requestFocusInWindow(); }
+		if (Menuu.isOptionFookus()) { Kassiraam.kassilist.requestFocusInWindow(); }
 	}
 
 }

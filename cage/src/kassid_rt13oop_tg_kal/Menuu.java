@@ -2,9 +2,11 @@ package kassid_rt13oop_tg_kal;
 
 
 import java.awt.event.KeyEvent;
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.Locale;
 import java.util.Properties;
 
 import javax.swing.ImageIcon;
@@ -15,9 +17,13 @@ import javax.swing.JMenuItem;
 
 @SuppressWarnings("serial")
 public class Menuu extends JMenuBar{
-	public static boolean optionFookus = false;
-	public static boolean optionVanemad = false;
-//	public static boolean optionFrameName = false;	
+	private static boolean optionFookus = false;
+	private static boolean optionVanemad = false;
+	
+	private static JMenu fileMenu;
+	private static JMenu helpMenu;
+	private static JMenu optionsMenu;
+	private static JMenu languageMenu;
 
 	
 
@@ -25,14 +31,14 @@ public class Menuu extends JMenuBar{
 		
 		//menüü elemendid
 		
-		JMenu fileMenu = new JMenu(Main.mainbundle.getString("menulabel1"));
+		fileMenu = new JMenu(Main.mainbundle.getString("menulabel1"));
 		this.add(fileMenu);
-		JMenu optionsMenu= new	 JMenu(Main.mainbundle.getString("menulabel2"));
+		optionsMenu = new	 JMenu(Main.mainbundle.getString("menulabel2"));
 		this.add(optionsMenu);
-		JMenu helpMenu= new JMenu(Main.mainbundle.getString("menulabel3"));
+		helpMenu = new JMenu(Main.mainbundle.getString("menulabel3"));
 		this.add(helpMenu);
 //		this.setHelpMenu(help); //not implemented by java yet
-		JMenu languageMenu = new JMenu();
+		languageMenu = new JMenu();
 		this.add(languageMenu);
 		try {
 			ImageIcon languageIcon = new ImageIcon("data//gfx//icons//Language-Icon.png");
@@ -77,17 +83,18 @@ public class Menuu extends JMenuBar{
 		helpMenu.add(a3);
 
 		
+		listDifferentLocale();
 		//Items in language menu
-		JMenuItem l1 = new JMenuItem("en_GB");
-		languageMenu.add(l1);
-		l1.addActionListener(new MenuuKeeleKuular());
-		JMenuItem l2 = new JMenuItem("et_EE");
-		languageMenu.add(l2);
-		l2.addActionListener(new MenuuKeeleKuular());
-		JMenuItem l3 = new JMenuItem("ru_RU");
-		languageMenu.add(l3);
-		l3.addActionListener(new MenuuKeeleKuular());
-		
+//		JMenuItem l1 = new JMenuItem("en_GB");
+//		languageMenu.add(l1);
+//		l1.addActionListener(new MenuuKeeleKuular());
+//		JMenuItem l2 = new JMenuItem("et_EE");
+//		languageMenu.add(l2);
+//		l2.addActionListener(new MenuuKeeleKuular());
+//		JMenuItem l3 = new JMenuItem("ru_RU");
+//		languageMenu.add(l3);
+//		l3.addActionListener(new MenuuKeeleKuular());
+//		
 		
 		//Adding tooltips
 		f1.setToolTipText(Main.tipbundle.getString("tt13"));
@@ -130,8 +137,46 @@ public class Menuu extends JMenuBar{
 		}
 		
 	}
+	
+	//language list needs this
+	private void listFilesForFolder(File folder) {
+		for (File fileEntry : folder.listFiles()) {
+			if (fileEntry.isDirectory()) {
+				listFilesForFolder(fileEntry);
+			} else if (isLocaleFile(fileEntry.getName())) {
+				String fileName = fileEntry.getName();
+				String language = (fileName.substring(fileName.length()-16, fileName.length()-14));
+				String region = (fileName.substring(fileName.length()-13, fileName.length()-11));
+				JMenuItem newLocaleButton = new MenuuLanguageMenuItem(new Locale(language, region));
+				languageMenu.add(newLocaleButton);
+				newLocaleButton.addActionListener(new MenuuKeeleKuular());
+			}
+		}
+	}
+	
+	//Checks whether a filename matches the pattern of a locale file: foo_en_GB.properties
+	private boolean isLocaleFile(String filename) {
+		if (filename.substring(filename.length()-11, filename.length()).equals(".properties")) {
+			if (filename.charAt(filename.length()-14)=='_') {
+				if (filename.charAt(filename.length()-17)=='_') {
+					return true;
+				}
+			}
+		}
+		return false;
+	}
+	
+	//finds all available locale files
+	private void listDifferentLocale() {
+		try {
+			listFilesForFolder(new File("bin/kassid_rt13oop_tg_kal/Locale"));
+		}
+		catch (NullPointerException e) {
+			e.printStackTrace();
+		}
+	}
 
-	//getterid ja setterid
+	//Getters and setters
 	public static boolean isOptionFookus() {
 		return optionFookus;
 	}

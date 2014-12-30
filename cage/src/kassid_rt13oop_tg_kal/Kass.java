@@ -172,7 +172,7 @@ public class Kass implements Serializable{
 		default: sugu = " viga"; break;
 		}
 		kujutus.append(this.getNimi() + sugu);
-		if (Menuu.optionVanemad) {
+		if (Menuu.isOptionVanemad()) {
 			kujutus.append(" (");
 			if (this.ema==null) {
 				kujutus.append(Main.mainbundle.getString("invitro"));
