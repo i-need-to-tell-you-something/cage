@@ -16,8 +16,6 @@ import javax.swing.JTextField;
 @SuppressWarnings("serial")
 public class KassiNupuKonteiner extends JFrame {
 
-	// KOOD Esimese ahela väljad koodisurnuaias
-
 	// Esimese ahela väljad
 	static String ah1="ah1";
 	static String ah2="ah2";
@@ -73,7 +71,6 @@ public class KassiNupuKonteiner extends JFrame {
 			box2.add(ahel2[i]);
 		}
 
-		// KOOD XLMEGADETH Koodisurnuaiast
 
 		// Sone järjendite loomine, kus esimesel kohal on alleeli tähistus ja
 		// teisel kohal selle (lühi)kirjeldus
@@ -323,6 +320,7 @@ public class KassiNupuKonteiner extends JFrame {
 			} else if (gString[i].equals("cs")) {
 				intgeno[i] = 7;
 			} else if (!gString[i].equals("ah1") && !gString[i].equals("ah2")) {
+				//TODO Error standardisation
 				System.out.println("Error genoString2int meetodi juures: "+gString[i]);
 			}
 		}

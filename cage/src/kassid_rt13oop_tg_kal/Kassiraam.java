@@ -30,13 +30,18 @@ public class Kassiraam extends JFrame implements LocaleChangeListener {
 	static JList<Kass> kassilist = new JList<Kass>(kassid);
 	
 	static JLabel sildike = new JLabel(Main.mainbundle.getString("label1"));
+	
+	static Menuu menu = new Menuu();
 
 	// kaks akent. esialgu nähtamatud. enne olid eraldi klassis KassiNupud
 	static KassiNupuKonteiner kassiNupuRaam = new KassiNupuKonteiner();
-	static LoomisKonteiner fenoraam = new LoomisKonteiner();
+	private static LoomisKonteiner fenoraam = new LoomisKonteiner();
 
 	// väljad läbi ja nüüd konstruktor meetod
 	public Kassiraam() {
+		
+		//Listing that this component needs to fire whenever there's a locale change
+		MenuuLanguageListener.addToDeclaredComponents(this);
 		
 		// JFrame raami loomine kassiloomiseks. peidetud
 		kassiNupuRaam.setSize(500, 320);
@@ -45,13 +50,13 @@ public class Kassiraam extends JFrame implements LocaleChangeListener {
 		kassiNupuRaam.addWindowListener(new AknaKuular());
 
 		// JFrame raami loomine fenotüübi näitamiseks ja loomiseks. peidetud
-		fenoraam.setSize(400, 250);
-		fenoraam.setLocation(500, 100);
-		fenoraam.setTitle(Main.mainbundle.getString("title3"));
-		fenoraam.addWindowListener(new AknaKuular());
+		getFenoraam().setSize(400, 250);
+		getFenoraam().setLocation(500, 100);
+		getFenoraam().setTitle(Main.mainbundle.getString("title3"));
+		getFenoraam().addWindowListener(new AknaKuular());
 
 		// põhiraam
-		this.setJMenuBar(new Menuu());
+		this.setJMenuBar(menu);
 		this.setTitle(Main.mainbundle.getString("title1"));
 		this.addWindowListener(new KassiRaamiSulgemisKuular());
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -125,10 +130,9 @@ public class Kassiraam extends JFrame implements LocaleChangeListener {
 
 	@Override
 	public void onLocaleChange() {
-		Main.loadLocale(Main.currentLocale);
 		this.setTitle(Main.mainbundle.getString("title1"));
 		kassiNupuRaam.setTitle(Main.mainbundle.getString("title2"));
-		fenoraam.setTitle(Main.mainbundle.getString("title3"));
+		getFenoraam().setTitle(Main.mainbundle.getString("title3"));
 		kassilist.setToolTipText(Main.tipbundle.getString("tt1"));
 		sildike.setText(Main.mainbundle.getString("label1"));
 		n1.setText(Main.mainbundle.getString("button1"));
@@ -147,5 +151,16 @@ public class Kassiraam extends JFrame implements LocaleChangeListener {
 		n6.setToolTipText(Main.tipbundle.getString("tt7"));
 		n7.setToolTipText(Main.tipbundle.getString("tt8"));
 		n8.setToolTipText(Main.tipbundle.getString("tt9"));
+	}
+
+
+	//Getters and setters
+	
+	public static LoomisKonteiner getFenoraam() {
+		return fenoraam;
+	}
+
+	public static void setFenoraam(LoomisKonteiner fenoraam) {
+		Kassiraam.fenoraam = fenoraam;
 	}
 }

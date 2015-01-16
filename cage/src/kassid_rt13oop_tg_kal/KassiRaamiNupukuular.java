@@ -14,8 +14,8 @@ import javax.swing.JTextField;
 import Visuaal.Merge;
 
 /**
- * @author K See meetod kirjeldab seda, mis juhtub nupu vajutamise järel.
- * 
+ * This method describes what happens after pressing a button on the main frame
+ * @author K
  */
 public class KassiRaamiNupukuular implements ActionListener {
 
@@ -33,7 +33,7 @@ public class KassiRaamiNupukuular implements ActionListener {
 		
 		case "Muuda nime": {
 			for (Kass kass : Kassiraam.kassilist.getSelectedValuesList()) {
-				new NimetamisKonteiner(kass, ((Component)e.getSource()).getLocationOnScreen());
+				new NamingContainer(kass, ((Component)e.getSource()).getLocationOnScreen());
 			}
 			break;
 		}
@@ -45,7 +45,7 @@ public class KassiRaamiNupukuular implements ActionListener {
 
 		case "Lisa uus geenidega": {
 			Kassiraam.kassiNupuRaam.setVisible(true);
-			Kassiraam.fenoraam.setVisible(true);
+			Kassiraam.getFenoraam().setVisible(true);
 			break;
 		}
 

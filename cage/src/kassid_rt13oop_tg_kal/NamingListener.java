@@ -8,11 +8,11 @@ import java.awt.event.ActionListener;
  * @author K Kuular kassi ümber nimetamise jaoks.
  *
  */
-public class NimetamisKuular implements ActionListener {
+public class NamingListener implements ActionListener {
 
 	private Kass kass;
 
-	public NimetamisKuular(Kass k) {
+	public NamingListener(Kass k) {
 		this.kass = k;
 	}
 
@@ -20,7 +20,7 @@ public class NimetamisKuular implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		
 		//nimetamiskonteiner tüüpi aken kus event toimus
-		NimetamisKonteiner aken = (NimetamisKonteiner)((Component)e.getSource()).getParent().getParent().getParent().getParent();
+		NamingContainer aken = (NamingContainer)((Component)e.getSource()).getParent().getParent().getParent().getParent();
 
 		//muudame nime ära selleks mis on kastis
 		kass.setNimi(aken.lahter.getText());

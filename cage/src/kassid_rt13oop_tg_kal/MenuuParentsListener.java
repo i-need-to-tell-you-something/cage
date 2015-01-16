@@ -5,7 +5,7 @@ import java.awt.event.ItemListener;
 
 import javax.swing.JCheckBoxMenuItem;
 
-public class MenuuVanemadKuular implements ItemListener {
+public class MenuuParentsListener implements ItemListener {
 
 	@Override
 	public void itemStateChanged(ItemEvent e) {

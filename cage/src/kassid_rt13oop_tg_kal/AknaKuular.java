@@ -4,14 +4,14 @@ import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 
 /**
- * Selle klassi funktsioon on fenoraam ja kassiNupuRaa korraga "sulgeda"
- * (tegelikult peita)
+ * The purpose of this class is to "close" fenoFrame and catButtonFrame at the
+ * same time (actually hide them)
  */
 public class AknaKuular implements WindowListener {
 
 	@Override
 	public void windowClosing(WindowEvent e) {
-		Kassiraam.fenoraam.setVisible(false);
+		Kassiraam.getFenoraam().setVisible(false);
 		Kassiraam.kassiNupuRaam.setVisible(false);
 	}
 

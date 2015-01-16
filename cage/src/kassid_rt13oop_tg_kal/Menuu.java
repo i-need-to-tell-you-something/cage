@@ -16,30 +16,39 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 
 @SuppressWarnings("serial")
-public class Menuu extends JMenuBar{
+public class Menuu extends JMenuBar implements LocaleChangeListener {
 	private static boolean optionFookus = false;
 	private static boolean optionVanemad = false;
 	
-	private static JMenu fileMenu;
-	private static JMenu helpMenu;
-	private static JMenu optionsMenu;
-	private static JMenu languageMenu;
+	private static JMenu fileMenu = new JMenu();
+	private static JMenu helpMenu = new JMenu();
+	private static JMenu optionsMenu = new JMenu();
+	private static JMenu languageMenu = new JMenu();
+	
+
+	private static JMenuItem f1 = new JMenuItem();
+	private static JMenuItem f2 = new JMenuItem();
+	private static JMenuItem f3 = new JMenuItem();
+	private static JCheckBoxMenuItem o1 = new JCheckBoxMenuItem();
+	private static JCheckBoxMenuItem o2 = new JCheckBoxMenuItem();
+	private static JMenuItem a2= new JMenuItem();
+	private static JMenuItem a1= new JMenuItem();
+	private static JMenuItem a3= new JMenuItem();	
 
 	
 
-	Menuu(){
+	public Menuu(){
+			
+		//Listing that this component needs to fire whenever there's a locale change
+		MenuuLanguageListener.addToDeclaredComponents(this);
 		
-		//menüü elemendid
-		
-		fileMenu = new JMenu(Main.mainbundle.getString("menulabel1"));
+//		this.setHelpMenu(help); - not implemented by java yet
 		this.add(fileMenu);
-		optionsMenu = new	 JMenu(Main.mainbundle.getString("menulabel2"));
 		this.add(optionsMenu);
-		helpMenu = new JMenu(Main.mainbundle.getString("menulabel3"));
 		this.add(helpMenu);
-//		this.setHelpMenu(help); //not implemented by java yet
-		languageMenu = new JMenu();
 		this.add(languageMenu);
+		
+		//Icon for Language JMenu item
 		try {
 			ImageIcon languageIcon = new ImageIcon("data//gfx//icons//Language-Icon.png");
 			languageMenu.setIcon(languageIcon);
@@ -49,67 +58,51 @@ public class Menuu extends JMenuBar{
 			System.out.println("Erind ikooniga" + e.getMessage());
 		}
 
+		//Add elements to menus
 		
-		//Items in file menu
-		JMenuItem f1 = new JMenuItem(Main.mainbundle.getString("menulabel4"));
-		f1.addActionListener(new KonspektKuular1());
 		fileMenu.add(f1);
-		JMenuItem f2 = new JMenuItem(Main.mainbundle.getString("menulabel5"));
-		f2.addActionListener(new MigratsiooniKuular());
 		fileMenu.add(f2);
-		JMenuItem f3 = new JMenuItem(Main.mainbundle.getString("menulabel6"));
-		f3.addActionListener(new MigratsiooniKuular());
 		fileMenu.add(f3);
 		
-		
-		//Items in options menu
-		JCheckBoxMenuItem o1 = new JCheckBoxMenuItem(Main.mainbundle.getString("menulabel7"));
-		o1.addItemListener(new MenuuVanemadKuular());
 		optionsMenu.add(o1);
-		JCheckBoxMenuItem o2 = new JCheckBoxMenuItem(Main.mainbundle.getString("menulabel8"));
-		o2.addItemListener(new MenuuAutoFookusKuular());
 		optionsMenu.add(o2);
-
 		
-		//Items in help menu
-		JMenuItem a1= new JMenuItem(Main.mainbundle.getString("menulabel9"));
-		a1.addActionListener(new AboutListener());
 		helpMenu.add(a1);
-		JMenuItem a2= new JMenuItem(Main.mainbundle.getString("menulabel10"));
-		a2.addActionListener(new Kasutusjuhend());
 		helpMenu.add(a2);
-		//TODO this is troll button: not implemented
-		JMenuItem a3= new JMenuItem(Main.mainbundle.getString("menulabel11"));								
+		//TODO this is troll button: not implemented							
 		helpMenu.add(a3);
+		
+		//
+		
+		f2.setActionCommand("Export");
+		f3.setActionCommand("Import");
+		
+		//Listeners to elements in menus
+		
+		f1.addActionListener(new KonspektKuular1());
+		f2.addActionListener(new ImportExportListener());
+		f3.addActionListener(new ImportExportListener());
 
-		
-		listDifferentLocale();
-		//Items in language menu
-//		JMenuItem l1 = new JMenuItem("en_GB");
-//		languageMenu.add(l1);
-//		l1.addActionListener(new MenuuKeeleKuular());
-//		JMenuItem l2 = new JMenuItem("et_EE");
-//		languageMenu.add(l2);
-//		l2.addActionListener(new MenuuKeeleKuular());
-//		JMenuItem l3 = new JMenuItem("ru_RU");
-//		languageMenu.add(l3);
-//		l3.addActionListener(new MenuuKeeleKuular());
-//		
-		
-		//Adding tooltips
-		f1.setToolTipText(Main.tipbundle.getString("tt13"));
-		f2.setToolTipText(Main.tipbundle.getString("tt14"));
-		f3.setToolTipText(Main.tipbundle.getString("tt15"));
-		o1.setToolTipText(Main.tipbundle.getString("tt16"));
-		o2.setToolTipText(Main.tipbundle.getString("tt17"));
-		a1.setToolTipText(Main.tipbundle.getString("tt18"));
-		a2.setToolTipText(Main.tipbundle.getString("tt19"));
-		a3.setToolTipText(Main.tipbundle.getString("tt20"));
+		o1.addItemListener(new MenuuParentsListener());
+		o2.addItemListener(new MenuuAutoFookusKuular());
+
+		a1.addActionListener(new AboutListener());
+		a2.addActionListener(new Kasutusjuhend());
+
+		//Finds all available locale files and makes language option buttons out of them
+		try {
+			listFilesForFolder(new File("bin/kassid_rt13oop_tg_kal/Locale"));
+		}
+		catch (NullPointerException e) {
+			e.printStackTrace();
+		}
 		
 		//Adding hotkeys
+		
 		fileMenu.setMnemonic(KeyEvent.VK_F); //fail
 		optionsMenu.setMnemonic(KeyEvent.VK_S);	//seaded
 		helpMenu.setMnemonic(KeyEvent.VK_A);	//abi
+		
 		f1.setMnemonic(KeyEvent.VK_K);	//konspekt
 		f2.setMnemonic(KeyEvent.VK_E);  //eksport
 		f3.setMnemonic(KeyEvent.VK_I);  //import
@@ -136,20 +129,24 @@ public class Menuu extends JMenuBar{
 			e.printStackTrace();
 		}
 		
+		//And now load text onto all the components, which is already defined in the method onLocaleChange()
+		onLocaleChange();
+		
 	}
 	
-	//language list needs this
+	//Finds all the files in this folder and its subfolders
 	private void listFilesForFolder(File folder) {
 		for (File fileEntry : folder.listFiles()) {
 			if (fileEntry.isDirectory()) {
 				listFilesForFolder(fileEntry);
+			//If it's a locale file, make a new language button 
 			} else if (isLocaleFile(fileEntry.getName())) {
 				String fileName = fileEntry.getName();
 				String language = (fileName.substring(fileName.length()-16, fileName.length()-14));
 				String region = (fileName.substring(fileName.length()-13, fileName.length()-11));
 				JMenuItem newLocaleButton = new MenuuLanguageMenuItem(new Locale(language, region));
 				languageMenu.add(newLocaleButton);
-				newLocaleButton.addActionListener(new MenuuKeeleKuular());
+				newLocaleButton.addActionListener(new MenuuLanguageListener());
 			}
 		}
 	}
@@ -166,15 +163,6 @@ public class Menuu extends JMenuBar{
 		return false;
 	}
 	
-	//finds all available locale files
-	private void listDifferentLocale() {
-		try {
-			listFilesForFolder(new File("bin/kassid_rt13oop_tg_kal/Locale"));
-		}
-		catch (NullPointerException e) {
-			e.printStackTrace();
-		}
-	}
 
 	//Getters and setters
 	public static boolean isOptionFookus() {
@@ -191,6 +179,42 @@ public class Menuu extends JMenuBar{
 
 	public static void setOptionVanemad(boolean optionVanemad) {
 		Menuu.optionVanemad = optionVanemad;
+	}
+
+	@Override
+	public void onLocaleChange() {
+		
+		//Menus
+		
+		fileMenu.setText(Main.mainbundle.getString("menulabel1"));
+		optionsMenu.setText(Main.mainbundle.getString("menulabel2"));
+		helpMenu.setText(Main.mainbundle.getString("menulabel3"));
+		
+		//Items in menus
+		
+		f1.setText(Main.mainbundle.getString("menulabel4"));
+		f2.setText(Main.mainbundle.getString("menulabel5"));
+		f3.setText(Main.mainbundle.getString("menulabel6"));
+
+		o1.setText(Main.mainbundle.getString("menulabel7"));
+		o2.setText(Main.mainbundle.getString("menulabel8"));
+		
+		a1.setText(Main.mainbundle.getString("menulabel9"));
+		a2.setText(Main.mainbundle.getString("menulabel10"));
+		a3.setText(Main.mainbundle.getString("menulabel11"));
+		
+		//Adding tooltips
+		
+		f1.setToolTipText(Main.tipbundle.getString("tt13"));
+		f2.setToolTipText(Main.tipbundle.getString("tt14"));
+		f3.setToolTipText(Main.tipbundle.getString("tt15"));
+		
+		o1.setToolTipText(Main.tipbundle.getString("tt16"));
+		o2.setToolTipText(Main.tipbundle.getString("tt17"));
+		
+		a1.setToolTipText(Main.tipbundle.getString("tt18"));
+		a2.setToolTipText(Main.tipbundle.getString("tt19"));
+		a3.setToolTipText(Main.tipbundle.getString("tt20"));
 	}
 	
 }

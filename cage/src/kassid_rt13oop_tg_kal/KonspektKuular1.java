@@ -8,18 +8,22 @@ import javax.swing.JFrame;
 import javax.swing.JTextArea;
 
 //Kuular menüü nupu jaoks
-public class KonspektKuular1 implements ActionListener {
+public class KonspektKuular1 implements ActionListener, LocaleChangeListener {
 
 	static JTextArea tekst = new JTextArea();
+	JFrame konspektraam;
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
+		//Listing that this component needs to fire whenever there's a locale change
+		MenuuLanguageListener.addToDeclaredComponents(this);
+		
 		// Kui vajutatakse menuu nuppu tehakse lahti uus aken kuhu pannakse
 		// sisse tekstiväli kuhu saadakse tekst failist "Konspekt.txt"
-		JFrame konspektraam = new JFrame();
-		konspektraam.setTitle(Main.mainbundle.getString("title7"));
+		konspektraam = new JFrame();
 		konspektraam.addWindowListener(new KonspektKuular2());
 		tekst.setEditable(true);
+		onLocaleChange();
 		try {
 			tekst.setText(FileToString.loe(KonspektKuular2.konspekt));
 		} catch (IOException eeee) {
@@ -31,7 +35,6 @@ public class KonspektKuular1 implements ActionListener {
 		konspektraam.setVisible(true);
 		konspektraam.setSize(300, 300);
 		konspektraam.add(tekst);
-		tekst.setToolTipText(Main.tipbundle.getString("tt10"));
 		// tekst.setBackground(Color.lightGray);
 	}
 
@@ -41,6 +44,13 @@ public class KonspektKuular1 implements ActionListener {
 
 	public static void setTekst(JTextArea tekst) {
 		KonspektKuular1.tekst = tekst;
+	}
+
+	@Override
+	public void onLocaleChange() {
+		konspektraam.setTitle(Main.mainbundle.getString("title7"));
+		tekst.setToolTipText(Main.tipbundle.getString("tt10"));
+		
 	}
 
 }
