@@ -7,7 +7,7 @@ import java.awt.event.WindowListener;
  * The purpose of this class is to "close" fenoFrame and catButtonFrame at the
  * same time (actually hide them)
  */
-public class AknaKuular implements WindowListener {
+public class WindowsClosingListener implements WindowListener {
 
 	@Override
 	public void windowClosing(WindowEvent e) {

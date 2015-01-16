@@ -87,7 +87,7 @@ public class Menuu extends JMenuBar implements LocaleChangeListener {
 		o2.addItemListener(new MenuuAutoFookusKuular());
 
 		a1.addActionListener(new AboutListener());
-		a2.addActionListener(new Kasutusjuhend());
+		a2.addActionListener(new InstructionsListener());
 
 		//Finds all available locale files and makes language option buttons out of them
 		try {

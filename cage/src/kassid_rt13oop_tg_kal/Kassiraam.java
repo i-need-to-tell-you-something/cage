@@ -47,13 +47,13 @@ public class Kassiraam extends JFrame implements LocaleChangeListener {
 		kassiNupuRaam.setSize(500, 320);
 		kassiNupuRaam.setLocation(0, 100);
 		kassiNupuRaam.setTitle(Main.mainbundle.getString("title2"));
-		kassiNupuRaam.addWindowListener(new AknaKuular());
+		kassiNupuRaam.addWindowListener(new WindowsClosingListener());
 
 		// JFrame raami loomine fenotüübi näitamiseks ja loomiseks. peidetud
 		getFenoraam().setSize(400, 250);
 		getFenoraam().setLocation(500, 100);
 		getFenoraam().setTitle(Main.mainbundle.getString("title3"));
-		getFenoraam().addWindowListener(new AknaKuular());
+		getFenoraam().addWindowListener(new WindowsClosingListener());
 
 		// põhiraam
 		this.setJMenuBar(menu);
@@ -151,6 +151,8 @@ public class Kassiraam extends JFrame implements LocaleChangeListener {
 		n6.setToolTipText(Main.tipbundle.getString("tt7"));
 		n7.setToolTipText(Main.tipbundle.getString("tt8"));
 		n8.setToolTipText(Main.tipbundle.getString("tt9"));
+		// This is necessary for updating 4 labels (male, female, doubleY) in method Kass
+		this.repaint();
 	}
 
 

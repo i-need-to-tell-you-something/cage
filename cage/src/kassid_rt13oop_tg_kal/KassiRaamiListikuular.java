@@ -5,8 +5,10 @@ import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
 /**
- * @author K See meetod määrab, mis käsud on hulga s kassi listist valimise
- *         korral aktiivsed
+ * This class determines which buttons are available based on the number of cats
+ * selected (int s)
+ * 
+ * @author K
  */
 public class KassiRaamiListikuular implements ListSelectionListener {
 
