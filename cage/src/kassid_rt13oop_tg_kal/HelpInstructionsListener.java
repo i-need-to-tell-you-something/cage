@@ -11,14 +11,13 @@ import javax.swing.JTextArea;
  * 
  * @author K
  */
-public class InstructionsListener implements ActionListener, LocaleChangeListener{
+public class HelpInstructionsListener implements ActionListener, LocaleChangeListener{
 
-	JTextArea tekst;
+	JTextArea tekst = new JTextArea();
 	
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
 		JFrame kasutusraam = new JFrame();
-		tekst = new JTextArea();
 		tekst.setEditable(false);
 		onLocaleChange();
 		kasutusraam.add(tekst);

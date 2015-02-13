@@ -10,7 +10,7 @@ import javax.swing.JEditorPane;
 import javax.swing.JFrame;
 import javax.swing.JTextArea;
 
-public class AboutListener implements ActionListener, LocaleChangeListener {
+public class HelpAboutListener implements ActionListener, LocaleChangeListener {
 	static String about = "ui/About.txt";
 	static String lingid = "ui/Aboutlingid.txt";
 	private JFrame aboutraam;
