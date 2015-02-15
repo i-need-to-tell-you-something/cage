@@ -6,6 +6,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.HashSet;
 import java.util.Locale;
 import java.util.Properties;
 
@@ -17,6 +18,9 @@ import javax.swing.JMenuItem;
 
 @SuppressWarnings("serial")
 public class Menuu extends JMenuBar implements LocaleChangeListener {
+	
+	private static HashSet<Locale> localesInLanguageMenu = new HashSet<Locale>();
+	
 	private static boolean optionFookus = false;
 	private static boolean optionVanemad = false;
 	
@@ -91,7 +95,7 @@ public class Menuu extends JMenuBar implements LocaleChangeListener {
 
 		//Finds all available locale files and makes language option buttons out of them
 		try {
-			listFilesForFolder(new File("bin/kassid_rt13oop_tg_kal/Locale"));
+			addAllLocalesInFolder(new File("bin/kassid_rt13oop_tg_kal/Locale"));
 		}
 		catch (NullPointerException e) {
 			e.printStackTrace();
@@ -135,22 +139,35 @@ public class Menuu extends JMenuBar implements LocaleChangeListener {
 	}
 	
 	//Finds all the files in this folder and its subfolders
-	private void listFilesForFolder(File folder) {
+	private void addAllLocalesInFolder(File folder) {
 		for (File fileEntry : folder.listFiles()) {
 			if (fileEntry.isDirectory()) {
-				listFilesForFolder(fileEntry);
-			//If it's a locale file, make a new language button 
+				addAllLocalesInFolder(fileEntry);
+			//If it's a locale file, try making a new language button 
 			} else if (isLocaleFile(fileEntry.getName())) {
-				String fileName = fileEntry.getName();
-				String language = (fileName.substring(fileName.length()-16, fileName.length()-14));
-				String region = (fileName.substring(fileName.length()-13, fileName.length()-11));
-				JMenuItem newLocaleButton = new MenuuLanguageMenuItem(new Locale(language, region));
-				languageMenu.add(newLocaleButton);
-				newLocaleButton.addActionListener(new MenuuLanguageListener());
+				addLocaleButton(fileEntry.getName());
 			}
 		}
 	}
 	
+	private void addLocaleButton(String fileName) {
+		String language = (fileName.substring(fileName.length() - 16, fileName.length() - 14));
+		String region = (fileName.substring(fileName.length() - 13, fileName.length() - 11));
+		Locale locale = new Locale(language, region);
+		//check if duplicate of those already in language menu
+		for (Locale elem : localesInLanguageMenu) {
+			if (elem.equals(locale)) {
+				//exit button adding sequence if duplicate
+				return;
+			}
+		}
+		//otherwise add button to menu
+		localesInLanguageMenu.add(locale);
+		JMenuItem newLocaleButton = new MenuuLanguageMenuItem(locale);
+		languageMenu.add(newLocaleButton);
+		newLocaleButton.addActionListener(new MenuuLanguageListener());
+	}
+
 	//Checks whether a filename matches the pattern of a locale file: foo_en_GB.properties
 	private boolean isLocaleFile(String filename) {
 		if (filename.substring(filename.length()-11, filename.length()).equals(".properties")) {
