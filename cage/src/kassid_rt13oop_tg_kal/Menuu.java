@@ -20,6 +20,8 @@ import javax.swing.JMenuItem;
 public class Menuu extends JMenuBar implements LocaleChangeListener {
 	
 	private static HashSet<Locale> localesInLanguageMenu = new HashSet<Locale>();
+	//hardcoded default locale will be added to HashSet above 
+	private static Locale defaultLocale = new Locale("en", "GB") ;
 	
 	private static boolean optionFookus = false;
 	private static boolean optionVanemad = false;
@@ -141,9 +143,13 @@ public class Menuu extends JMenuBar implements LocaleChangeListener {
 		
 	}
 	
-	//Finds all the files in this folder and its subfolders
+	//Adds all the locales to the data collection of locales to be added to language menu
 	private void addAllLocalesInFolder(File folder) {
+		//Add default locale to the collection
+		localesInLanguageMenu.add(defaultLocale);
+		//Check all the files in the given folder
 		for (File fileEntry : folder.listFiles()) {
+			//Also checking subfolders
 			if (fileEntry.isDirectory()) {
 				addAllLocalesInFolder(fileEntry);
 			//If it's a locale file, try making a new language button 
@@ -153,21 +159,20 @@ public class Menuu extends JMenuBar implements LocaleChangeListener {
 		}
 	}
 	
-	//add button to menu
+	//Add the button to LanguageMenu
 	private void addLocaleButton(Locale locale) {
 		JMenuItem newLocaleButton = new MenuuLanguageMenuItem(locale);
 		languageMenu.add(newLocaleButton);
 		newLocaleButton.addActionListener(new MenuuLanguageListener());
 	}
 	
+	//Turn file into locale. Assumes file validation is already performed
 	private Locale fileToLocale (File fileEntry) {
-		
 		String fileName = fileEntry.getName();
 		int end = fileName.length();
 		String country = fileName.substring(end-13, end-11);
 		String language = fileName.substring(end-16, end-14);
 		Locale localeBeingMade = new Locale(language, country);
-		
 		return localeBeingMade;
 	}
 
