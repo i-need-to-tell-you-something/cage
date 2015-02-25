@@ -96,6 +96,9 @@ public class Menuu extends JMenuBar implements LocaleChangeListener {
 		//Finds all available locale files and makes language option buttons out of them
 		try {
 			addAllLocalesInFolder(new File("bin/kassid_rt13oop_tg_kal/Locale"));
+			for (Locale locale : localesInLanguageMenu) {
+				addLocaleButton(locale);
+			}
 		}
 		catch (NullPointerException e) {
 			e.printStackTrace();
@@ -145,34 +148,34 @@ public class Menuu extends JMenuBar implements LocaleChangeListener {
 				addAllLocalesInFolder(fileEntry);
 			//If it's a locale file, try making a new language button 
 			} else if (isLocaleFile(fileEntry.getName())) {
-				addLocaleButton(fileEntry.getName());
+				localesInLanguageMenu.add(fileToLocale(fileEntry));
 			}
 		}
 	}
 	
-	private void addLocaleButton(String fileName) {
-		String language = (fileName.substring(fileName.length() - 16, fileName.length() - 14));
-		String region = (fileName.substring(fileName.length() - 13, fileName.length() - 11));
-		Locale locale = new Locale(language, region);
-		//check if duplicate of those already in language menu
-		for (Locale elem : localesInLanguageMenu) {
-			if (elem.equals(locale)) {
-				//exit button adding sequence if duplicate
-				return;
-			}
-		}
-		//otherwise add button to menu
-		localesInLanguageMenu.add(locale);
+	//add button to menu
+	private void addLocaleButton(Locale locale) {
 		JMenuItem newLocaleButton = new MenuuLanguageMenuItem(locale);
 		languageMenu.add(newLocaleButton);
 		newLocaleButton.addActionListener(new MenuuLanguageListener());
 	}
+	
+	private Locale fileToLocale (File fileEntry) {
+		
+		String fileName = fileEntry.getName();
+		int end = fileName.length();
+		String country = fileName.substring(end-13, end-11);
+		String language = fileName.substring(end-16, end-14);
+		Locale localeBeingMade = new Locale(language, country);
+		
+		return localeBeingMade;
+	}
 
 	//Checks whether a filename matches the pattern of a locale file: foo_en_GB.properties
-	private boolean isLocaleFile(String filename) {
-		if (filename.substring(filename.length()-11, filename.length()).equals(".properties")) {
-			if (filename.charAt(filename.length()-14)=='_') {
-				if (filename.charAt(filename.length()-17)=='_') {
+	private boolean isLocaleFile(String fileName) {
+		if (fileName.substring(fileName.length()-11, fileName.length()).equals(".properties")) {
+			if (fileName.charAt(fileName.length()-14)=='_') {
+				if (fileName.charAt(fileName.length()-17)=='_') {
 					return true;
 				}
 			}
