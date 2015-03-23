@@ -1,59 +1,6 @@
-THIS IS COPY FROM GOOGLE DRIVE DOCUMENT.
-There is no other roadmap yet.
+CAGE
+Cat Appearance Genetics Emulator
 
-A
-B
-C
-D
-L
-O
-S
-T
-W
-Sugu
-0
-1
-2
-3
-4
-5
-6
-7
-8
-9
 
-0 - RETSESSIIVNE
-1 - DOMINANTNE
-3 - VEEL DOMINANTSEM
-7 - KÕIGE DOMINANTSEM
-
-c -0; C-1;cb-3;cs-7
-b-1;B-3;bl-0
-Ta-0;T-1;tb-3
-
-V semidominantsus (Ss Dd)(vaja veel outputi fenotüüpi)
-V quaternaarsus (ternaarsus)
-V suguliitelised lookused (O)
-V tabeliformaat input vms
-V nimed (failist)
-statistika klass (itereerime kitteneid)
-V GUI
-V kilpkonnamuster
-V kassi fotoprintimise meetod
-V juhis!!
-V rename nupuke (also F2 hotkey sellele)
-V peaaknal (demo2) vahetada ära ikoonike
-V kassipildi raami tiitel võiks olla vastava kassi nimega
-V option - fookus iga käsu järel tagasi kassilistile panna
-V jääv seadistuste konfiguratsioon failis
-V karl tahaks ka ikooni saitidel ja programmil standardiseerida veidi
-peaakna klahvikuular (F2, DELETE, F1 jne, CTRL+W, CTRL+SHIFT+W)
-valgete laikute kohendus
-! feno bugfix !
-lokaadid
-error sõnumid standardiseerida
-treiku-margi bug (see et nad ei saanud käima): ma ei leia faile üles :P
-nimed: unisex, male, female
-valgete laikude (realistlik) variatsioon
-option - mutatsioonid, vbl slaideriga määrad radiatsiooni määra? :D
-uus karvastiku layer
+The aim of this program is to put existing simple exercises in genetics to an interactive format. 
+Hopefully a study tool to be used both alone and at school.
