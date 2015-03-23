@@ -28,7 +28,7 @@ public class Filter {
 
 		} catch (IOException e) {
 		}
-
+		
 		int rgb;
 		int korgus = pilt.getHeight();
 		int laius = pilt.getWidth();
@@ -36,7 +36,7 @@ public class Filter {
 		for (int y = 0; y < korgus; y++) {
 			for (int x = 0; x < laius; x++) {
 				Color pixel = new Color(pilt.getRGB(x, y), true);		
-				// int alfa=pixel.getAlpha();//255 on mittel�bipaistev//sama mis
+				// int alfa=pixel.getAlpha();//255 on mittel2bipaistev//sama mis
 				// alfa
 				rgb = pixel.getRGB();
 				// rgb=(pilt.getRGB(x, y));//Oli enne vaja
@@ -48,11 +48,11 @@ public class Filter {
 				float lum = getlum(red, green, blue)+lumbon;//Võtan piksli heleduse arvestades antud heleduse boonust
 				
 				//Kui heleduse boonuse tõttu väljub väärtus piiridest, siis väärtustatakse see maksimumiga
-				if (lum>1){
-					lum=1;
+				if (lum>1f){
+					lum=1f;
 				}
-				if (lum<0){
-					lum=0;
+				if (lum<0f){
+					lum=0f;
 				}
 
 				Color uusPiksel = new Color(Color.HSBtoRGB(hue, saturation, lum),

@@ -28,6 +28,10 @@ public class Varvid {
 	
 	//Kassivärvide Väärtustamine
 	public static void varvivaartustamine() {
+	//Hue määrab tooni
+	//Saturation määrab värvi erksuse
+	//Lumbon määrab lisatava heleduse. Kui taustapilti(hall.png) muuta, 
+		//siis tuleb tõenäoliselt uued lumbon värtused lisada
 		
 	hue[0]=13/360f;
 	saturation[0]=35/100f;
@@ -66,7 +70,7 @@ public class Varvid {
 	
 	hue[7]=28/360f;
 	saturation[7]=0/100f;
-	lumbon[7]=-0.5f;
+	lumbon[7]=-0.45f;//enne -0,5. 
 	kassivarv[7]="Must";
 	
 	hue[8]=28/360f;
@@ -91,7 +95,7 @@ public class Varvid {
 	
 	hue[12]=1/360f;
 	saturation[12]=0/100f;
-	lumbon[12]=0.6f;
+	lumbon[12]=0.45f;//enne 0,6
 	kassivarv[12]="Valge";	
 	
 }
@@ -107,7 +111,7 @@ public class Varvid {
 	
 	public static void ceedevaartustamine(){
 		ceefail[0]="data\\gfx\\Blank.png";
-		ceefail[1]="data\\gfx\\Blank.png";//Normaale karvavärvumine C
+		ceefail[1]="data\\gfx\\Blank.png";//Normaalne karvavärvumine C
 		ceefail[2]="data\\gfx\\Siiam.png";//cscs
 		ceefail[3]="data\\gfx\\Birma.png";//cbcb
 		ceefail[4]="data\\gfx\\Birma-Siiam.png";//cscb

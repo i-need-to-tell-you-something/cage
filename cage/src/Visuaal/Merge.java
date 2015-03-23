@@ -106,7 +106,9 @@ public class Merge {
 		// Valgete laikude tegemine:
 		BufferedImage laigud = null;
 		if (Maarang.wlookus(fenoahel) == 0) {
-			laigud = ImageIO.read(new File(Varvid.laigunimi[fenoahel[6]]));
+			//laigud = ImageIO.read(new File(Varvid.laigunimi[fenoahel[6]])); //Varem olid laikude pildid valged värvi
+			laigud=Filter.tootle(Varvid.laigunimi[fenoahel[6]], Varvid.hue[12],
+					Varvid.saturation[12], Varvid.lumbon[12]);
 		}
 
 		BufferedImage karv = null;
@@ -142,6 +144,10 @@ public class Merge {
 			// Pilt ei kaasa silmi sest see ei jää peale
 			String x = Varvid.ceefail[Maarang.cLookus(fenoahel)];
 			System.out.println(x);
+			
+			//Filtri lisasin march2015, et ka hallist template pildist tuleks hele, aga tõenäoliselt oleks vaja paremaks teha. 
+			laigud=Filter.tootle(x, Varvid.hue[12],
+					Varvid.saturation[12], Varvid.lumbon[12]);
 
 			varv3 = ImageIO.read(new File(x));
 		}
@@ -149,10 +155,12 @@ public class Merge {
 		g.drawImage(varv1, 0, 0, null);// Esimene värv
 		g.drawImage(varv2, 0, 0, null);// Teine värv (võib olla blank)
 										// (Kilpkonnamustril vaja)
-
+		
 		g.drawImage(triibud1, 0, 0, null);
+		
 		g.drawImage(triibud2, 0, 0, null);// võib olla blank (Kilpkonnamustril
 											// vaja)
+		
 		g.drawImage(laigud, 0, 0, null);// laigud
 
 		g.drawImage(varv3, 0, 0, null);// C lookuse isepärased (võib olla blank)
