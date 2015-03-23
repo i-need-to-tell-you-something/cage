@@ -9,7 +9,7 @@ import javax.imageio.ImageIO;
 
 public class Filter {
 	static private BufferedImage pilt;
-
+	
 	static float getlum(int red, int green, int blue) {
 		float R2 = red / 255f;
 		float G2 = green / 255f;
