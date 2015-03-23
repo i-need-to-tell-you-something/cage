@@ -90,7 +90,7 @@ public class Fenotyyp {
 			//                }break;
 			//                }
 			//            }
-			default: x="viga D lookuses"; break;    
+			default: x="viga D lookuses"+"ahel[lookus]:"+ahel[lookus]; break;    
 			}break;
 		}
 
