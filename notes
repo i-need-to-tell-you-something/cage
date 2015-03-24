@@ -57,3 +57,8 @@ nimed: unisex, male, female
 valgete laikude (realistlik) variatsioon
 option - mutatsioonid, vbl slaideriga määrad radiatsiooni määra? :D
 uus karvastiku layer
+UI revamp
+
+As a study program CAGE is only usable for exercises that have information about fenotype, but not genotype. 
+In the opposite situation one can cheat by using additional instances of CAGE
+In this role, CAGE would need ruleset files or scenario files (latter also including the cats) describing which of the tools of CAGE are available and which are turned off.

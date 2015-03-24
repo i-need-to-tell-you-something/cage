@@ -2,6 +2,7 @@ package kassid_rt13oop_tg_kal;
 
 public class Fenotyyp {
 	int[] fenotype;
+	static boolean isDominantEpistasisGeneHidden = false;
 
 	public static int[] genereeri(int[] ahel1, int [] ahel2){
 		int x=ahel1.length;
@@ -28,8 +29,10 @@ public class Fenotyyp {
 		}
 
 		case 1: {//B lookus.
+			//Moved this exception up here from the exception section
+			if (ahel[0]!=0) {x=LocusIsSupressedMessage("B","A"); break;}
 			switch (ahel[lookus]) {
-			case 6: x="Roostepruun"; break;        	
+			case 6: x="Roostepruun"; break;   	
 			case 0: case 3: x="Shokolaadipruun"; break;
 			case 1: case 2: case 4: x="Must"; break;
 			default: x="viga B lookuses"; break;
@@ -151,11 +154,28 @@ public class Fenotyyp {
 		}
 
 
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		//The description of the locus has it's initial value
+		//Now we will check if some gene is epistatic over the one we are examining (when one gene suppresses another)
 
-		//lookuste esialge väärtustamine lõppenud,
-		//nüüd hakkab erijuhtude kontroll:
-
-		if (ahel[0]!=0 && lookus==1) x="B lookus ei avaldu(A)"; //Kontrollib kas kass on hoopis akuutvärvi
+		//Took this exception to the main switch element up 
+		//if (ahel[0]!=0 && lookus==1) x="B lookus ei avaldu(A)"; //Kontrollib kas kass on hoopis akuutvärvi
 
 		if ((ahel[0]==0 && ahel[5]==0) && lookus==7) x="T lookus ei avaldu(puudub O ja A)";
 
@@ -198,6 +218,15 @@ public class Fenotyyp {
 		}
 
 		return x;
+	}
+	
+	static String LocusIsSupressedMessage(String recessiveEpistasisGene, String dominantEpistasisGene) {
+		if (isDominantEpistasisGeneHidden){
+			return recessiveEpistasisGene + " lookus ei avaldu";
+		}
+		else {
+			return recessiveEpistasisGene + " lookus ei avaldu("+dominantEpistasisGene+")";
+		}
 	}
 
 }
