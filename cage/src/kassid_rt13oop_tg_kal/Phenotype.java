@@ -1,6 +1,6 @@
 package kassid_rt13oop_tg_kal;
 
-public class Fenotyyp {
+public class Phenotype {
 	int[] fenotype;
 	static boolean isDominantEpistasisGeneHidden = false;
 

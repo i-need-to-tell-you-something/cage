@@ -255,7 +255,7 @@ public class KassiNupuKonteiner extends JFrame {
 					StringBuilder fenotekst = new StringBuilder("");
 					for (int i = 0; i < ahel1.length; i++) {
 						int[] fenahel = teekoik();
-						fenotekst.append(Fenotyyp.valjasta(fenahel, i));
+						fenotekst.append(Phenotype.valjasta(fenahel, i));
 						fenotekst.append("\n");
 					}
 					LoomisKonteiner.setFenot(fenotekst.toString());
@@ -436,7 +436,7 @@ public class KassiNupuKonteiner extends JFrame {
 	// Meetod mis annab (genereeritava kassi) fenotüübi ahela kahest genotüübi
 	// ahelast. Ahelate järjekord ei oma tähtsust
 	public int[] gentofen(int[] ahel1, int[] ahel2) {
-		int[] fenahel = Fenotyyp.genereeri(ahel1, ahel2);
+		int[] fenahel = Phenotype.genereeri(ahel1, ahel2);
 		return fenahel;
 	}
 

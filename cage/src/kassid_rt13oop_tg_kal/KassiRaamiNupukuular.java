@@ -69,7 +69,7 @@ public class KassiRaamiNupukuular implements ActionListener {
 				JTextField[] t = new JTextField[feno.length];
 				// kelle iga fenotüübi väli saab teksti kujule viidud
 				for (int i = 0; i < t.length; i++) {
-					t[i] = new JTextField(Fenotyyp.valjasta(feno, i));
+					t[i] = new JTextField(Phenotype.valjasta(feno, i));
 					t[i].setEditable(false);// Fenotüübi omaduse väljad teen
 											// muutmatuks.
 					t[i].setBackground(Color.white);

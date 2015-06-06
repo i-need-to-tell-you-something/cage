@@ -25,16 +25,16 @@ public class Merge {
 
 		// Loon kaks põhivärvi pilti (Kaks, sest kilpkonnakassiga mustriga läheb
 		// seda vaja)
-		BufferedImage varv1 = ImageIO.read(new File("data\\gfx\\Blank.png"));
-		BufferedImage varv2 = ImageIO.read(new File("data\\gfx\\Blank.png"));
-		BufferedImage varv3 = ImageIO.read(new File("data\\gfx\\Blank.png"));// siiami
+		BufferedImage varv1 = ImageIO.read(new File("data/gfx/Blank.png"));
+		BufferedImage varv2 = ImageIO.read(new File("data/gfx/Blank.png"));
+		BufferedImage varv3 = ImageIO.read(new File("data/gfx/Blank.png"));// siiami
 																				// jne
 																				// kassidele
 
 		// Loon kaks triipude pilti (Kaks, sest kilpkonnakassiga mustriga läheb
 		// seda vaja)
-		BufferedImage triibud1 = ImageIO.read(new File("data\\gfx\\Blank.png"));
-		BufferedImage triibud2 = ImageIO.read(new File("data\\gfx\\Blank.png"));
+		BufferedImage triibud1 = ImageIO.read(new File("data/gfx/Blank.png"));
+		BufferedImage triibud2 = ImageIO.read(new File("data/gfx/Blank.png"));
 
 		// Uue pildi loomine kassi määramiseks. Eeldame et kõik pildid on
 		// ühesuurused
@@ -50,7 +50,7 @@ public class Merge {
 			// jne
 			if (Maarang.wlookus(fenoahel) != 0) {
 				// On valgeks värvunud
-				varv1 = Filter.tootle("data\\gfx\\Hall.png", Varvid.hue[12],
+				varv1 = Filter.tootle("data/gfx/Hall.png", Varvid.hue[12],
 						Varvid.saturation[12], Varvid.lumbon[12]);// Kohal 12 on
 																	// valge
 																	// värv
@@ -62,10 +62,10 @@ public class Merge {
 					String triibufail = Varvid.triibud[Maarang
 							.tlookus(fenoahel)];
 
-					varv1 = Filter.tootle("data\\gfx\\Hall-1.png",
+					varv1 = Filter.tootle("data/gfx/Hall-1.png",
 							Varvid.hue[x[0]], Varvid.saturation[x[0]],
 							Varvid.lumbon[x[0]]);
-					varv2 = Filter.tootle("data\\gfx\\Hall-2.png",
+					varv2 = Filter.tootle("data/gfx/Hall-2.png",
 							Varvid.hue[x[1]], Varvid.saturation[x[1]],
 							Varvid.lumbon[x[1]]);
 
@@ -88,7 +88,7 @@ public class Merge {
 														// põhivärvi indeksi
 														// leidmiseks
 					System.out.println(Varvid.kassivarv[x] + "(Merge klass)");
-					varv1 = Filter.tootle("data\\gfx\\Hall.png", Varvid.hue[x],
+					varv1 = Filter.tootle("data/gfx/Hall.png", Varvid.hue[x],
 							Varvid.saturation[x], Varvid.lumbon[x]);
 					if (Maarang.kasTriibud(fenoahel)) {
 						String triibufail = Varvid.triibud[Maarang
@@ -113,30 +113,30 @@ public class Merge {
 
 		BufferedImage karv = null;
 		BufferedImage taust = null;
-		BufferedImage silmad = ImageIO.read(new File("data\\gfx\\Blank.png"));
+		BufferedImage silmad = ImageIO.read(new File("data/gfx/Blank.png"));
 
 		// Kassi silma värvi määramine (vaid albiino ja siiamilaadsete puhul)
 		if (Maarang.cLookus(fenoahel) == 7) {// Albiino
-			silmad = Filter.tootle("data\\gfx\\Silmad.png", 1 / 360f, 0.90f,
+			silmad = Filter.tootle("data/gfx/Silmad.png", 1 / 360f, 0.90f,
 					0.4f);
 			System.out.println("Albiino silmad");
 		} else if (Maarang.cLookus(fenoahel) != 7
 				&& Maarang.cLookus(fenoahel) != 1) {
-			silmad = Filter.tootle("data\\gfx\\Silmad.png", 224 / 360f, 0.77f,
+			silmad = Filter.tootle("data/gfx/Silmad.png", 224 / 360f, 0.77f,
 					0.5f);
 			System.out.println("Siiami/Burma/Birma silmad");
 		}
 
 		if (Maarang.kasPikaKarv(fenoahel)) {
 			// Kui pikakarvaline
-			karv = ImageIO.read(new File("data\\gfx\\Pikakarvaline.png"));
-			taust = ImageIO.read(new File("data\\gfx\\Pikk_taust.png"));
+			karv = ImageIO.read(new File("data/gfx/Pikakarvaline.png"));
+			taust = ImageIO.read(new File("data/gfx/Pikk_taust.png"));
 		}
 
 		else {
 			// Kui lühikarvaline
-			karv = ImageIO.read(new File("data\\gfx\\Lyhikarvaline.png"));
-			taust = ImageIO.read(new File("data\\gfx\\Lyhike_taust.png"));
+			karv = ImageIO.read(new File("data/gfx/Lyhikarvaline.png"));
+			taust = ImageIO.read(new File("data/gfx/Lyhike_taust.png"));
 		}
 
 		if (Maarang.cLookus(fenoahel) != 1) {

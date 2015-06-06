@@ -27,6 +27,11 @@ public class Main {
 		raam.pack();
 		raam.setLocation(100, 0);
 		raam.setVisible(true);
+		
+		
+		//TODO this is temporary. will have UI for options.
+		Ruleset rule = new Ruleset();
+		rule.ReadFile("data/genetic_ruleset1.txt");
 	}
 //	Main.loadLocale(Main.currentLocale);
 	public static void initResourceBundles() {

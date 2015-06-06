@@ -23,7 +23,7 @@ public class Kass implements Serializable{
 	public Kass(int[] kassiahel1, int[] kassiahel2) {
 		this.ahel1=kassiahel1;
 		this.ahel2=kassiahel2;
-		this.fenotahel=Fenotyyp.genereeri(kassiahel1,kassiahel2);
+		this.fenotahel=Phenotype.genereeri(kassiahel1,kassiahel2);
 		try {
 			this.nimi=randnimifailist();
 		}
@@ -38,7 +38,7 @@ public class Kass implements Serializable{
 		this.isa=isa;
 		this.ahel1=kassiahel1;
 		this.ahel2=kassiahel2;
-		this.fenotahel=Fenotyyp.genereeri(kassiahel1,kassiahel2);
+		this.fenotahel=Phenotype.genereeri(kassiahel1,kassiahel2);
 		try {
 			this.nimi=randnimifailist();
 		}
@@ -52,7 +52,7 @@ public class Kass implements Serializable{
 	public Kass(int[] kassiahel1, int[] kassiahel2, String kassinimi) {
 		this.ahel1=kassiahel1;
 		this.ahel2=kassiahel2;
-		this.fenotahel=Fenotyyp.genereeri(kassiahel1,kassiahel2);
+		this.fenotahel=Phenotype.genereeri(kassiahel1,kassiahel2);
 		this.nimi=kassinimi;
 	}
 
@@ -101,7 +101,7 @@ public class Kass implements Serializable{
 		}
 		this.ahel1=kassiahel1;
 		this.ahel2=kassiahel2;
-		this.fenotahel=Fenotyyp.genereeri(kassiahel1,kassiahel2); 
+		this.fenotahel=Phenotype.genereeri(kassiahel1,kassiahel2); 
 		try {
 			this.nimi=randnimifailist();
 		}
