@@ -20,11 +20,30 @@ Mutatsioonide implementeerimiseks on vaja igat mutatsiooni kirjeldada 0-100 prot
 
 Kuidas erinevaid seoseid kirja panna:
 
-allele_dominant_over_allele()
-locus_child_allele()
-allele_semidominant_over_allele()
-locus_dominant_over_locus()
-locus_linked_to_locus()
-locus_affects_locus() //same as locus_dominant_over_locus() ??? ma arvan, et mitte - kirjeldab ka olukorda kus ei asenda output'i vaid muudab seda.
+allele_dominant_over_allele() -- da()
+locus_child_allele() 
+allele_semidominant_over_allele() -- nda()
+locus_epistatic_to_locus() -- e()
+locus_linked_to_locus() -- l()
+locus_affects_locus() //same as locus_epistatic_to_locus() ??? ma arvan, et mitte - kirjeldab ka olukorda kus ei asenda output'i vaid muudab seda.
+prohibited on random generation -- !rng  
 
 Ma ei tea veel, mis andmetüüpi kasutama peaks. Vbl peaks liste kasutama?
+
+Alleelide tähised järjest (saavad samas järjestuses numbrilised väärtused)
+C; c C cb cs; c=ra($); C=da($); cb=nda(cs); c+c=e(A,B,D,O,S,T,W)
+Called "C" locus; 0 1  3  7; Allele c is recessive allele to any allele; Allele C is dominant allele to any allele; Allele cb is non-dominating allele (and vica versa) to cs allele; Genotype cc is epistatic to A,B,D,O,S,T and W genes.  
+C c cb cs; C>cb=cs>c; c+c=e(A,B,D,O,S,T,W)
+
+
+Küsida Ginterilt:
+Miks ütleme me, et O domineerib o üle, kuigi Oo põhjustab teistsuguse fenotüübi kui oo või OO (Sarnaselt S lookusega)?
+Kas geenide vahelist epistaasi on ainult üht tüüpi - selline et kui lookuses 42 on mingi kindel geen, siis lookuse 23 fenotüüp ei avaldu (see mida 23 tavaliselt teeks, ei leia aset)
+Kuidas panna pilt ja geneetikareeglite modulaarsus koos töötama?
+O lookusel on dominantne epistaas A lookuse epistaasi (retsessiivne epistaas T lookuse üle) üle?
+
+
+niisiis lisavajadused: 
+epistaas epistaasi üle (O, A, T)
+keelatud random generationil (YY)
+domineerimissuhteid ei saa ühte punti panna. Ühel alleelil saab olla mitte-domineerivad suhted domineerimissuhtega alleelipaariga (T>tb|Ta)

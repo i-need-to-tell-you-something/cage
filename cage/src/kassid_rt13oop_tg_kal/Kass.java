@@ -1,4 +1,7 @@
 package kassid_rt13oop_tg_kal;
+import gui.Locales;
+import gui.Menuu;
+
 import java.io.Serializable;
 import java.util.Arrays;
 
@@ -57,7 +60,7 @@ public class Kass implements Serializable{
 	}
 
 	//konstruktor ilma argumentideta; endine Kass.genereeri(hulk)
-	Kass (){
+	public Kass (){
 		int hulk=10; //oli compatibility jaoks kui on rohkem kromosoome; enam ei ole vaja
 		int[] kassiahel1=new int[hulk]; //teeme esimese ahela
 		int[] kassiahel2=new int[hulk]; //teeme teise ahela
@@ -146,7 +149,7 @@ public class Kass implements Serializable{
 
 
 	//meetod, mis loob uue kassi etteantud vanematega - viljastumine
-	static Kass viljastumine (Kass x, Kass y){
+	public static Kass viljastumine (Kass x, Kass y){
 		//	(x.getFenotahel()[9]==0)? : ;
 		if (x.getFenotahel()[9]==1) {
 			Kass z; //temp muutuja swapi jaoks
@@ -165,9 +168,9 @@ public class Kass implements Serializable{
 		StringBuilder kujutus = new StringBuilder();
 		String sugu = "";
 		switch (this.getFenotahel()[9]) {
-		case 0: sugu = " " + Main.mainbundle.getString("female"); break;
-		case 1: sugu = " " + Main.mainbundle.getString("male"); break;
-		case 2: sugu = " " + Main.mainbundle.getString("doubleY"); break;
+		case 0: sugu = " " + Locales.mainbundle.getString("female"); break;
+		case 1: sugu = " " + Locales.mainbundle.getString("male"); break;
+		case 2: sugu = " " + Locales.mainbundle.getString("doubleY"); break;
 		//TODO error_standardization
 		default: sugu = " viga"; break;
 		}
@@ -175,10 +178,10 @@ public class Kass implements Serializable{
 		if (Menuu.isOptionVanemad()) {
 			kujutus.append(" (");
 			if (this.ema==null) {
-				kujutus.append(Main.mainbundle.getString("invitro"));
+				kujutus.append(Locales.mainbundle.getString("invitro"));
 			}
 			else {
-				kujutus.append(this.ema + " " + Main.mainbundle.getString("female") +"; " + this.isa + " " + Main.mainbundle.getString("male"));
+				kujutus.append(this.ema + " " + Locales.mainbundle.getString("female") +"; " + this.isa + " " + Locales.mainbundle.getString("male"));
 			}
 			kujutus.append(")");
 		}

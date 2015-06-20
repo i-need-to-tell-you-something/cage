@@ -1,0 +1,11 @@
+
+A; a,A; a=ra(A); A=da(a); a+a=e(T); A+*=e(B);
+B; b,B,bl; bl=ra(*); B=da(*);
+C; c,C,cb,cs; c=ra(*); C=da(*); cb=nda(cs); c+c=e(A,B,D,O,S,T,W);
+O; o,O; O=nda(o); O+*=e(B); =l(gender(X)); O+*=e(A+*=e(B));
+D; d,D; D=da(d); d+d=e(O); d+d=e(B);
+S; s,S; S=nda(s);
+L; l,L; L=da(l);
+T; Ta,T,tb; T=da(tb); Ta=nda(T); Ta=nda(tb);
+W; w,W; W=da(w); W+*=e(A,B,D,O,S,T);
+gender; Y,X; Y=da(X); =!rng(Y+Y);

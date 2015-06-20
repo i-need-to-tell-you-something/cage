@@ -1,0 +1,14 @@
+
+A; a A; A>a; a+a=e(T); A+A=e(B)
+B; b B bl; B>b>bl;
+C; c C cb cs; C>cb=cs=c; c+c=e(A,B,D,O,S,T,W);
+O; o O; O=o; O+O=e(B); l(gender); // epistasis over A's epistasis over T
+D; d D; D>d; d+d=e(O); d+d=e(B); //difficult
+S; s S; S=s;
+L; l L; L>l;
+T; Ta T tb; T>tb|T ???????
+W; w W; W>w; W+$=e(A,B,D,O,S,T);
+gender; Y X; Y>X; //random-genereerimisel välistada YY
+
+//vaja ümber panna sellesse formaati:
+// C; c C cb cs; c=ra($); C=da($); cb=nda(cs); c+c=e(A,B,D,O,S,T,W)
