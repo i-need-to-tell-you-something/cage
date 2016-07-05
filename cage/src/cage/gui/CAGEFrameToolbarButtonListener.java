@@ -26,8 +26,8 @@ public class CAGEFrameToolbarButtonListener implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		String prikas = e.getActionCommand();
-		switch (prikas) {
+		String actionCommand = e.getActionCommand();
+		switch (actionCommand) {
 
 		case "Eemalda": {
 			for (Kass kass : CAGEFrame.getKassilist().getSelectedValuesList()) {

@@ -93,9 +93,9 @@ public class Maarang {
 	}
 
 	static boolean kasTriibud(int[] fenoahel) {
-		System.out.println("tere");
-		System.out.println(fenoahel[0]);
-		System.out.println(fenoahel[5]);
+		System.out.println("tere"); //TODO: tempdebug
+		System.out.println(fenoahel[0]); //TODO: tempdebug
+		System.out.println(fenoahel[5]); //TODO: tempdebug
 		if (fenoahel[0] != 0 || fenoahel[5] != 0) {
 			return true;// on akuuti värvi või oranz
 		}
@@ -198,18 +198,18 @@ public class Maarang {
 				if (alookus(ahel) == 0) {// Pole akuut
 					// Tavaline kass (võib olla lahjendatud)
 					pohivarv = blookus(ahel);
-					System.out.println("blookus(Maarang klass)");
+					System.out.println("blookus(Maarang klass)"); //TODO: tempdebug
 				}
 				// On akuut:
 				else {
 					pohivarv = alookus(ahel);			
-					System.out.println("akuut");
+					System.out.println("akuut"); //TODO: tempdebug
 				}
 			}
 			// on oranž:
 			else {
 				pohivarv = olookus(ahel);
-				System.out.println("olookus");
+				System.out.println("olookus"); //TODO: tempdebug
 			}
 		}
 		// on valge W lookusest

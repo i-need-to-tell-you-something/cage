@@ -13,7 +13,7 @@ import javax.swing.JLabel;
 import cage.core.Kass;
 
 public class Merge {
-	// Meetod mis väljastab joonistatud kassi antud fenotüübi ahela alusel
+	// Meetod mis väljastab joonistatud kassi akna kujul antud fenotüübi ahela alusel
 	public static JFrame Joonista(Kass kiisu) throws IOException {
 		// Väärtustan värvid. Võiks elida mooduse kuidas seda peaks vaid üks
 		// kord tegema ja mitte iga kord kui kassi joonistan
@@ -172,11 +172,11 @@ public class Merge {
 		try {
 			ImageIO.write(combined, "PNG", new File("combined.png"));
 		} catch (IOException e) {
-			System.out.println("viga combine.png salvestamisel" + e.getMessage());
+			System.out.println("viga combine.png salvestamisel" + e.getMessage()); //TODO: error standardization
 		}
 		
 		//actual raami loomine
-		JFrame raam = new JFrame("Kassi " + kiisu.getNimi() + " pilt");
+		JFrame raam = new JFrame("Kassi " + kiisu.getNimi() + " pilt"); //TODO: localization
 		raam.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		raam.add(new JLabel(new ImageIcon(combined)));
 

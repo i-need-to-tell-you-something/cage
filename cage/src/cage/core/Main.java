@@ -14,7 +14,7 @@ public class Main {
 		Locales.Initiate();
 		raam = new CAGEFrame();
 
-		// TODO this is temporary. will have UI for options.
+		// TODO A single ruleset is temporary. It will have UI for options later.
 		Ruleset rule = new Ruleset();
 		rule.ReadFile("data/genetic_ruleset1.txt");
 	}

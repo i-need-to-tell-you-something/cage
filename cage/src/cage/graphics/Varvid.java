@@ -91,7 +91,7 @@ public class Varvid {
 	hue[11]=28/360f;
 	saturation[11]=70/100f;
 	lumbon[11]=-0.f;
-	kassivarv[11]="Rooshllhkepruun";	
+	kassivarv[11]="Roostepruun";	
 	
 	hue[12]=1/360f;
 	saturation[12]=0/100f;
@@ -102,22 +102,22 @@ public class Varvid {
 	//Triipude failinimede määramine 
 	//.png tuleb hiljem lõppu panna, sest tiigrimuster peab arvestama nt TT1 ja TT2 triipe
 	public static void triibuvaartustamine(){
-		triibud[0]="data\\gfx\\Blank";
-		triibud[1]="data\\gfx\\T";//Tiigrimuster
-		triibud[2]="data\\gfx\\tbtb";
-		triibud[3]="data\\gfx\\TaTa";
-		triibud[4]="data\\gfx\\TaT";
+		triibud[0]="data/gfx/Blank";
+		triibud[1]="data/gfx/T";//Tiigrimuster
+		triibud[2]="data/gfx/tbtb";
+		triibud[3]="data/gfx/TaTa";
+		triibud[4]="data/gfx/TaT";
 	}
 	
 	public static void ceedevaartustamine(){
-		ceefail[0]="data\\gfx\\Blank.png";
-		ceefail[1]="data\\gfx\\Blank.png";//Normaalne karvavärvumine C
-		ceefail[2]="data\\gfx\\Siiam.png";//cscs
-		ceefail[3]="data\\gfx\\Birma.png";//cbcb
-		ceefail[4]="data\\gfx\\Birma-Siiam.png";//cscb
-		ceefail[5]="data\\gfx\\Siiamhele.png";//ccs
-		ceefail[6]="data\\gfx\\Birmahele.png";//ccb
-		ceefail[7]="data\\gfx\\Albiino.png";//cc
+		ceefail[0]="data/gfx/Blank.png";
+		ceefail[1]="data/gfx/Blank.png";//Normaalne karvavärvumine C
+		ceefail[2]="data/gfx/Siiam.png";//cscs
+		ceefail[3]="data/gfx/Birma.png";//cbcb
+		ceefail[4]="data/gfx/Birma-Siiam.png";//cscb
+		ceefail[5]="data/gfx/Siiamhele.png";//ccs
+		ceefail[6]="data/gfx/Birmahele.png";//ccb
+		ceefail[7]="data/gfx/Albiino.png";//cc
 		ceenimi[0]="blank.png";
 		ceenimi[1]="C.png";//Normaale karvavärvumine C
 		ceenimi[2]="cscs.png";//cscs
@@ -129,9 +129,9 @@ public class Varvid {
 	}
 	
 	public static void laiguvaartustamine(){
-		laigunimi[0]="data\\gfx\\Blank.png";
-		laigunimi[1]="data\\gfx\\S.png";//alla 50 protsendi valgeid laike
-		laigunimi[2]="data\\gfx\\SS.png";//üle 50 protsendi valgeid laike		
+		laigunimi[0]="data/gfx/Blank.png";
+		laigunimi[1]="data/gfx/S.png";//alla 50 protsendi valgeid laike
+		laigunimi[2]="data/gfx/SS.png";//üle 50 protsendi valgeid laike		
 	}
 	
 	
