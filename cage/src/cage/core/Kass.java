@@ -16,7 +16,7 @@ public class Kass implements Serializable{
 	int[] fenotahel; //fenotüüp, genereeritakse kahe genotüübiahela põhjal
 	String nimi; //kiisu nimi
 	//järgnev on andmeväli, mis sisaldab fenosummade jaoks vajalikku arvujada. arvusüsteem, mis on kasutusel, et summas kajastuksid originaalinfo ilma järjekorrata
-	public static final int[] jada={0,1,3,7,12,20,30,44,65,80,96,122,147,181,203,251,289,360,400,474,564,592,661,774,821,915,969,1015,1158,1311,1394,1395,1525,1650,1851,2019,2227,2353,2573,2735,2871,3106,3336,3424,3594,3811,3969,4125,4547,4667,5016,5295,5419,5748,5995,6350,6661,7026,7259,7474,8133,8266,8465,8693,8956,9306,9804,10574,10842,11141,11472,12071,12143,12437,13894,14110,14419,14752,15273,15819,16348};
+	public static final int[] jada={0, 1, 3, 7, 12, 20, 30, 44, 65, 80, 96, 122, 147, 181, 203, 251, 289, 360, 400, 474, 564, 592, 661, 774, 821, 915, 969, 1015, 1158, 1311, 1394, 1522, 1571, 1820, 1895, 2028, 2253, 2378, 2509, 2779, 2924, 3154, 3353, 3590, 3796, 3997, 4296, 4432, 4778, 4850};
 	//serialisatsiooniväli
 	private static final long serialVersionUID = 1L;
 
@@ -61,22 +61,23 @@ public class Kass implements Serializable{
 
 	//konstruktor ilma argumentideta; endine Kass.genereeri(hulk)
 	public Kass (){
+		//TODO support >10 loci
 		int hulk=10; //oli compatibility jaoks kui on rohkem kromosoome; enam ei ole vaja
 		int[] kassiahel1=new int[hulk]; //teeme esimese ahela
 		int[] kassiahel2=new int[hulk]; //teeme teise ahela
 
 		for (int i=0;i<hulk;i++) { //käime läbi loodava kassi ahela elemendid (lookused)
 			try {
-				int n=ReadSomeData.tabel[i][0]; //loen tabelist, mitu erinevat väärtust antud lookuses võib olla
+				int n=ReadSomeData.getLocusBonusTable()[i][0]; //loen tabelist, mitu erinevat väärtust antud lookuses võib olla
 				double vahemik []= new double [n+1]; //loon jada randominumbri vahemike (millise puhul milline väärtus tuleb) salvestamiseks 
 
 				int sumboonus=0;
-				for (int k=0;k<ReadSomeData.tabel[i].length-2;k++){
-					sumboonus= sumboonus+ReadSomeData.tabel[i][k+2];//Määrab antud lookuses alleelide boonuste summa
+				for (int k=0;k<ReadSomeData.getLocusBonusTable()[i].length-2;k++){
+					sumboonus= sumboonus+ReadSomeData.getLocusBonusTable()[i][k+2];//Määrab antud lookuses alleelide boonuste summa
 				}
 
 				for (int j=0;j<n;j++) { //ja siis käin läbi väärtuste hulga...
-					vahemik[j+1] = (double)ReadSomeData.tabel[i][j+2]/sumboonus+vahemik[j]; //...ja määran nende vahemiku lõpu (uue vahemiku alguse)
+					vahemik[j+1] = (double)ReadSomeData.getLocusBonusTable()[i][j+2]/sumboonus+vahemik[j]; //...ja määran nende vahemiku lõpu (uue vahemiku alguse)
 
 				}        
 				double ran=Math.random(); //võtame suvalise arvu. järgnev tsükkel ei ole eelmisega ühendatud seepärast, et kasutatakse väärtusi, mis eelmise tsükli lõpuks alles omistatud saavad
@@ -115,13 +116,13 @@ public class Kass implements Serializable{
 	}
 
 	String randnimifailist() throws java.lang.NoClassDefFoundError {
-		int indeks = (int)Math.round(Math.random()*(ReadSomeData.kassinimed.length)-0.5);
-		ReadSomeData.growNimehulk(indeks);
-		if (ReadSomeData.getNimehulk(indeks)==1){ //Juhul kui kass on esimene sellist nime omama, siis ei lisandu indeksit
-			return (ReadSomeData.kassinimed[indeks]);
+		int index = (int)Math.round(Math.random()*(ReadSomeData.getCatNames().length)-0.5);
+		ReadSomeData.growAmountOfNames(index);
+		if (ReadSomeData.getAmountOfNames(index)==1){ //Juhul kui kass on esimene sellist nime omama, siis ei lisandu indeksit
+			return (ReadSomeData.getCatNames()[index]);
 		}
 		else{	
-			return (ReadSomeData.kassinimed[indeks] + ReadSomeData.getNimehulk(indeks));//Kui nimekaim kass on olemas, siis lisandub indeks
+			return (ReadSomeData.getCatNames()[index] + ReadSomeData.getAmountOfNames(index));//Kui nimekaim kass on olemas, siis lisandub indeks
 		}
 	}
 
@@ -129,7 +130,7 @@ public class Kass implements Serializable{
 	int[] suguR() {
 		int[] suguRahel = new int[this.getAhel1().length]; //sugurakus samapalju lookuseid kui ühes genotüübiahelas
 		try {
-			for (int j=0;j<ReadSomeData.tabel.length;j++) { //käin andmetabeli läbi
+			for (int j=0;j<ReadSomeData.getLocusBonusTable().length;j++) { //käin andmetabeli läbi
 				if (Math.random()>0.5) {
 					suguRahel[j]=this.getAhel1()[j]; //...siis valin randomi alusel ahel1...
 					if (j==9) suguRahel[5]=this.getAhel1()[5]; //(o lookus saab olema samast ahelast kui sugulookuski) 

@@ -11,17 +11,15 @@ import java.io.IOException;
 public class ReadSomeData {
 
 	@SuppressWarnings("finally")
-	static int[][] readBonus(String failinimi) throws IOException {
+	static int[][] readBonus(String fileName) throws IOException {
 		BufferedReader reader = null;
-		int[][] tabel = new int[10][];
+		int[][] table = new int[10][];
 		try {
-			reader = new BufferedReader(new FileReader(failinimi));
+			reader = new BufferedReader(new FileReader(fileName));
 			int reaarv = 0;
 			String line = "";// while tsükli tegemiseks panen line'le väärtuse
 			while (line != "STOP" && line != null) {
 				line = reader.readLine();
-
-				// System.out.println(line); //Kontroll, et mida failist loeb
 
 				// Võtan reast vaid selle osa, mis meid huvitav ( {} märkide
 				// vahelise osa)
@@ -58,137 +56,127 @@ public class ReadSomeData {
 						reaintjarjend[i] = Integer.parseInt(reajarjend[i]);
 					}
 				} catch (NumberFormatException nfe) {
+					//TODO error_standardization
 
 				} finally {
 				}
 				;
 
 				// Lisan loodud järjendi tabelisse
-				tabel[reaarv] = reaintjarjend;
+				table[reaarv] = reaintjarjend;
 				for (int i = 0; i < boonusvaljapikkus; i++) {
-					tabel[reaarv][i] = reaintjarjend[i];
+					table[reaarv][i] = reaintjarjend[i];
 				}
 				reaarv++;
 			}
 
 		} catch (IOException e) {
+			//TODO error_standardization
 			System.out.println("boonuse io feil");
 		} finally {
 			reader.close();
-			return tabel;
+			return table;
 		}
 	}
 
 	@SuppressWarnings("finally")
-	public static int[][] boonustabel() {
+	private static int[][] initializeLocusBonusTable() {
 		int[][] boonustabel = null;
 		try {
 			boonustabel = readBonus("data/locusbonus.txt");
 		} catch (IOException ex) {
+			//TODO error_standardization
 			System.out.println("jou. IO is a ... in boonustabel");
 		} finally {
 			return boonustabel;
 		}
 	}
 
-	public static int[][] tabel = boonustabel();
 
-	// Kassinimede failis lugemise meetod
+	// This method reads lines in a file into a String array
+	// Added this suppression so that the yellow triangle would disappear in Eclipse
 	@SuppressWarnings("finally")
-	// selle rea pidi panema et hüüumärki poleks kollasel taustal
-	static String[] loe(String failinimi) throws IOException {
-		// See blokk loeb failis ridade arvu
+	private static String[] readLinesToStringArray(String fileName) throws IOException {
+		// Need to count the amount of lines for initializing String array
 		BufferedReader reader = null;
-		int ridadearv = 0;
+		int numberOfLines = 0;
 		try {
-			reader = new BufferedReader(new FileReader(failinimi));
+			reader = new BufferedReader(new FileReader(fileName));
 			while (true) {
 				String line = reader.readLine();
 				if (line != null) {
-					ridadearv++;
+					numberOfLines++;
 				} else {
 					break;
 				}
 			}
 		} catch (IOException e) {
+			//TODO error_standardization
 			System.out.println("IO exception");
 		} finally {
 			reader.close();
 		}
 		reader = null;
-		// Ridade arvu järgi loob sõnede järjendi kassinimedele
-		String[] kassinimed = new String[ridadearv];
-		// Täidan kassinimede järjendi kassinimedega failist
+		// Initializing array
+		String[] stringArray = new String[numberOfLines];
+		// Filling array with lines
 		try {
-			reader = new BufferedReader(new FileReader(failinimi));
-			for (int i = 0; i < ridadearv; i++) {
+			reader = new BufferedReader(new FileReader(fileName));
+			for (int i = 0; i < numberOfLines; i++) {
 				String line = reader.readLine();
 				if (line != null) {
-					kassinimed[i] = line;
+					stringArray[i] = line;
 				} else {
 					break;
 				}
 			}
 		} catch (IOException e) {
+			//TODO error_standardization
 			System.out.println("IO exception");
 		} finally {
 			reader.close();
-			return kassinimed;
+			return stringArray;
 		}
 	}
 
-	// Meetod mis kasutab failist lugemise meetodi ja väljutab kassinimede
-	// järjendi
+	// Method to initialize String array of cat names
 	@SuppressWarnings("finally")
-	public static String[] kassinimed() {
-		String[] kassinimed = null;
+	private static String[] initializeCatNames() {
+		String[] catNames = null;
 		try {
-			kassinimed = loe("data/names.txt");
+			catNames = readLinesToStringArray("data/names.txt");
 		} catch (IOException ex) {
+			//TODO error_standardization
 			System.out.println("jou. IO is a ...");
 		} finally {
-			return kassinimed;
+			return catNames;
 		}
 	}
 
-	// Kassinimede väli kasutades eelnevat meetodit
-	public static String[] kassinimed = kassinimed();
+	// Cat name field using the preceding method
+	private static String[] catNames = initializeCatNames();
 
-	// // väli kasside nimede jaoks
-	// // eelmise välja väärtuste hulga loenduri andmed
-	public static int[] nimedehulk = new int[kassinimed.length];
+	// Field for locus bonus table
+	private static int[][] locusBonusTable = initializeLocusBonusTable();
+	
+	// Field for tracking how many cats there are with a specific name
+	private static int[] amountOfNames = new int[catNames.length];
 
-	// Getterid ja setterid
-	public static int getNimehulk(int indeks) {
-		return nimedehulk[indeks];
+	// Getters and setters
+	public static int getAmountOfNames(int index) {
+		return amountOfNames[index];
 	}
 
-	public static void growNimehulk(int indeks) {
-		nimedehulk[indeks]++;
+	public static void growAmountOfNames(int index) {
+		amountOfNames[index]++;
 	}
 
-	public static int[][] getTabel() {
-		return tabel;
+	public static int[][] getLocusBonusTable() {
+		return locusBonusTable;
 	}
 
-	public static void setTabel(int[][] tabel) {
-		ReadSomeData.tabel = tabel;
-	}
-
-	public static String[] getKassinimed() {
-		return kassinimed;
-	}
-
-	public static void setKassinimed(String[] kassinimed) {
-		ReadSomeData.kassinimed = kassinimed;
-	}
-
-	public static int[] getNimedehulk() {
-		return nimedehulk;
-	}
-
-	public static void setNimedehulk(int[] nimedehulk) {
-		ReadSomeData.nimedehulk = nimedehulk;
+	public static String[] getCatNames() {
+		return catNames;
 	}
 
 }
