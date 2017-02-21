@@ -101,7 +101,7 @@ public class Menu extends JMenuBar implements LocaleChangeListener {
 
 		//Finds all available locale files and makes language option buttons out of them
 		try {
-			addAllLocalesInFolder(new File("bin/cage/core/Locale"));
+			addAllLocalesInFolder(new File("bin/core/Locale"));
 			for (Locale locale : localesInLanguageMenu) {
 				addLocaleButton(locale);
 			}

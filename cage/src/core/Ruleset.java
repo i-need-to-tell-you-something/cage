@@ -36,10 +36,7 @@ public class Ruleset {
 	 * Gets a line and splits it into individual instructions
 	 */
 	public void ParseLine(String line) {
-		if (line.charAt(0)=='/'&& line.charAt(1)=='/') {
-			//if the line is a comment, it gets ignored.
-		}
-		else {
+		if (DataReader.isValidLine(line)) {
 			Gene created_gene = new Gene();
 			int elem_index = 0;
 			int index_start = 0;
@@ -51,7 +48,6 @@ public class Ruleset {
 				elem_index ++;
 			}
 		}
-
 	}
 	
 	/*

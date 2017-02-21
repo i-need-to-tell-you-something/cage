@@ -8,13 +8,12 @@ S lookus 	{ 2, 2, 50, 50 }// S
 T lookus 	{ 3, 3, 33, 33, 33 }// T
 W lookus	{ 2, 5, 90, 10 }// W
 X lookus 	{ 2, 0, 50, 50 } // X
-STOP
-explanatory:
-name of locus {No of different alleles in locus, 
-No of the chromosome the locus is located on (fictional, but indicated which loci get carried together), 
-bonus for the first allele,
-bonus for the second allele,
-etc}
-First allele: usually usual recessive
-Second allele: the dominant allele
-Third and so on allele: varies
+// explanatory:
+// name of locus {No of different alleles in locus, 
+// No of the chromosome the locus is located on (fictional, but indicated which loci get carried together), 
+// bonus for the first allele,
+// bonus for the second allele,
+// etc}
+// First allele: usually usual recessive
+// Second allele: the dominant allele
+// Third and so on allele: varies

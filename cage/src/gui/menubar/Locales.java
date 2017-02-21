@@ -29,12 +29,12 @@ public class Locales {
 	public static void initResourceBundles() {
 		try {
 			Locales.mainbundle = ResourceBundle.getBundle(
-					"cage.core.Locale.MainBundle", Locales.currentLocale);
+					"core.Locale.MainBundle", Locales.currentLocale);
 			Locales.tipbundle = ResourceBundle
-					.getBundle("cage.core.Locale.Tooltips.TooltipBundle",
+					.getBundle("core.Locale.Tooltips.TooltipBundle",
 							Locales.currentLocale);
 			Locales.errbundle = ResourceBundle.getBundle(
-					"cage.core.Locale.ErrorMessages.ErrorMessageBundle",
+					"core.Locale.ErrorMessages.ErrorMessageBundle",
 					Locales.currentLocale);
 		} catch (Exception e2) {
 			// TODO error standardisation

@@ -8,8 +8,31 @@ import java.io.IOException;
  * Reads 2 files and uses the obtained data 
  *
  */
-public class ReadSomeData {
+public class DataReader {
 
+	/**
+	 * This method checks that the line isn't null and doesn't start with double slash (comment)  
+	 * @param line The line to be checked
+	 *
+	 */
+	public static boolean isValidLine(String line) {
+		if (line == null) {
+			return false;
+		}
+		else if (line.charAt(0)=='/'&& line.charAt(1)=='/') {
+			return false;
+		}
+		else {
+			return true;
+		}
+	}
+	
+	
+	/* This method reads information about:
+	the number of alleles in a locus
+	the likelihood of each allele being in a cat
+	which alleles get carried on together
+	*/
 	@SuppressWarnings("finally")
 	static int[][] readBonus(String fileName) throws IOException {
 		BufferedReader reader = null;
@@ -18,7 +41,7 @@ public class ReadSomeData {
 			reader = new BufferedReader(new FileReader(fileName));
 			int reaarv = 0;
 			String line = "";// while tsükli tegemiseks panen line'le väärtuse
-			while (line != "STOP" && line != null) {
+			while (isValidLine(line)) {
 				line = reader.readLine();
 
 				// Võtan reast vaid selle osa, mis meid huvitav ( {} märkide

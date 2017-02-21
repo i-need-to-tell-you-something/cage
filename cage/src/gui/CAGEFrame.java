@@ -207,31 +207,28 @@ public class CAGEFrame extends JFrame implements LocaleChangeListener {
 	}
 
 	/**
-	 * @return the kassilist
+	 * @return The list of cats
 	 */
 	public static JList<Kass> getKassilist() {
 		return kassilist;
 	}
 
 	/**
-	 * @param kass
-	 *            the cat to be added to the list
+	 * @param kass The cat to be added to the list
 	 */
 	public static void addKass(Kass kass) {
 		kassid.addElement(kass);
 	}
 
 	/**
-	 * @param kass
-	 *            the cat to be removed from the list
+	 * @param kass The cat to be removed from the list
 	 */
 	public static void removeKass(Kass kass) {
 		kassid.removeElement(kass);
 	}
 
 	/**
-	 * @return the part of the cat Creation Frame that deals with selecting the
-	 *         genotype
+	 * @return The part of the cat Creation Frame that deals with selecting the genotype
 	 */
 	public static CreationFrameOfSelection getCreationFrameOfSelection() {
 		return CFOSelection;
