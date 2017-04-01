@@ -27,7 +27,7 @@ public class CreationListener implements ActionListener, FocusListener {
 				.genoString2int(CreationFrameOfSelection.ahela2geno());
 		Kass uuskass;
 		if (CreationFrameOfConfirmation.getCatName().equals(
-				CreationFrameOfConfirmation.deftext)) {
+				CreationFrameOfConfirmation.getDeftext())) {
 			uuskass = new Kass(kassiahel1, kassiahel2);
 		} else {
 			uuskass = new Kass(kassiahel1, kassiahel2,
@@ -39,7 +39,7 @@ public class CreationListener implements ActionListener, FocusListener {
 	@Override
 	public void focusGained(FocusEvent arg0) {
 		if (CreationFrameOfConfirmation.getCatName().equals(
-				CreationFrameOfConfirmation.deftext)) {
+				CreationFrameOfConfirmation.getDeftext())) {
 			CreationFrameOfConfirmation.setCatName("");
 		}
 	}
@@ -47,7 +47,7 @@ public class CreationListener implements ActionListener, FocusListener {
 	@Override
 	public void focusLost(FocusEvent arg0) {
 		if (CreationFrameOfConfirmation.getCatName().equals("")) {
-			CreationFrameOfConfirmation.setCatName(CreationFrameOfConfirmation.deftext);
+			CreationFrameOfConfirmation.setCatName(CreationFrameOfConfirmation.getDeftext());
 		}
 
 	}

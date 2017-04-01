@@ -25,10 +25,10 @@ import javax.swing.JTextField;
 public class CreationFrameOfConfirmation extends JFrame implements LocaleChangeListener{
 	
 	
-	static JTextArea fenot = new JTextArea("");
-	static String deftext= Locales.mainbundle.getString("label2");
+	private static JTextArea fenotypeFrameText = new JTextArea("");
+	private static String deftext= Locales.mainbundle.getString("label2");
 	private static JTextField catName = new JTextField(deftext);
-	static JButton kassiloomisnupp = new JButton(Locales.mainbundle.getString("button9"));
+	private static JButton catCreationButton = new JButton(Locales.mainbundle.getString("button9"));
 
 	
 	public CreationFrameOfConfirmation(){
@@ -36,30 +36,30 @@ public class CreationFrameOfConfirmation extends JFrame implements LocaleChangeL
 		//Listing that this component needs to fire when there's a locale change
 		MenuLanguageListener.addToDeclaredComponents(this);
 		
-		Container fenojumal= getContentPane();
-		fenojumal.setLayout(new BorderLayout());
-		Container fenotekst= new Container();
-		JPanel loomisasjad= new JPanel();
+		Container fenotypeFrameRoot= getContentPane();
+		fenotypeFrameRoot.setLayout(new BorderLayout());
+		Container fenotypeFrameMain= new Container();
+		JPanel fenotypeFrameLower= new JPanel();
 		
-		fenojumal.add(fenotekst, BorderLayout.CENTER);
-		fenojumal.add(loomisasjad, BorderLayout.SOUTH);
+		fenotypeFrameRoot.add(fenotypeFrameMain, BorderLayout.CENTER);
+		fenotypeFrameRoot.add(fenotypeFrameLower, BorderLayout.SOUTH);
 		
-		fenotekst.setLayout(new BorderLayout());
-		loomisasjad.setLayout(new GridLayout(2,1));
+		fenotypeFrameMain.setLayout(new BorderLayout());
+		fenotypeFrameLower.setLayout(new GridLayout(2,1));
 
-		fenotekst.add(fenot,BorderLayout.CENTER);
-		fenot.setEditable(false);
+		fenotypeFrameMain.add(fenotypeFrameText,BorderLayout.CENTER);
+		fenotypeFrameText.setEditable(false);
 		
 		//Loomisasjad
 		
 		//Fenotüübi kasti kassi nime sisestamise väli	
-		loomisasjad.add(catName);
+		fenotypeFrameLower.add(catName);
 		catName.addFocusListener(new CreationListener());
 		
 		//Fenotüübi kasti "loo kass" nupp
-		loomisasjad.add(kassiloomisnupp);
-		kassiloomisnupp.addActionListener(new CreationListener());
-		this.getRootPane().setDefaultButton(kassiloomisnupp);
+		fenotypeFrameLower.add(catCreationButton);
+		catCreationButton.addActionListener(new CreationListener());
+		this.getRootPane().setDefaultButton(catCreationButton);
 		
 		
 	}
@@ -69,11 +69,11 @@ public class CreationFrameOfConfirmation extends JFrame implements LocaleChangeL
 
 	// Eriline setter kuularile
 	public static void setFenot(String fenot) {
-		CreationFrameOfConfirmation.fenot.setText(fenot);
+		CreationFrameOfConfirmation.fenotypeFrameText.setText(fenot);
 	}
 	
 	//Getters and setters
-	public static String getDeftekst() {
+	public static String getDeftext() {
 		return deftext;
 	}
 	public static String getCatName() {
@@ -82,13 +82,11 @@ public class CreationFrameOfConfirmation extends JFrame implements LocaleChangeL
 	public static void setCatName(String newCatName) {
 		CreationFrameOfConfirmation.catName.setText(newCatName);
 	}
-//	public static void setFenot(JTextArea fenot) {
-//		CreationFrameOfConfirmation.fenot = fenot;
-//	}
+
 	@Override
 	public void onLocaleChange() {
 		deftext = Locales.mainbundle.getString("label2");
 		catName.setText(deftext);
-		kassiloomisnupp.setText(Locales.mainbundle.getString("button9"));
+		catCreationButton.setText(Locales.mainbundle.getString("button9"));
 	}	
 }
