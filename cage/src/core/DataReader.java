@@ -5,7 +5,7 @@ import java.io.FileReader;
 import java.io.IOException;
 
 /**
- * Reads 2 files and uses the obtained data 
+ * Reads 2 files and stores the obtained data 
  *
  */
 public class DataReader {
@@ -26,73 +26,74 @@ public class DataReader {
 			return true;
 		}
 	}
-	
-	
-	/* This method reads information about:
-	the number of alleles in a locus
-	the likelihood of each allele being in a cat
-	which alleles get carried on together
-	*/
+
+	/**
+	 * This method reads information about: the number of alleles in a locus the
+	 * likelihood of each allele being in a cat which alleles get carried on
+	 * together
+	 */
 	@SuppressWarnings("finally")
 	static int[][] readBonus(String fileName) throws IOException {
 		BufferedReader reader = null;
 		int[][] table = new int[10][];
 		try {
 			reader = new BufferedReader(new FileReader(fileName));
-			int reaarv = 0;
-			String line = "";// while tsükli tegemiseks panen line'le väärtuse
-			while (isValidLine(line)) {
+			int numberOfLinesWithData = 0;
+			//String line = "";// while tsükli tegemiseks panen line'le väärtuse
+			String line = reader.readLine();
+			while (line != null) {
+				if (isValidLine(line)) {
+
+					// Võtan reast vaid selle osa, mis meid huvitav ( {} märkide
+					// vahelise osa)
+					int startOfLineData = line.indexOf("{") + 1;
+					int endOfLineData = line.indexOf("}") - 1;
+					String indexInLineData = "";
+					for (int i = 0; i < endOfLineData - startOfLineData; i++) {
+						indexInLineData = indexInLineData + line.charAt(i + startOfLineData);
+					}
+
+					// Vaatab kui pika boonusväljaga antud lookus(rida) on
+					int lengthOfBonusField = 0;
+					for (int i = 0; i < indexInLineData.length(); i++) {
+						if (indexInLineData.charAt(i) == (',')) {
+							lengthOfBonusField++;
+						}
+
+					}
+					// Kuna komasid on üks vähem kui neid ümbritsevad välju, siis
+					// tuleb üks juurde lisada bonusväljade summale
+					lengthOfBonusField++;
+
+					// Muudan rea järjendiks
+					String[] lineDataList = indexInLineData.split(",");
+					// Puhastan tühikutest
+					for (int i = 0; i < lineDataList.length; i++) {
+						lineDataList[i] = lineDataList[i].trim();
+					}
+
+					// Stringi järjendist int järjendi tegemine
+					int[] lineDataListInt = new int[lineDataList.length];
+					try {
+						for (int i = 0; i < lineDataList.length; i++) {
+							lineDataListInt[i] = Integer.parseInt(lineDataList[i]);
+						}
+					} catch (NumberFormatException nfe) {
+						//TODO error_standardization
+
+					} finally {
+					}
+					;
+
+					// Lisan loodud järjendi tabelisse
+					table[numberOfLinesWithData] = lineDataListInt;
+					for (int i = 0; i < lengthOfBonusField; i++) {
+						table[numberOfLinesWithData][i] = lineDataListInt[i];
+					}
+					numberOfLinesWithData++;
+				}
 				line = reader.readLine();
-
-				// Võtan reast vaid selle osa, mis meid huvitav ( {} märkide
-				// vahelise osa)
-				int algus = line.indexOf("{") + 1;
-				int lopp = line.indexOf("}") - 1;
-				String rida = "";
-				for (int i = 0; i < lopp - algus; i++) {
-					rida = rida + line.charAt(i + algus);
-				}
-
-				// Vaatab kui pika boonusväljaga antud lookus(rida) on
-				int boonusvaljapikkus = 0;
-				for (int i = 0; i < rida.length(); i++) {
-					if (rida.charAt(i) == (',')) {
-						boonusvaljapikkus++;
-					}
-
-				}
-				// Kuna komasid on üks vähem kui neid ümbritsevad välju, siis
-				// tuleb üks juurde lisada bonusväljade summale
-				boonusvaljapikkus++;
-
-				// Muudan rea järjendiks
-				String[] reajarjend = rida.split(",");
-				// Puhastan tühikutest
-				for (int i = 0; i < reajarjend.length; i++) {
-					reajarjend[i] = reajarjend[i].trim();
-				}
-
-				// Stringi järjendist int järjendi tegemine
-				int[] reaintjarjend = new int[reajarjend.length];
-				try {
-					for (int i = 0; i < reajarjend.length; i++) {
-						reaintjarjend[i] = Integer.parseInt(reajarjend[i]);
-					}
-				} catch (NumberFormatException nfe) {
-					//TODO error_standardization
-
-				} finally {
-				}
-				;
-
-				// Lisan loodud järjendi tabelisse
-				table[reaarv] = reaintjarjend;
-				for (int i = 0; i < boonusvaljapikkus; i++) {
-					table[reaarv][i] = reaintjarjend[i];
-				}
-				reaarv++;
 			}
-
 		} catch (IOException e) {
 			//TODO error_standardization
 			System.out.println("boonuse io feil");
@@ -104,14 +105,14 @@ public class DataReader {
 
 	@SuppressWarnings("finally")
 	private static int[][] initializeLocusBonusTable() {
-		int[][] boonustabel = null;
+		int[][] bonusTable = null;
 		try {
-			boonustabel = readBonus("data/locusbonus.txt");
+			bonusTable = readBonus("data/locusbonus.txt");
 		} catch (IOException ex) {
 			//TODO error_standardization
 			System.out.println("jou. IO is a ... in boonustabel");
 		} finally {
-			return boonustabel;
+			return bonusTable;
 		}
 	}
 
@@ -181,7 +182,7 @@ public class DataReader {
 
 	// Field for locus bonus table
 	private static int[][] locusBonusTable = initializeLocusBonusTable();
-	
+
 	// Field for tracking how many cats there are with a specific name
 	private static int[] amountOfNames = new int[catNames.length];
 
