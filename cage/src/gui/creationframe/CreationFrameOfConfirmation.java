@@ -27,7 +27,7 @@ public class CreationFrameOfConfirmation extends JFrame implements LocaleChangeL
 	
 	static JTextArea fenot = new JTextArea("");
 	static String deftext= Locales.mainbundle.getString("label2");
-	static JTextField kassinimi = new JTextField(deftext);
+	private static JTextField catName = new JTextField(deftext);
 	static JButton kassiloomisnupp = new JButton(Locales.mainbundle.getString("button9"));
 
 	
@@ -53,8 +53,8 @@ public class CreationFrameOfConfirmation extends JFrame implements LocaleChangeL
 		//Loomisasjad
 		
 		//Fenotüübi kasti kassi nime sisestamise väli	
-		loomisasjad.add(kassinimi);
-		kassinimi.addFocusListener(new CreationListener());
+		loomisasjad.add(catName);
+		catName.addFocusListener(new CreationListener());
 		
 		//Fenotüübi kasti "loo kass" nupp
 		loomisasjad.add(kassiloomisnupp);
@@ -76,22 +76,19 @@ public class CreationFrameOfConfirmation extends JFrame implements LocaleChangeL
 	public static String getDeftekst() {
 		return deftext;
 	}
-//	public static void setDeftekst(String deftext) {
-//		CreationFrameOfConfirmation.deftext = deftext;
-//	}
-//	public static JTextField getKassinimi() {
-//		return kassinimi;
-//	}
-//	public static void setKassinimi(JTextField kassinimi) {
-//		CreationFrameOfConfirmation.kassinimi = kassinimi;
-//	}
+	public static String getCatName() {
+		return catName.getText();
+	}
+	public static void setCatName(String newCatName) {
+		CreationFrameOfConfirmation.catName.setText(newCatName);
+	}
 //	public static void setFenot(JTextArea fenot) {
 //		CreationFrameOfConfirmation.fenot = fenot;
 //	}
 	@Override
 	public void onLocaleChange() {
 		deftext = Locales.mainbundle.getString("label2");
-		kassinimi.setText(deftext);
+		catName.setText(deftext);
 		kassiloomisnupp.setText(Locales.mainbundle.getString("button9"));
 	}	
 }
