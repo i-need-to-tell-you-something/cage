@@ -63,16 +63,13 @@ public class CreationFrameOfConfirmation extends JFrame implements LocaleChangeL
 		
 		
 	}
-//	public static JTextArea getFenot() {
-//		return fenot;
-//	}
 
-	// Eriline setter kuularile
-	public static void setFenot(String fenot) {
-		CreationFrameOfConfirmation.fenotypeFrameText.setText(fenot);
+	//Getters and setters
+	
+	public static void setFenotypeFrameText(String newFenotypeFrameText) {
+		CreationFrameOfConfirmation.fenotypeFrameText.setText(newFenotypeFrameText);
 	}
 	
-	//Getters and setters
 	public static String getDeftext() {
 		return deftext;
 	}

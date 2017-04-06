@@ -28,65 +28,65 @@ import core.Kass;
 public class CreationFrameOfSelection extends JFrame {
 
 	// Esimese ahela väljad
-	static String ah1 = "ah1";
-	static String ah2 = "ah2";
+	static String dnaStrand1 = "ah1";
+	static String dnaStrand2 = "ah2";
 
-	static JTextField ahel1[] = new JTextField[] { new JTextField(ah1),
-			new JTextField(ah1), new JTextField(ah1), new JTextField(ah1),
-			new JTextField(ah1), new JTextField(ah1), new JTextField(ah1),
-			new JTextField(ah1), new JTextField(ah1), new JTextField(ah1) };
+	static JTextField dnaStrand1TextField[] = new JTextField[] { new JTextField(dnaStrand1),
+			new JTextField(dnaStrand1), new JTextField(dnaStrand1), new JTextField(dnaStrand1),
+			new JTextField(dnaStrand1), new JTextField(dnaStrand1), new JTextField(dnaStrand1),
+			new JTextField(dnaStrand1), new JTextField(dnaStrand1), new JTextField(dnaStrand1) };
 
 	// Teise ahela väljad
 
-	static JTextField ahel2[] = new JTextField[] { new JTextField(ah2),
-			new JTextField(ah2), new JTextField(ah2), new JTextField(ah2),
-			new JTextField(ah2), new JTextField(ah2), new JTextField(ah2),
-			new JTextField(ah2), new JTextField(ah2), new JTextField(ah2) };
+	static JTextField dnaStrand2TextField[] = new JTextField[] { new JTextField(dnaStrand2),
+			new JTextField(dnaStrand2), new JTextField(dnaStrand2), new JTextField(dnaStrand2),
+			new JTextField(dnaStrand2), new JTextField(dnaStrand2), new JTextField(dnaStrand2),
+			new JTextField(dnaStrand2), new JTextField(dnaStrand2), new JTextField(dnaStrand2) };
 
 	// konstruktor
 	public CreationFrameOfSelection() {
 
 		// Konteineri loomine Kolme kasti jaoks
-		Container jumal = getContentPane();
-		jumal.setLayout(new GridLayout(3, 1));
+		Container rootContainer = getContentPane();
+		rootContainer.setLayout(new GridLayout(3, 1));
 
 		// Esimese ahela valikute paneeli loomine
 		JPanel box1 = new JPanel();
-		box1.setLayout(new GridLayout(1, ahel1.length));
+		box1.setLayout(new GridLayout(1, dnaStrand1TextField.length));
 		box1.setName("ahKast1"); // nimi kastile, et hiljem identifitseerida
 									// saaks
 
 		// Toimivate ahela paneeli loomine
 		JPanel box2 = new JPanel();
-		box2.setLayout(new GridLayout(2, ahel1.length));
+		box2.setLayout(new GridLayout(2, dnaStrand1TextField.length));
 
 		// Teise ahela valikute paneeli loomine
 		JPanel box3 = new JPanel();
-		box3.setLayout(new GridLayout(1, ahel1.length));
+		box3.setLayout(new GridLayout(1, dnaStrand1TextField.length));
 		box3.setName("ahKast2"); // nimi kastile, et hiljem identifitseerida
 									// saaks
 
 		// Kastide lisamine suurde konteinerisse
-		jumal.add(box1);
-		jumal.add(box2);
-		jumal.add(box3);
+		rootContainer.add(box1);
+		rootContainer.add(box2);
+		rootContainer.add(box3);
 
 		// 1. ahela tekstikasti väärtuste manuaalselt muutumatuks tegemine ja
 		// selle kasti
 		// lisamine
-		for (int i = 0; i < ahel1.length; i++) {
-			ahel1[i].setEditable(false);
-			box2.add(ahel1[i]);
+		for (int i = 0; i < dnaStrand1TextField.length; i++) {
+			dnaStrand1TextField[i].setEditable(false);
+			box2.add(dnaStrand1TextField[i]);
 		}
 		// 2. ahela tekstikasti väärtuste manuaalselt muutumatuks tegemine ja
 		// selle kasti
 		// lisamine
-		for (int i = 0; i < ahel2.length; i++) {
-			ahel2[i].setEditable(false);
-			box2.add(ahel2[i]);
+		for (int i = 0; i < dnaStrand2TextField.length; i++) {
+			dnaStrand2TextField[i].setEditable(false);
+			box2.add(dnaStrand2TextField[i]);
 		}
 
-		// Sone järjendite loomine, kus esimesel kohal on alleeli tähistus ja
+		// Sõne järjendite loomine, kus esimesel kohal on alleeli tähistus ja
 		// teisel kohal selle (lühi)kirjeldus
 		String[] alleela = { "a",
 				"a on retsessiivne tunnus. Mõlemal ahelal peab olema see, et see avalduks" };
@@ -94,21 +94,17 @@ public class CreationFrameOfSelection extends JFrame {
 				"A on dominantne tunnus akuuti värvusele. Võimaldab triipude teket" };
 		String[] alleelB = { "B",
 				"B - mustad kassid, domineerib teiste alleelide üle" };
-		String[] alleelb = {
-				"b",
+		String[] alleelb = { "b",
 				"b - šokolaadipruunid kassid, retsessiivne alleeli \"B\" suhtes, domineerib \"bl\" alleeli üle" };
 		String[] alleelbl = { "bl",
 				"bl - karvkate roostepruun, retsessiivne teiste alleelide suhtes" };
 		String[] alleelC = { "C",
 				"C - tagab kassi normaalse karva värvumise, dominantne kõigi alleelide suhtes" };
-		String[] alleelcb = {
-				"cb",
+		String[] alleelcb = { "cb",
 				"cb - Birma kassid (värvus pruun, soojemates kohtades heledate laikudega), \"C\"-le retsessiivne" };
-		String[] alleelcs = {
-				"cs",
+		String[] alleelcs = { "cs",
 				"cs - Siiami kassid (Kere on hele, kõrvad, nägu, saba, käpad tumedad. Silmad intensiivsinised), \"C\"-le retsessiivne" };
-		String[] alleelc = {
-				"c",
+		String[] alleelc = { "c",
 				"c - albiino (karvad ei värvu, silmad punased), retsessiivne kõigi teiste tunnuste suhtes " };
 		String[] alleelD = { "D",
 				"D - ei toimu lahjenemist, dominantne \"d\" üle" };
@@ -122,8 +118,7 @@ public class CreationFrameOfSelection extends JFrame {
 				"O - oranž karvavärvus, dominantne \"o\" alleeli üle" };
 		String[] alleelo = { "o",
 				"o - tavaline karvavärvus, retsessiivne \"O\" alleeli suhtes" };
-		String[] alleelS = {
-				"S",
+		String[] alleelS = { "S",
 				"S - Valged laigud, semidominantne \"s\" alleeli üle \n (SS puhul üle 50% kehast valgete laikudega kaetud, Ss puhul < 50% kehast" };
 		String[] alleels = { "s",
 				"s - ühtlane värvumine, ss puhul pole ühtegi valget laiku" };
@@ -131,8 +126,7 @@ public class CreationFrameOfSelection extends JFrame {
 				"T - tiigertüüpi vöödid, ss puhul pole ühtegi valget laiku" };
 		String[] alleelTa = { "Ta",
 				"Ta - vööte peaaegu pole, peened jooned. Intermediaalne teiste alleelidega" };
-		String[] alleeltb = {
-				"tb",
+		String[] alleeltb = { "tb",
 				"tb - laienenud vöödid, nagu oleksid piklikud laigud reas, retsessiivne alleeli \"T\" suhtes" };
 		String[] alleelW = { "W", "W - valge värvumine, dominantne \"w\" üle" };
 		String[] alleelw = { "w",
@@ -156,33 +150,33 @@ public class CreationFrameOfSelection extends JFrame {
 		// Tekstiväljadele tooltipi lisamine
 
 		for (int i = 0; i < lookKir.length; i++) {
-			ahel1[i].setToolTipText(lookKir[i]);
-			ahel2[i].setToolTipText(lookKir[i]);
+			dnaStrand1TextField[i].setToolTipText(lookKir[i]);
+			dnaStrand2TextField[i].setToolTipText(lookKir[i]);
 		}
 
 		// Esimese ahela raadionuppude lisamine esimesse kasti
-		box1.add(doSmt(ahel1[0], alleelA, alleela));
-		box1.add(doSmt(ahel1[1], alleelB, alleelb, alleelbl));
-		box1.add(doSmt(ahel1[2], alleelC, alleelcb, alleelcs, alleelc));
-		box1.add(doSmt(ahel1[3], alleelD, alleeld));
-		box1.add(doSmt(ahel1[4], alleelL, alleell));
-		box1.add(doSmt(ahel1[5], alleelO, alleelo));
-		box1.add(doSmt(ahel1[6], alleelS, alleels));
-		box1.add(doSmt(ahel1[7], alleelT, alleelTa, alleeltb));
-		box1.add(doSmt(ahel1[8], alleelW, alleelw));
-		box1.add(doSmt(ahel1[9], alleelX, alleelY));
+		box1.add(doSmt(dnaStrand1TextField[0], alleelA, alleela));
+		box1.add(doSmt(dnaStrand1TextField[1], alleelB, alleelb, alleelbl));
+		box1.add(doSmt(dnaStrand1TextField[2], alleelC, alleelcb, alleelcs, alleelc));
+		box1.add(doSmt(dnaStrand1TextField[3], alleelD, alleeld));
+		box1.add(doSmt(dnaStrand1TextField[4], alleelL, alleell));
+		box1.add(doSmt(dnaStrand1TextField[5], alleelO, alleelo));
+		box1.add(doSmt(dnaStrand1TextField[6], alleelS, alleels));
+		box1.add(doSmt(dnaStrand1TextField[7], alleelT, alleelTa, alleeltb));
+		box1.add(doSmt(dnaStrand1TextField[8], alleelW, alleelw));
+		box1.add(doSmt(dnaStrand1TextField[9], alleelX, alleelY));
 
 		// Teise ahela raadionuppude lisamine kolmandasse kasti
-		box3.add(doSmt(ahel2[0], alleelA, alleela));
-		box3.add(doSmt(ahel2[1], alleelB, alleelb, alleelbl));
-		box3.add(doSmt(ahel2[2], alleelC, alleelcb, alleelcs, alleelc));
-		box3.add(doSmt(ahel2[3], alleelD, alleeld));
-		box3.add(doSmt(ahel2[4], alleelL, alleell));
-		box3.add(doSmt(ahel2[5], alleelO, alleelo));
-		box3.add(doSmt(ahel2[6], alleelS, alleels));
-		box3.add(doSmt(ahel2[7], alleelT, alleelTa, alleeltb));
-		box3.add(doSmt(ahel2[8], alleelW, alleelw));
-		box3.add(doSmt(ahel2[9], alleelX, alleelY));
+		box3.add(doSmt(dnaStrand2TextField[0], alleelA, alleela));
+		box3.add(doSmt(dnaStrand2TextField[1], alleelB, alleelb, alleelbl));
+		box3.add(doSmt(dnaStrand2TextField[2], alleelC, alleelcb, alleelcs, alleelc));
+		box3.add(doSmt(dnaStrand2TextField[3], alleelD, alleeld));
+		box3.add(doSmt(dnaStrand2TextField[4], alleelL, alleell));
+		box3.add(doSmt(dnaStrand2TextField[5], alleelO, alleelo));
+		box3.add(doSmt(dnaStrand2TextField[6], alleelS, alleels));
+		box3.add(doSmt(dnaStrand2TextField[7], alleelT, alleelTa, alleeltb));
+		box3.add(doSmt(dnaStrand2TextField[8], alleelW, alleelw));
+		box3.add(doSmt(dnaStrand2TextField[9], alleelX, alleelY));
 
 	}
 
@@ -202,9 +196,9 @@ public class CreationFrameOfSelection extends JFrame {
 		yldpaneel.setLayout(new BorderLayout());
 		JPanel paneel = new JPanel();
 		paneel.setLayout(new GridLayout(others.length, 1));
-		if (tekstfield.getText().equals(ah1)) {
+		if (tekstfield.getText().equals(dnaStrand1)) {
 			yldpaneel.add(paneel, BorderLayout.SOUTH);
-		} else if (tekstfield.getText().equals(ah2)) {
+		} else if (tekstfield.getText().equals(dnaStrand2)) {
 			yldpaneel.add(paneel, BorderLayout.NORTH);
 		}
 
@@ -251,13 +245,13 @@ public class CreationFrameOfSelection extends JFrame {
 									.setEnabled(!valitud);
 							// O lookuse teksti asendamine miinusega
 							if (valitud) {
-								ahel1[5].setText("-");
+								dnaStrand1TextField[5].setText("-");
 							} else {
 								// O lookuse teksti tagasi muutmine
 								for (int i = 0; i < 2; i++) {
 									if (((JRadioButton) paneel.getComponent(i))
 											.isSelected()) {
-										ahel1[5].setText(((JRadioButton) paneel
+										dnaStrand1TextField[5].setText(((JRadioButton) paneel
 												.getComponent(i)).getText());
 									}
 								}
@@ -272,13 +266,13 @@ public class CreationFrameOfSelection extends JFrame {
 									.setEnabled(!valitud);
 							// O lookuse teksti asendamine miinusega
 							if (valitud) {
-								ahel2[5].setText("-");
+								dnaStrand2TextField[5].setText("-");
 							} else {
 								// O lookuse teksti tagasi muutmine
 								for (int i = 0; i < 2; i++) {
 									if (((JRadioButton) paneel.getComponent(i))
 											.isSelected()) {
-										ahel2[5].setText(((JRadioButton) paneel
+										dnaStrand2TextField[5].setText(((JRadioButton) paneel
 												.getComponent(i)).getText());
 									}
 								}
@@ -288,15 +282,15 @@ public class CreationFrameOfSelection extends JFrame {
 
 					// Kuulari osa mis raadionuppu vajutades määrab uue
 					// fenotüübi
-					StringBuilder fenotekst = new StringBuilder("");
-					for (int i = 0; i < ahel1.length; i++) {
+					StringBuilder fenotypeText = new StringBuilder("");
+					for (int i = 0; i < dnaStrand1TextField.length; i++) {
 						int[] fenahel = Kass.genotypeToFenotype(
 								genoString2int(ahela1geno()),
 								genoString2int(ahela1geno()));
-						fenotekst.append(FenotypeToStrings.giveText(fenahel, i));
-						fenotekst.append("\n");
+						fenotypeText.append(FenotypeToStrings.giveText(fenahel, i));
+						fenotypeText.append("\n");
 					}
-					CreationFrameOfConfirmation.setFenot(fenotekst.toString());
+					CreationFrameOfConfirmation.setFenotypeFrameText(fenotypeText.toString());
 
 				}
 			});
@@ -318,7 +312,7 @@ public class CreationFrameOfSelection extends JFrame {
 	public static String[] ahela1geno() {
 		String[] x = new String[getAhel1().length];
 		for (int i = 0; i < x.length; i++) {
-			x[i] = ((getAhel1()[i].getText().equals("-")) ? getAhel2()[i]
+			x[i] = ((getAhel1()[i].getText().equals("-")) ? getDnaStrand2TextField()[i]
 					.getText() : getAhel1()[i].getText());
 		}
 		return x;
@@ -326,10 +320,10 @@ public class CreationFrameOfSelection extends JFrame {
 
 	// 2. ahela tekstiväljadest genotüübi korjamine sõne järjendisse
 	public static String[] ahela2geno() {
-		String[] x = new String[getAhel2().length];
+		String[] x = new String[getDnaStrand2TextField().length];
 		for (int i = 0; i < x.length; i++) {
-			x[i] = ((getAhel2()[i].getText().equals("-")) ? getAhel1()[i]
-					.getText() : getAhel2()[i].getText());
+			x[i] = ((getDnaStrand2TextField()[i].getText().equals("-")) ? getAhel1()[i]
+					.getText() : getDnaStrand2TextField()[i].getText());
 		}
 		return x;
 	}
@@ -545,35 +539,35 @@ public class CreationFrameOfSelection extends JFrame {
 
 	// Getterid ja Setterid
 	public static JTextField[] getAhel1() {
-		return ahel1;
+		return dnaStrand1TextField;
 	}
 
-	public void setAhel1(JTextField[] ahel1) {
-		CreationFrameOfSelection.ahel1 = ahel1;
+	public void setDnaStrand1TextField(JTextField[] dnaStrand1) {
+		CreationFrameOfSelection.dnaStrand1TextField = dnaStrand1;
 	}
 
-	public static JTextField[] getAhel2() {
-		return ahel2;
+	public static JTextField[] getDnaStrand2TextField() {
+		return dnaStrand2TextField;
 	}
 
-	public void setAhel2(JTextField[] ahel2) {
-		CreationFrameOfSelection.ahel2 = ahel2;
+	public void setDnaStrand2TextField(JTextField[] dnaStrand2) {
+		CreationFrameOfSelection.dnaStrand2TextField = dnaStrand2;
 	}
 
-	public static String getAh1() {
-		return ah1;
+	public static String getDnaStrand1() {
+		return dnaStrand1;
 	}
 
-	public static void setAh1(String ah1) {
-		CreationFrameOfSelection.ah1 = ah1;
+	public static void setDnaStrand1(String dnaStrand1) {
+		CreationFrameOfSelection.dnaStrand1 = dnaStrand1;
 	}
 
-	public static String getAh2() {
-		return ah2;
+	public static String getDnaStrand2() {
+		return dnaStrand2;
 	}
 
-	public static void setAh2(String ah2) {
-		CreationFrameOfSelection.ah2 = ah2;
+	public static void setDnaStrand2(String dnaStrand2) {
+		CreationFrameOfSelection.dnaStrand2 = dnaStrand2;
 	}
 
 }
