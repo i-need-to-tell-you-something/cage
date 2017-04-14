@@ -11,8 +11,7 @@ import javax.swing.JFrame;
 import javax.swing.JTextArea;
 
 public class HelpAboutListener implements ActionListener, LocaleChangeListener {
-	static String about = "ui/About.txt";
-	static String lingid = "ui/Aboutlingid.txt";
+	static String lingid = "data/ui/AboutLinks.txt";
 	private JFrame aboutraam;
 	JTextArea tekst;
 

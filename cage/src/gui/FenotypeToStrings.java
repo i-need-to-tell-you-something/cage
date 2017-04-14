@@ -11,13 +11,13 @@ public class FenotypeToStrings {
 
 	//ABCDLOSTWX
 	//0123456789
-	public static String giveText(int [] dnaStrand, int locus) {
+	public static String giveText(int [] dnaStrands, int locus) {
 		String x=""; //$NON-NLS-1$
 
 		switch (locus) {
 
 		case 0: {//A lookus. Akuutsus dominantne. Dominantne epistaas B lookus üle. Retsessiivne epistaas T lookuse üle
-			switch (dnaStrand[locus]) {
+			switch (dnaStrands[locus]) {
 			case 0: x=Locales.characteristicsBundle.getString("aa"); break; //$NON-NLS-1$
 			case 1: case 2: x=Locales.characteristicsBundle.getString("AA/Aa"); break; //$NON-NLS-1$
 			default: returnError(0); break;
@@ -26,8 +26,8 @@ public class FenotypeToStrings {
 
 		case 1: {//B lookus.
 			//Moved this exception up here from the exception section
-			if (dnaStrand[0]!=0) {x=Locales.characteristicsBundle.getString("Bneedsaa"); break;} //TODO Restructure_1
-			switch (dnaStrand[locus]) {
+			if (dnaStrands[0]!=0) {x=Locales.characteristicsBundle.getString("Bneedsaa"); break;} //TODO Restructure_1
+			switch (dnaStrands[locus]) {
 			case 6: x=Locales.characteristicsBundle.getString("blbl"); break;   	 //$NON-NLS-1$
 			case 0: case 3: x=Locales.characteristicsBundle.getString("bbl/bb"); break; //$NON-NLS-1$
 			case 1: case 2: case 4: x=Locales.characteristicsBundle.getString("BB/Bbl/Bb"); break; //$NON-NLS-1$
@@ -36,7 +36,7 @@ public class FenotypeToStrings {
 		}
 
 		case 2: {//C lookus
-			switch (dnaStrand[locus]) {
+			switch (dnaStrands[locus]) {
 			case 0: x=Locales.characteristicsBundle.getString("cc"); break; //$NON-NLS-1$
 
 			case 1: case 2: case 4: case 8: x=Locales.characteristicsBundle.getString("CC/Ccb/Ccs/Cc"); break;            	 //$NON-NLS-1$
@@ -55,19 +55,19 @@ public class FenotypeToStrings {
 		}
 
 		case 3: {//D lookus
-			switch (dnaStrand[locus]) {
+			switch (dnaStrands[locus]) {
 			case 1: case 2: x=Locales.characteristicsBundle.getString("DD/Dd"); break; //$NON-NLS-1$
 
 			case 0: {
-				if (dnaStrand[5]==2){
+				if (dnaStrands[5]==2){
 					x=Locales.characteristicsBundle.getString("ddXOXO/ddXOY"); break; //$NON-NLS-1$
 				}
-				else if (dnaStrand[5]==1){
+				else if (dnaStrands[5]==1){
 					x=Locales.characteristicsBundle.getString("ddXOXo"); break; //$NON-NLS-1$
 				}
-				else if (dnaStrand[5]==0)  { //norm värvi, mitte oranž, lahjendunud, pole akuuti
-					if (dnaStrand[0]==0) {
-						switch (dnaStrand[1]) {
+				else if (dnaStrands[5]==0)  { //norm värvi, mitte oranž, lahjendunud, pole akuuti
+					if (dnaStrands[0]==0) {
+						switch (dnaStrands[1]) {
 						case 6: x=Locales.characteristicsBundle.getString("aablblddXoXo/aablblddXoY"); break;                    //$NON-NLS-1$
 						case 0: case 3: x=Locales.characteristicsBundle.getString("aabbddXoXo/aabbddXoY/aabblddXoXo/aabblddXoY"); break;                            //$NON-NLS-1$
 						case 1: case 2: case 4: x=Locales.characteristicsBundle.getString("aaBBddXoXo/aaBBddXoY/aaBbddXoXo/aaBbddXoY/aaBblddXoXo/aaBblddXoY"); break; //$NON-NLS-1$
@@ -83,7 +83,7 @@ public class FenotypeToStrings {
 		}
 
 		case 4: {//L lookus
-			switch (dnaStrand[locus]) {
+			switch (dnaStrands[locus]) {
 			case 0: x=Locales.characteristicsBundle.getString("ll"); break; //$NON-NLS-1$
 			case 1: case 2: x=Locales.characteristicsBundle.getString("LL/Ll"); break; //$NON-NLS-1$
 			default: returnError(4); break;
@@ -91,7 +91,7 @@ public class FenotypeToStrings {
 		}
 
 		case 5: {//O lookus. suguliiteline (hiljem vaatab kas kuidas muudab)
-			switch (dnaStrand[locus]) {
+			switch (dnaStrands[locus]) {
 			case 0: x=Locales.characteristicsBundle.getString("XoXo/XoY"); break; //$NON-NLS-1$
 			case 1: x=Locales.characteristicsBundle.getString("XOXo"); break; //$NON-NLS-1$
 			case 2: x=Locales.characteristicsBundle.getString("XOXO/XOY"); break; //$NON-NLS-1$
@@ -100,7 +100,7 @@ public class FenotypeToStrings {
 		}
 
 		case 6: {//S lookus. Laigud dominantsed. Semidominantsus
-			switch (dnaStrand[locus]) {
+			switch (dnaStrands[locus]) {
 			case 0: x=Locales.characteristicsBundle.getString("ss"); break; //$NON-NLS-1$
 			case 1: x=Locales.characteristicsBundle.getString("Ss"); break; //$NON-NLS-1$
 			case 2: x=Locales.characteristicsBundle.getString("SS");break; //$NON-NLS-1$
@@ -109,7 +109,7 @@ public class FenotypeToStrings {
 		}
 
 		case 7: {//T lookus
-			switch (dnaStrand[locus]) { // Ta-Abyssinian;T-Mackerel;tb-Classic
+			switch (dnaStrands[locus]) { // Ta-Abyssinian;T-Mackerel;tb-Classic
 			case 6: x=Locales.characteristicsBundle.getString("tbtb"); break; //tbtb //$NON-NLS-1$
 			case 2: case 4: x=Locales.characteristicsBundle.getString("TT/Ttb"); break; //TT;Ttb //$NON-NLS-1$
 			case 0: x=Locales.characteristicsBundle.getString("TaTa"); break; //TaTa //$NON-NLS-1$
@@ -119,7 +119,7 @@ public class FenotypeToStrings {
 		}
 
 		case 8: {//W lookus. Valge dominantne. Dominantsus. Dominantne epistaas A,B,D,O,S,T üle
-			switch (dnaStrand[locus]) {
+			switch (dnaStrands[locus]) {
 			case 0: x=Locales.characteristicsBundle.getString("ww"); break; //$NON-NLS-1$
 			case 1: case 2: x=Locales.characteristicsBundle.getString("WW/Ww"); break; //$NON-NLS-1$
 			default: returnError(8); break;
@@ -127,7 +127,7 @@ public class FenotypeToStrings {
 		}
 
 		case 9: {//sugukromosoomid
-			switch (dnaStrand[locus]) {
+			switch (dnaStrands[locus]) {
 			case 0: x=Locales.characteristicsBundle.getString("XX"); break; //$NON-NLS-1$
 			case 1: x=Locales.characteristicsBundle.getString("XY"); break; //$NON-NLS-1$
 			default: returnError(9); break;
@@ -163,18 +163,18 @@ public class FenotypeToStrings {
 		//Took this exception to the main switch element up 
 		//if (ahel[0]!=0 && lookus==1) x="B lookus ei avaldu(A)"; //Kontrollib kas kass on hoopis akuutvärvi
 
-		if ((dnaStrand[0]==0 && dnaStrand[5]==0) && locus==7) x=Locales.characteristicsBundle.getString("TneedsOA"); //$NON-NLS-1$
+		if ((dnaStrands[0]==0 && dnaStrands[5]==0) && locus==7) x=Locales.characteristicsBundle.getString("TneedsOA"); //$NON-NLS-1$
 
 		
 
-		if (dnaStrand[5]==2) {//Kontrollib kas kass on oranž
+		if (dnaStrands[5]==2) {//Kontrollib kas kass on oranž
 			switch (locus) {
 			case 1: x=Locales.characteristicsBundle.getString("Bneeds!O");break; //$NON-NLS-1$
 			case 0: x=Locales.characteristicsBundle.getString("Aneeds!O");break; //$NON-NLS-1$
 			}
 		}
 
-		if (dnaStrand[8]!=0) { //Kontrollib kas kass on hoopis valge
+		if (dnaStrands[8]!=0) { //Kontrollib kas kass on hoopis valge
 			switch (locus) {
 			case 0: x=Locales.characteristicsBundle.getString("Aneeds!W"); break; //$NON-NLS-1$
 			case 1: x=Locales.characteristicsBundle.getString("Bneeds!W"); break; //$NON-NLS-1$
@@ -185,7 +185,7 @@ public class FenotypeToStrings {
 			}
 		}
 
-		if ((dnaStrand[2]!=1 && dnaStrand[2]!=2 && dnaStrand[2]!=4 && dnaStrand[2]!=8)) { //Kontrollib kas kass on üldse värvunud
+		if ((dnaStrands[2]!=1 && dnaStrands[2]!=2 && dnaStrands[2]!=4 && dnaStrands[2]!=8)) { //Kontrollib kas kass on üldse värvunud
 			switch (locus) {
 			case 0: x=Locales.characteristicsBundle.getString("Aneeds!cc"); break; //$NON-NLS-1$
 			case 1: x=Locales.characteristicsBundle.getString("Bneeds!cc"); break; //$NON-NLS-1$
