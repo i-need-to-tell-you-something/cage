@@ -61,10 +61,10 @@ public class FenoGenoDisplayContainer extends JFrame implements LocaleChangeList
 	    formatter.setLocale(Locales.currentLocale);
 	    Object [] messageArguments = {catName};
 	    if (type==FENOTYPE) {
-	    	formatter.applyPattern(Locales.mainbundle.getString("title6"));
+	    	formatter.applyPattern(Locales.mainBundle.getString("title6"));
 	    }
 	    else {
-	    	formatter.applyPattern(Locales.mainbundle.getString("title5"));
+	    	formatter.applyPattern(Locales.mainBundle.getString("title5"));
 	    }
 		this.setTitle(formatter.format(messageArguments));
 	}

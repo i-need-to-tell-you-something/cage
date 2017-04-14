@@ -83,7 +83,7 @@ public class ImportExportListener implements ActionListener,
 
 	@Override
 	public void onLocaleChange() {
-		importer.setApproveButtonText(Locales.mainbundle.getString("button10"));
-		importer.setApproveButtonToolTipText(Locales.tipbundle.getString("tt11"));
+		importer.setApproveButtonText(Locales.mainBundle.getString("button10"));
+		importer.setApproveButtonToolTipText(Locales.tipBundle.getString("tt11"));
 	}
 }

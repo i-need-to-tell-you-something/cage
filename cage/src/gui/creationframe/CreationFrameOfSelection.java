@@ -283,10 +283,10 @@ public class CreationFrameOfSelection extends JFrame {
 					// Kuulari osa mis raadionuppu vajutades määrab uue
 					// fenotüübi
 					StringBuilder fenotypeText = new StringBuilder("");
+					int[] fenahel = Kass.genotypeToFenotype(
+							genoString2int(ahela1geno()),
+							genoString2int(ahela2geno()));
 					for (int i = 0; i < dnaStrand1TextField.length; i++) {
-						int[] fenahel = Kass.genotypeToFenotype(
-								genoString2int(ahela1geno()),
-								genoString2int(ahela1geno()));
 						fenotypeText.append(FenotypeToStrings.giveText(fenahel, i));
 						fenotypeText.append("\n");
 					}

@@ -9,9 +9,10 @@ import java.util.ResourceBundle;
  *
  */
 public class Locales {
-	public static ResourceBundle mainbundle;
-	public static ResourceBundle tipbundle;
-	public static ResourceBundle errbundle;
+	public static ResourceBundle mainBundle;
+	public static ResourceBundle tipBundle;
+	public static ResourceBundle errBundle;
+	public static ResourceBundle characteristicsBundle;
 	public static Locale currentLocale;
 
 	public static void Initiate() {
@@ -19,7 +20,7 @@ public class Locales {
 		try {
 			Locales.currentLocale = InputContext.getInstance().getLocale();
 		} catch (Exception e1) {
-			Locales.currentLocale = new Locale("en", "GB");
+			Locales.currentLocale = new Locale("en", "US");
 		}
 
 		initResourceBundles();
@@ -28,13 +29,16 @@ public class Locales {
 
 	public static void initResourceBundles() {
 		try {
-			Locales.mainbundle = ResourceBundle.getBundle(
+			Locales.mainBundle = ResourceBundle.getBundle(
 					"core.Locale.MainBundle", Locales.currentLocale);
-			Locales.tipbundle = ResourceBundle
+			Locales.tipBundle = ResourceBundle
 					.getBundle("core.Locale.Tooltips.TooltipBundle",
 							Locales.currentLocale);
-			Locales.errbundle = ResourceBundle.getBundle(
+			Locales.errBundle = ResourceBundle.getBundle(
 					"core.Locale.ErrorMessages.ErrorMessageBundle",
+					Locales.currentLocale);
+			Locales.characteristicsBundle = ResourceBundle.getBundle(
+					"core.Locale.Characteristics.CharacteristicsBundle",
 					Locales.currentLocale);
 		} catch (Exception e2) {
 			// TODO error standardisation

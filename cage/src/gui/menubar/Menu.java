@@ -215,35 +215,35 @@ public class Menu extends JMenuBar implements LocaleChangeListener {
 		
 		//Menus
 		
-		fileMenu.setText(Locales.mainbundle.getString("menulabel1"));
-		optionsMenu.setText(Locales.mainbundle.getString("menulabel2"));
-		helpMenu.setText(Locales.mainbundle.getString("menulabel3"));
+		fileMenu.setText(Locales.mainBundle.getString("menulabel1"));
+		optionsMenu.setText(Locales.mainBundle.getString("menulabel2"));
+		helpMenu.setText(Locales.mainBundle.getString("menulabel3"));
 		
 		//Items in menus
 		
-		f1.setText(Locales.mainbundle.getString("menulabel4"));
-		f2.setText(Locales.mainbundle.getString("menulabel5"));
-		f3.setText(Locales.mainbundle.getString("menulabel6"));
+		f1.setText(Locales.mainBundle.getString("menulabel4"));
+		f2.setText(Locales.mainBundle.getString("menulabel5"));
+		f3.setText(Locales.mainBundle.getString("menulabel6"));
 
-		o1.setText(Locales.mainbundle.getString("menulabel7"));
-		o2.setText(Locales.mainbundle.getString("menulabel8"));
+		o1.setText(Locales.mainBundle.getString("menulabel7"));
+		o2.setText(Locales.mainBundle.getString("menulabel8"));
 		
-		a1.setText(Locales.mainbundle.getString("menulabel9"));
-		a2.setText(Locales.mainbundle.getString("menulabel10"));
-		a3.setText(Locales.mainbundle.getString("menulabel11"));
+		a1.setText(Locales.mainBundle.getString("menulabel9"));
+		a2.setText(Locales.mainBundle.getString("menulabel10"));
+		a3.setText(Locales.mainBundle.getString("menulabel11"));
 		
 		//Adding tooltips
 		
-		f1.setToolTipText(Locales.tipbundle.getString("tt13"));
-		f2.setToolTipText(Locales.tipbundle.getString("tt14"));
-		f3.setToolTipText(Locales.tipbundle.getString("tt15"));
+		f1.setToolTipText(Locales.tipBundle.getString("tt13"));
+		f2.setToolTipText(Locales.tipBundle.getString("tt14"));
+		f3.setToolTipText(Locales.tipBundle.getString("tt15"));
 		
-		o1.setToolTipText(Locales.tipbundle.getString("tt16"));
-		o2.setToolTipText(Locales.tipbundle.getString("tt17"));
+		o1.setToolTipText(Locales.tipBundle.getString("tt16"));
+		o2.setToolTipText(Locales.tipBundle.getString("tt17"));
 		
-		a1.setToolTipText(Locales.tipbundle.getString("tt18"));
-		a2.setToolTipText(Locales.tipbundle.getString("tt19"));
-		a3.setToolTipText(Locales.tipbundle.getString("tt20"));
+		a1.setToolTipText(Locales.tipBundle.getString("tt18"));
+		a2.setToolTipText(Locales.tipBundle.getString("tt19"));
+		a3.setToolTipText(Locales.tipBundle.getString("tt20"));
 	}
 	
 }

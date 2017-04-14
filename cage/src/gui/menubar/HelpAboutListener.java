@@ -49,8 +49,8 @@ public class HelpAboutListener implements ActionListener, LocaleChangeListener {
 
 	@Override
 	public void onLocaleChange() {
-		aboutraam.setTitle(Locales.mainbundle.getString("title4"));
-		tekst.setText(Locales.mainbundle.getString("help2"));
+		aboutraam.setTitle(Locales.mainBundle.getString("title4"));
+		tekst.setText(Locales.mainBundle.getString("help2"));
 	}
 
 }

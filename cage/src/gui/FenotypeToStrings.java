@@ -1,147 +1,141 @@
 package gui;
 
+import java.text.MessageFormat;
+
+import gui.menubar.Locales;
+
 public class FenotypeToStrings {
 	int[] fenotype;
-	static boolean isDominantEpistasisGeneHidden = false;
+	//TODO: Should move this to a more intuitive and shared place:
+	static String geneReference[] = {"A","B","C","D","L","O","S","T","W","X"};
 
 	//ABCDLOSTWX
 	//0123456789
-	public static String giveText(int [] ahel, int lookus) {
-		String x="";
+	public static String giveText(int [] dnaStrand, int locus) {
+		String x=""; //$NON-NLS-1$
 
-		switch (lookus) {
+		switch (locus) {
 
 		case 0: {//A lookus. Akuutsus dominantne. Dominantne epistaas B lookus üle. Retsessiivne epistaas T lookuse üle
-			switch (ahel[lookus]) {
-			case 0: x="Akuutvärv puudub"; break;
-			case 1: case 2: x="Akuutvärvi triibuline"; break;
-			default: x="viga A lookuses"; break;
+			switch (dnaStrand[locus]) {
+			case 0: x=Locales.characteristicsBundle.getString("aa"); break; //$NON-NLS-1$
+			case 1: case 2: x=Locales.characteristicsBundle.getString("AA/Aa"); break; //$NON-NLS-1$
+			default: returnError(0); break;
 			}break;
 		}
 
 		case 1: {//B lookus.
 			//Moved this exception up here from the exception section
-			if (ahel[0]!=0) {x=LocusIsSupressedMessage("B","A"); break;}
-			switch (ahel[lookus]) {
-			case 6: x="Roostepruun"; break;   	
-			case 0: case 3: x="Shokolaadipruun"; break;
-			case 1: case 2: case 4: x="Must"; break;
-			default: x="viga B lookuses"; break;
+			if (dnaStrand[0]!=0) {x=Locales.characteristicsBundle.getString("Bneedsaa"); break;} //TODO Restructure_1
+			switch (dnaStrand[locus]) {
+			case 6: x=Locales.characteristicsBundle.getString("blbl"); break;   	 //$NON-NLS-1$
+			case 0: case 3: x=Locales.characteristicsBundle.getString("bbl/bb"); break; //$NON-NLS-1$
+			case 1: case 2: case 4: x=Locales.characteristicsBundle.getString("BB/Bbl/Bb"); break; //$NON-NLS-1$
+			default: returnError(1); break;
 			}break;
 		}
 
 		case 2: {//C lookus
-			switch (ahel[lookus]) {
-			case 0: x="Albiino"; break;
+			switch (dnaStrand[locus]) {
+			case 0: x=Locales.characteristicsBundle.getString("cc"); break; //$NON-NLS-1$
 
-			case 1: case 2: case 4: case 8: x="Normaalne karva värvumine"; break;            	
+			case 1: case 2: case 4: case 8: x=Locales.characteristicsBundle.getString("CC/Ccb/Ccs/Cc"); break;            	 //$NON-NLS-1$
 
-			case 6: x="Birma  kass"; break; //soojemates kohtades heledate laikudega (kõht, lõuaalune)
-			case 3: x="Heledama tooniga Birma kass"; break;
+			case 6: x=Locales.characteristicsBundle.getString("cbcb"); break; //soojemates kohtades heledate laikudega (kõht, lõuaalune) //$NON-NLS-1$
+			case 3: x=Locales.characteristicsBundle.getString("cbc"); break; //$NON-NLS-1$
 
-			case 14: x="Siiami kass"; break; //kere on hele, kõrvad, nägu, saba, käpad tumedad. Silmad intensiivsinised.
-			case 7: x="Heledama tooniga Siiami kass"; break;
+			case 14: x=Locales.characteristicsBundle.getString("cscs"); break; //kere on hele, kõrvad, nägu, saba, käpad tumedad. Silmad intensiivsinised. //$NON-NLS-1$
+			case 7: x=Locales.characteristicsBundle.getString("csc"); break; //$NON-NLS-1$
 
-			case 10: x="Siiami ja Birma kassi vahepealne kass"; break; 
+			case 10: x=Locales.characteristicsBundle.getString("cbcs"); break;  //$NON-NLS-1$
 
-			default: x="viga C lookuses"; break;
+			default: returnError(2); break;
 
 			}break;
 		}
 
 		case 3: {//D lookus
-			switch (ahel[lookus]) {
-			case 1: case 2: x="Lahjenemata, normaalselt värvunud"; break;
-			
-			case 0: if (ahel[5]==2){
-				x="Kreemjas (lahjendunud oranž) kass"; break;
+			switch (dnaStrand[locus]) {
+			case 1: case 2: x=Locales.characteristicsBundle.getString("DD/Dd"); break; //$NON-NLS-1$
+
+			case 0: {
+				if (dnaStrand[5]==2){
+					x=Locales.characteristicsBundle.getString("ddXOXO/ddXOY"); break; //$NON-NLS-1$
 				}
-			else if (ahel[5]==1){
-				x="Kilpkonnamustri värvid on lahjendunult"; break;
+				else if (dnaStrand[5]==1){
+					x=Locales.characteristicsBundle.getString("ddXOXo"); break; //$NON-NLS-1$
 				}
-			else if (ahel[5]==0  && ahel[3]==0 && ahel[0]==0)  { //norm värvi, mitte oranž, lahjendunud, pole akuuti
-				System.out.println("elif2");
-				switch (ahel[1]) {
-				case 6: x="Kollakaspruun kass"; break;                   
-				case 0: case 3: x="Sirelililla kass"; break;                           
-				case 1: case 2: case 4: x="Sinakashall kass"; break;
+				else if (dnaStrand[5]==0)  { //norm värvi, mitte oranž, lahjendunud, pole akuuti
+					if (dnaStrand[0]==0) {
+						switch (dnaStrand[1]) {
+						case 6: x=Locales.characteristicsBundle.getString("aablblddXoXo/aablblddXoY"); break;                    //$NON-NLS-1$
+						case 0: case 3: x=Locales.characteristicsBundle.getString("aabbddXoXo/aabbddXoY/aabblddXoXo/aabblddXoY"); break;                            //$NON-NLS-1$
+						case 1: case 2: case 4: x=Locales.characteristicsBundle.getString("aaBBddXoXo/aaBBddXoY/aaBbddXoXo/aaBbddXoY/aaBblddXoXo/aaBblddXoY"); break; //$NON-NLS-1$
+						}
+					}
+					else {
+						x="lookus ei AVALDU (A)"; break; //TODO localize
+					}
 				}
 			}
-			//ülejäänud D==3 olukorrad
-			else { x="Lahjenemata, normaalselt värvunud"; break; }
-//			default: x="Lahjenemata, normaalselt värvunud";
-			
-			
-			//            {            
-			//                switch (ahel [5]) {
-			//                case 1: case 2: x="kreemjas (lahjendunud oranž) kass";break;
-			//                case 0 : {          
-			//                        switch (ahel[1]) {
-			//                        case 6: x="Kollakaspruun kass"; break;                   
-			//                        case 0: case 3: x="Sirelililla kass"; break;                           
-			//                        case 1: case 2: case 4: x="Sinakashall kass"; break;
-			//                        }
-			//                }break;
-			//                }
-			//            }
-			default: x="viga D lookuses"+"ahel[lookus]:"+ahel[lookus]; break;    
+			default: returnError(3); break;
 			}break;
 		}
 
 		case 4: {//L lookus
-			switch (ahel[lookus]) {
-			case 0: x="Pikakarvaline"; break;
-			case 1: case 2: x="Lühikarvaline"; break;
-			default: x="viga L lookuses"; break;
+			switch (dnaStrand[locus]) {
+			case 0: x=Locales.characteristicsBundle.getString("ll"); break; //$NON-NLS-1$
+			case 1: case 2: x=Locales.characteristicsBundle.getString("LL/Ll"); break; //$NON-NLS-1$
+			default: returnError(4); break;
 			}break;
 		}
 
 		case 5: {//O lookus. suguliiteline (hiljem vaatab kas kuidas muudab)
-			switch (ahel[lookus]) {
-			case 0: x="Pole oranž"; break;
-			case 1: x="Kilpkonnamustriga"; break;
-			case 2: x="Oranž kass"; break;
-			default: x="viga O lookuses"; break;
+			switch (dnaStrand[locus]) {
+			case 0: x=Locales.characteristicsBundle.getString("XoXo/XoY"); break; //$NON-NLS-1$
+			case 1: x=Locales.characteristicsBundle.getString("XOXo"); break; //$NON-NLS-1$
+			case 2: x=Locales.characteristicsBundle.getString("XOXO/XOY"); break; //$NON-NLS-1$
+			default: returnError(5); break;
 			}break;
 		}
 
 		case 6: {//S lookus. Laigud dominantsed. Semidominantsus
-			switch (ahel[lookus]) {
-			case 0: x="Pole valgeid laike"; break;
-			case 1: x="Alla 50% kehast valgelaiguline"; break;
-			case 2: x="üle 50% kehast valgelaiguline";break;
-			default: x="viga S lookuses"; break;
+			switch (dnaStrand[locus]) {
+			case 0: x=Locales.characteristicsBundle.getString("ss"); break; //$NON-NLS-1$
+			case 1: x=Locales.characteristicsBundle.getString("Ss"); break; //$NON-NLS-1$
+			case 2: x=Locales.characteristicsBundle.getString("SS");break; //$NON-NLS-1$
+			default: returnError(6); break;
 			}break;
 		}
 
 		case 7: {//T lookus
-			switch (ahel[lookus]) { // Ta-Abyssinian;T-Mackerel;tb-Classic
-			case 6: x="Laienenud vöödid"; break; //tbtb
-			case 2: case 4: x="Tiigertüüpi vöödid"; break; //TT;Ttb
-			case 0: x="Ainult näos ja käppadel on peened triibud"; break; //TaTa
-			case 1: case 3: x="Vööte on käppadel, sabal ja näos. Osa keha pinnast on ka triibuline"; break; //TaT;Tatb
-			default: x="viga T lookuses"; break;
+			switch (dnaStrand[locus]) { // Ta-Abyssinian;T-Mackerel;tb-Classic
+			case 6: x=Locales.characteristicsBundle.getString("tbtb"); break; //tbtb //$NON-NLS-1$
+			case 2: case 4: x=Locales.characteristicsBundle.getString("TT/Ttb"); break; //TT;Ttb //$NON-NLS-1$
+			case 0: x=Locales.characteristicsBundle.getString("TaTa"); break; //TaTa //$NON-NLS-1$
+			case 1: case 3: x=Locales.characteristicsBundle.getString("TaT/Tatb"); break; //TaT;Tatb //$NON-NLS-1$
+			default: returnError(7); break;
 			}break;
 		}
 
 		case 8: {//W lookus. Valge dominantne. Dominantsus. Dominantne epistaas A,B,D,O,S,T üle
-			switch (ahel[lookus]) {
-			case 0: x="Normaalset värvi (pole valge)"; break;
-			case 1: case 2: x="üleni valge kass (mittealbiino)"; break;
-			default: x="viga W lookuses"; break;
+			switch (dnaStrand[locus]) {
+			case 0: x=Locales.characteristicsBundle.getString("ww"); break; //$NON-NLS-1$
+			case 1: case 2: x=Locales.characteristicsBundle.getString("WW/Ww"); break; //$NON-NLS-1$
+			default: returnError(8); break;
 			}break;
 		}
 
 		case 9: {//sugukromosoomid
-			switch (ahel[lookus]) {
-			case 0: x="Emane"; break;
-			case 1: x="Isane"; break;
-			default: x="viga sugulookuses"; break;
+			switch (dnaStrand[locus]) {
+			case 0: x=Locales.characteristicsBundle.getString("XX"); break; //$NON-NLS-1$
+			case 1: x=Locales.characteristicsBundle.getString("XY"); break; //$NON-NLS-1$
+			default: returnError(9); break;
 			}break;
 		}
 
 
-		default: x="tundmatu lookus"; 
+		default: x=Locales.characteristicsBundle.getString("NA");  //$NON-NLS-1$
 		}
 
 
@@ -158,8 +152,9 @@ public class FenotypeToStrings {
 		
 		
 		
-		
-		
+		//FOLLOWING:
+		//TODO Restructure_1
+		//IF these were moved into their respective "case n:"s then could use "return x;" right away. 
 		
 		
 		//The description of the locus has it's initial value
@@ -168,56 +163,50 @@ public class FenotypeToStrings {
 		//Took this exception to the main switch element up 
 		//if (ahel[0]!=0 && lookus==1) x="B lookus ei avaldu(A)"; //Kontrollib kas kass on hoopis akuutvärvi
 
-		if ((ahel[0]==0 && ahel[5]==0) && lookus==7) x="T lookus ei avaldu(puudub O ja A)";
+		if ((dnaStrand[0]==0 && dnaStrand[5]==0) && locus==7) x=Locales.characteristicsBundle.getString("TneedsOA"); //$NON-NLS-1$
 
 		
 
-		if (ahel[5]==2) {//Kontrollib kas kass on oranž
-			switch (lookus) {
-			case 1: x="B lookus ei avaldu(O)";break;
-			case 0: x="A lookus ei avaldu(O)";break;
+		if (dnaStrand[5]==2) {//Kontrollib kas kass on oranž
+			switch (locus) {
+			case 1: x=Locales.characteristicsBundle.getString("Bneeds!O");break; //$NON-NLS-1$
+			case 0: x=Locales.characteristicsBundle.getString("Aneeds!O");break; //$NON-NLS-1$
 			}
 		}
 
-		if (ahel[8]!=0) { //Kontrollib kas kass on hoopis valge
-			switch (lookus) {
-			case 0: x="A lookus ei avaldu(W)"; break;
-			case 1: x="B lookus ei avaldu(W)"; break;
-			case 3: x="D lookus ei avaldu(W)"; break;
-			case 5: x="O lookus ei avaldu(W)"; break;
-			case 6: x="S lookus ei avaldu(W)"; break;
-			case 7: x="T lookus ei avaldu(W)"; break;
+		if (dnaStrand[8]!=0) { //Kontrollib kas kass on hoopis valge
+			switch (locus) {
+			case 0: x=Locales.characteristicsBundle.getString("Aneeds!W"); break; //$NON-NLS-1$
+			case 1: x=Locales.characteristicsBundle.getString("Bneeds!W"); break; //$NON-NLS-1$
+			case 3: x=Locales.characteristicsBundle.getString("Dneeds!W"); break; //$NON-NLS-1$
+			case 5: x=Locales.characteristicsBundle.getString("Oneeds!W"); break; //$NON-NLS-1$
+			case 6: x=Locales.characteristicsBundle.getString("Sneeds!W"); break; //$NON-NLS-1$
+			case 7: x=Locales.characteristicsBundle.getString("Tneeds!W"); break; //$NON-NLS-1$
 			}
 		}
 
-		if ((ahel[2]!=1 && ahel[2]!=2 && ahel[2]!=4 && ahel[2]!=8)) { //Kontrollib kas kass on üldse värvunud
-			switch (lookus) {
-			case 0: x="A lookus ei avaldu(C)"; break;
-			case 1: x="B lookus ei avaldu(C)"; break;
-			case 3: x="D lookus ei avaldu(C)"; break;
-			case 5: x="O lookus ei avaldu(C)"; break;
-			case 6: x="S lookus ei avaldu(C)"; break;
-			case 7: x="T lookus ei avaldu(C)"; break;
-			case 8: x="W lookus ei avaldu(C)"; break;
+		if ((dnaStrand[2]!=1 && dnaStrand[2]!=2 && dnaStrand[2]!=4 && dnaStrand[2]!=8)) { //Kontrollib kas kass on üldse värvunud
+			switch (locus) {
+			case 0: x=Locales.characteristicsBundle.getString("Aneeds!cc"); break; //$NON-NLS-1$
+			case 1: x=Locales.characteristicsBundle.getString("Bneeds!cc"); break; //$NON-NLS-1$
+			case 3: x=Locales.characteristicsBundle.getString("Dneeds!cc"); break; //$NON-NLS-1$
+			case 5: x=Locales.characteristicsBundle.getString("Oneeds!cc"); break; //$NON-NLS-1$
+			case 6: x=Locales.characteristicsBundle.getString("Sneeds!cc"); break; //$NON-NLS-1$
+			case 7: x=Locales.characteristicsBundle.getString("Tneeds!cc"); break; //$NON-NLS-1$
+			case 8: x=Locales.characteristicsBundle.getString("Wneeds!cc"); break; //$NON-NLS-1$
 
-			}
-		}
-		if (ahel[3]!=0) { //Kontrollib kas värv on lahjendunud
-			switch (lookus) {
-			case 0: x="Karv pole lahjendunud värvi"; break;			
 			}
 		}
 
 		return x;
 	}
 	
-	static String LocusIsSupressedMessage(String recessiveEpistasisGene, String dominantEpistasisGene) {
-		if (isDominantEpistasisGeneHidden){
-			return recessiveEpistasisGene + " lookus ei avaldu";
-		}
-		else {
-			return recessiveEpistasisGene + " lookus ei avaldu("+dominantEpistasisGene+")";
-		}
+	private static String returnError(int locus) {
+		MessageFormat formatter = new MessageFormat("");
+		formatter.setLocale(Locales.currentLocale);
+		Object[] messageArguments = { geneReference[locus] };
+		formatter.applyPattern(Locales.characteristicsBundle.getString("errors"));
+		return(formatter.format(messageArguments));
 	}
 
 }

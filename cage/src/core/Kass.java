@@ -170,9 +170,9 @@ public class Kass implements Serializable{
 		StringBuilder kujutus = new StringBuilder();
 		String sugu = "";
 		switch (this.getFenotahel()[9]) {
-		case 0: sugu = " " + Locales.mainbundle.getString("female"); break;
-		case 1: sugu = " " + Locales.mainbundle.getString("male"); break;
-		case 2: sugu = " " + Locales.mainbundle.getString("doubleY"); break;
+		case 0: sugu = " " + Locales.mainBundle.getString("female"); break;
+		case 1: sugu = " " + Locales.mainBundle.getString("male"); break;
+		case 2: sugu = " " + Locales.mainBundle.getString("doubleY"); break;
 		//TODO error_standardization
 		default: sugu = " viga"; break;
 		}
@@ -180,10 +180,10 @@ public class Kass implements Serializable{
 		if (Menu.isOptionVanemad()) {
 			kujutus.append(" (");
 			if (this.ema==null) {
-				kujutus.append(Locales.mainbundle.getString("invitro"));
+				kujutus.append(Locales.mainBundle.getString("invitro"));
 			}
 			else {
-				kujutus.append(this.ema + " " + Locales.mainbundle.getString("female") +"; " + this.isa + " " + Locales.mainbundle.getString("male"));
+				kujutus.append(this.ema + " " + Locales.mainBundle.getString("female") +"; " + this.isa + " " + Locales.mainBundle.getString("male"));
 			}
 			kujutus.append(")");
 		}

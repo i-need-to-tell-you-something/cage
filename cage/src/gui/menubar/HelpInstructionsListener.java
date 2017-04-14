@@ -29,6 +29,6 @@ public class HelpInstructionsListener implements ActionListener, LocaleChangeLis
 
 	@Override
 	public void onLocaleChange() {
-		tekst.setText(Locales.mainbundle.getString("help1"));		
+		tekst.setText(Locales.mainBundle.getString("help1"));		
 	}
 }

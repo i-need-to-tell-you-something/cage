@@ -17,7 +17,7 @@ public class ImportExportFilter extends FileFilter {
 	// Linguistic/textual description of file filter
 	@Override
 	public String getDescription() {
-		return Locales.mainbundle.getString("label3");
+		return Locales.mainBundle.getString("label3");
 	}
 
 	// Logical/algorithmic description of file filter

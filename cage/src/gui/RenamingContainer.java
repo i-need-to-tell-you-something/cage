@@ -46,7 +46,7 @@ public class RenamingContainer extends JFrame implements LocaleChangeListener {
 		lahter.setText(kassinimi);
 
 		// button
-		nupp.setToolTipText(Locales.tipbundle.getString("tt12"));
+		nupp.setToolTipText(Locales.tipBundle.getString("tt12"));
 		nupp.addActionListener(new RenamingListener(k));
 
 		// enter key:
@@ -64,10 +64,10 @@ public class RenamingContainer extends JFrame implements LocaleChangeListener {
 		MessageFormat formatter = new MessageFormat("");
 		formatter.setLocale(Locales.currentLocale);
 		Object[] messageArguments = { kassinimi };
-		formatter.applyPattern(Locales.mainbundle.getString("title8"));
+		formatter.applyPattern(Locales.mainBundle.getString("title8"));
 		this.setTitle(formatter.format(messageArguments));
-		silt.setText(Locales.mainbundle.getString("label4"));
-		nupp.setText(Locales.mainbundle.getString("button11"));
+		silt.setText(Locales.mainBundle.getString("label4"));
+		nupp.setText(Locales.mainBundle.getString("button11"));
 
 	}
 

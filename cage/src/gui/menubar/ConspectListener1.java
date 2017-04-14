@@ -48,8 +48,8 @@ public class ConspectListener1 implements ActionListener, LocaleChangeListener {
 
 	@Override
 	public void onLocaleChange() {
-		konspektraam.setTitle(Locales.mainbundle.getString("title7"));
-		tekst.setToolTipText(Locales.tipbundle.getString("tt10"));
+		konspektraam.setTitle(Locales.mainBundle.getString("title7"));
+		tekst.setToolTipText(Locales.tipBundle.getString("tt10"));
 		
 	}
 

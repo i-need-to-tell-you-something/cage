@@ -27,19 +27,19 @@ import core.Kass;
 @SuppressWarnings("serial")
 public class CAGEFrame extends JFrame implements LocaleChangeListener {
 
-	static JButton n1 = new JButton(Locales.mainbundle.getString("button1"));
-	static JButton n2 = new JButton(Locales.mainbundle.getString("button2"));
-	static JButton n3 = new JButton(Locales.mainbundle.getString("button3"));
-	static JButton n4 = new JButton(Locales.mainbundle.getString("button4"));
-	static JButton n5 = new JButton(Locales.mainbundle.getString("button5"));
-	static JButton n6 = new JButton(Locales.mainbundle.getString("button6"));
-	static JButton n7 = new JButton(Locales.mainbundle.getString("button7"));
-	static JButton n8 = new JButton(Locales.mainbundle.getString("button8"));
+	static JButton n1 = new JButton(Locales.mainBundle.getString("button1"));
+	static JButton n2 = new JButton(Locales.mainBundle.getString("button2"));
+	static JButton n3 = new JButton(Locales.mainBundle.getString("button3"));
+	static JButton n4 = new JButton(Locales.mainBundle.getString("button4"));
+	static JButton n5 = new JButton(Locales.mainBundle.getString("button5"));
+	static JButton n6 = new JButton(Locales.mainBundle.getString("button6"));
+	static JButton n7 = new JButton(Locales.mainBundle.getString("button7"));
+	static JButton n8 = new JButton(Locales.mainBundle.getString("button8"));
 
 	private static DefaultListModel<Kass> kassid = new DefaultListModel<Kass>();
 	private static JList<Kass> kassilist = new JList<Kass>(kassid);
 
-	static JLabel sildike = new JLabel(Locales.mainbundle.getString("label1"));
+	static JLabel sildike = new JLabel(Locales.mainBundle.getString("label1"));
 
 	static Menu menu = new Menu();
 
@@ -58,7 +58,7 @@ public class CAGEFrame extends JFrame implements LocaleChangeListener {
 		getCreationFrameOfSelection().setSize(500, 320);
 		getCreationFrameOfSelection().setLocation(0, 100);
 		getCreationFrameOfSelection().setTitle(
-				Locales.mainbundle.getString("title2"));
+				Locales.mainBundle.getString("title2"));
 		getCreationFrameOfSelection().addWindowListener(
 				new CreationFrameClosingListener());
 
@@ -66,13 +66,13 @@ public class CAGEFrame extends JFrame implements LocaleChangeListener {
 		getCreationFrameOfConfirmation().setSize(400, 250);
 		getCreationFrameOfConfirmation().setLocation(500, 100);
 		getCreationFrameOfConfirmation().setTitle(
-				Locales.mainbundle.getString("title3"));
+				Locales.mainBundle.getString("title3"));
 		getCreationFrameOfConfirmation().addWindowListener(
 				new CreationFrameClosingListener());
 
 		// põhiraam
 		this.setJMenuBar(menu);
-		this.setTitle(Locales.mainbundle.getString("title1"));
+		this.setTitle(Locales.mainBundle.getString("title1"));
 		this.addWindowListener(new CAGEFrameClosingListener());
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		try {
@@ -104,7 +104,7 @@ public class CAGEFrame extends JFrame implements LocaleChangeListener {
 		JScrollPane vpvc = new JScrollPane(getKassilist());
 		vpvc.setPreferredSize(new Dimension(250, 250));
 		vp.add(vpvc, BorderLayout.CENTER);
-		getKassilist().setToolTipText(Locales.tipbundle.getString("tt1"));
+		getKassilist().setToolTipText(Locales.tipBundle.getString("tt1"));
 
 		// TOOLBAR
 		JToolBar toolbar = new JToolBar();
@@ -161,36 +161,36 @@ public class CAGEFrame extends JFrame implements LocaleChangeListener {
 		nupp.setMnemonic(mnemonic);
 		nupp.setActionCommand(actionCommand);
 		nupp.addActionListener(new CAGEFrameToolbarButtonListener());
-		nupp.setToolTipText(Locales.tipbundle.getString(tooltipID));
+		nupp.setToolTipText(Locales.tipBundle.getString(tooltipID));
 		nupp.setEnabled(initEnabled);
 		toolbar.add(nupp);
 	}
 
 	@Override
 	public void onLocaleChange() {
-		this.setTitle(Locales.mainbundle.getString("title1"));
+		this.setTitle(Locales.mainBundle.getString("title1"));
 		getCreationFrameOfSelection().setTitle(
-				Locales.mainbundle.getString("title2"));
+				Locales.mainBundle.getString("title2"));
 		getCreationFrameOfConfirmation().setTitle(
-				Locales.mainbundle.getString("title3"));
-		getKassilist().setToolTipText(Locales.tipbundle.getString("tt1"));
-		sildike.setText(Locales.mainbundle.getString("label1"));
-		n1.setText(Locales.mainbundle.getString("button1"));
-		n2.setText(Locales.mainbundle.getString("button2"));
-		n3.setText(Locales.mainbundle.getString("button3"));
-		n4.setText(Locales.mainbundle.getString("button4"));
-		n5.setText(Locales.mainbundle.getString("button5"));
-		n6.setText(Locales.mainbundle.getString("button6"));
-		n7.setText(Locales.mainbundle.getString("button7"));
-		n8.setText(Locales.mainbundle.getString("button8"));
-		n1.setToolTipText(Locales.tipbundle.getString("tt2"));
-		n2.setToolTipText(Locales.tipbundle.getString("tt3"));
-		n3.setToolTipText(Locales.tipbundle.getString("tt4"));
-		n4.setToolTipText(Locales.tipbundle.getString("tt5"));
-		n5.setToolTipText(Locales.tipbundle.getString("tt6"));
-		n6.setToolTipText(Locales.tipbundle.getString("tt7"));
-		n7.setToolTipText(Locales.tipbundle.getString("tt8"));
-		n8.setToolTipText(Locales.tipbundle.getString("tt9"));
+				Locales.mainBundle.getString("title3"));
+		getKassilist().setToolTipText(Locales.tipBundle.getString("tt1"));
+		sildike.setText(Locales.mainBundle.getString("label1"));
+		n1.setText(Locales.mainBundle.getString("button1"));
+		n2.setText(Locales.mainBundle.getString("button2"));
+		n3.setText(Locales.mainBundle.getString("button3"));
+		n4.setText(Locales.mainBundle.getString("button4"));
+		n5.setText(Locales.mainBundle.getString("button5"));
+		n6.setText(Locales.mainBundle.getString("button6"));
+		n7.setText(Locales.mainBundle.getString("button7"));
+		n8.setText(Locales.mainBundle.getString("button8"));
+		n1.setToolTipText(Locales.tipBundle.getString("tt2"));
+		n2.setToolTipText(Locales.tipBundle.getString("tt3"));
+		n3.setToolTipText(Locales.tipBundle.getString("tt4"));
+		n4.setToolTipText(Locales.tipBundle.getString("tt5"));
+		n5.setToolTipText(Locales.tipBundle.getString("tt6"));
+		n6.setToolTipText(Locales.tipBundle.getString("tt7"));
+		n7.setToolTipText(Locales.tipBundle.getString("tt8"));
+		n8.setToolTipText(Locales.tipBundle.getString("tt9"));
 		// This is necessary for updating 4 labels (male, female, doubleY) in
 		// method Kass
 		this.repaint();

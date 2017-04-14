@@ -26,9 +26,9 @@ public class CreationFrameOfConfirmation extends JFrame implements LocaleChangeL
 	
 	
 	private static JTextArea fenotypeFrameText = new JTextArea("");
-	private static String deftext= Locales.mainbundle.getString("label2");
+	private static String deftext= Locales.mainBundle.getString("label2");
 	private static JTextField catName = new JTextField(deftext);
-	private static JButton catCreationButton = new JButton(Locales.mainbundle.getString("button9"));
+	private static JButton catCreationButton = new JButton(Locales.mainBundle.getString("button9"));
 
 	
 	public CreationFrameOfConfirmation(){
@@ -82,8 +82,8 @@ public class CreationFrameOfConfirmation extends JFrame implements LocaleChangeL
 
 	@Override
 	public void onLocaleChange() {
-		deftext = Locales.mainbundle.getString("label2");
+		deftext = Locales.mainBundle.getString("label2");
 		catName.setText(deftext);
-		catCreationButton.setText(Locales.mainbundle.getString("button9"));
+		catCreationButton.setText(Locales.mainBundle.getString("button9"));
 	}	
 }
