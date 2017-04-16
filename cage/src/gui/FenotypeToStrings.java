@@ -1,211 +1,287 @@
 package gui;
 
 import java.text.MessageFormat;
+import java.util.ArrayList;
 
 import gui.menubar.Locales;
 
 public class FenotypeToStrings {
-	int[] fenotype;
+	
+	/**
+	 * Matches loci/gene integers to their corresponding letters. Each internal integer is the index of each letter.
+	 */
 	//TODO: Should move this to a more intuitive and shared place:
-	static String geneReference[] = {"A","B","C","D","L","O","S","T","W","X"};
+	static String locusLabelLetters[] = {"A","B","C","D","L","O","S","T","W","X"};
 
-	//ABCDLOSTWX
-	//0123456789
-	public static String giveText(int [] dnaStrands, int locus) {
-		String x=""; //$NON-NLS-1$
+	
+	/**
+	 * Returns a line of text describing the fenotype result of a specified locus/gene in the context of the full genome
+	 * @param genome The genome of the cat to be described
+	 * @param locus The locus the effects (or lack thereof) of which we will describe 
+	 * @return
+	 */
+	public static String giveText(int [] genome, int locus) {
 
+		System.out.println("going to switch loop again");
 		switch (locus) {
 
-		case 0: {//A lookus. Akuutsus dominantne. Dominantne epistaas B lookus üle. Retsessiivne epistaas T lookuse üle
-			switch (dnaStrands[locus]) {
-			case 0: x=Locales.characteristicsBundle.getString("aa"); break; //$NON-NLS-1$
-			case 1: case 2: x=Locales.characteristicsBundle.getString("AA/Aa"); break; //$NON-NLS-1$
-			default: returnError(0); break;
-			}break;
-		}
-
-		case 1: {//B lookus.
-			//Moved this exception up here from the exception section
-			if (dnaStrands[0]!=0) {x=Locales.characteristicsBundle.getString("Bneedsaa"); break;} //TODO Restructure_1
-			switch (dnaStrands[locus]) {
-			case 6: x=Locales.characteristicsBundle.getString("blbl"); break;   	 //$NON-NLS-1$
-			case 0: case 3: x=Locales.characteristicsBundle.getString("bbl/bb"); break; //$NON-NLS-1$
-			case 1: case 2: case 4: x=Locales.characteristicsBundle.getString("BB/Bbl/Bb"); break; //$NON-NLS-1$
-			default: returnError(1); break;
-			}break;
-		}
-
-		case 2: {//C lookus
-			switch (dnaStrands[locus]) {
-			case 0: x=Locales.characteristicsBundle.getString("cc"); break; //$NON-NLS-1$
-
-			case 1: case 2: case 4: case 8: x=Locales.characteristicsBundle.getString("CC/Ccb/Ccs/Cc"); break;            	 //$NON-NLS-1$
-
-			case 6: x=Locales.characteristicsBundle.getString("cbcb"); break; //soojemates kohtades heledate laikudega (kõht, lõuaalune) //$NON-NLS-1$
-			case 3: x=Locales.characteristicsBundle.getString("cbc"); break; //$NON-NLS-1$
-
-			case 14: x=Locales.characteristicsBundle.getString("cscs"); break; //kere on hele, kõrvad, nägu, saba, käpad tumedad. Silmad intensiivsinised. //$NON-NLS-1$
-			case 7: x=Locales.characteristicsBundle.getString("csc"); break; //$NON-NLS-1$
-
-			case 10: x=Locales.characteristicsBundle.getString("cbcs"); break;  //$NON-NLS-1$
-
-			default: returnError(2); break;
-
-			}break;
-		}
-
-		case 3: {//D lookus
-			switch (dnaStrands[locus]) {
-			case 1: case 2: x=Locales.characteristicsBundle.getString("DD/Dd"); break; //$NON-NLS-1$
-
-			case 0: {
-				if (dnaStrands[5]==2){
-					x=Locales.characteristicsBundle.getString("ddXOXO/ddXOY"); break; //$NON-NLS-1$
+		case 0: {//A locus
+			//Masking check:
+			ArrayList<Integer> maskingLoci = new ArrayList<Integer>();
+			if (genome[2]!=1 && genome[2]!=2 && genome[2]!=4 && genome[2]!=8) {
+				maskingLoci.add(2);
+			}
+			if (genome[5]==2) {
+				maskingLoci.add(5);
+			}
+			if (genome[8]!=0) {
+				maskingLoci.add(8);
+			}
+			if (maskingLoci.isEmpty()) {
+				//Actual locus evaluation (only takes place if preceding things succeeded):
+				switch (genome[locus]) {
+				case 0: return(Locales.characteristicsBundle.getString("aa"));
+				case 1: case 2: return(Locales.characteristicsBundle.getString("AA/Aa"));
+				default: return(returnError(locus));
 				}
-				else if (dnaStrands[5]==1){
-					x=Locales.characteristicsBundle.getString("ddXOXo"); break; //$NON-NLS-1$
+			}
+			else {
+				return(returnMasked(locus, maskingLoci));
+			}
+		}
+
+		case 1: {//B locus
+			//Masking check:
+			ArrayList<Integer> maskingLoci = new ArrayList<Integer>();
+			if (genome[0]!=0) {
+				maskingLoci.add(0);
+			}
+			if (genome[2]!=1 && genome[2]!=2 && genome[2]!=4 && genome[2]!=8) {
+				maskingLoci.add(2);
+			}
+			if (genome[5]==2) {
+				maskingLoci.add(5);
+			}
+			if (genome[8]!=0) {
+				maskingLoci.add(8);
+			}
+			if (maskingLoci.isEmpty()) {
+				//Actual locus evaluation (only takes place if preceding things succeeded):
+				switch (genome[locus]) {
+				case 6: return(Locales.characteristicsBundle.getString("blbl")); 
+				case 0: case 3: return(Locales.characteristicsBundle.getString("bbl/bb"));
+				case 1: case 2: case 4: return(Locales.characteristicsBundle.getString("BB/Bbl/Bb"));
+				default: return(returnError(locus));
 				}
-				else if (dnaStrands[5]==0)  { //norm värvi, mitte oranž, lahjendunud, pole akuuti
-					if (dnaStrands[0]==0) {
-						switch (dnaStrands[1]) {
-						case 6: x=Locales.characteristicsBundle.getString("aablblddXoXo/aablblddXoY"); break;                    //$NON-NLS-1$
-						case 0: case 3: x=Locales.characteristicsBundle.getString("aabbddXoXo/aabbddXoY/aabblddXoXo/aabblddXoY"); break;                            //$NON-NLS-1$
-						case 1: case 2: case 4: x=Locales.characteristicsBundle.getString("aaBBddXoXo/aaBBddXoY/aaBbddXoXo/aaBbddXoY/aaBblddXoXo/aaBblddXoY"); break; //$NON-NLS-1$
+			}
+			else {
+				return(returnMasked(locus, maskingLoci));
+			}
+		}
+
+		case 2: {//C locus
+			//C locus doesn't need masking check, because it is masked by nothing.
+			switch (genome[locus]) {
+			case 0: return(Locales.characteristicsBundle.getString("cc"));
+
+			case 1: case 2: case 4: case 8: return(Locales.characteristicsBundle.getString("CC/Ccb/Ccs/Cc"));            	
+
+			case 6: return(Locales.characteristicsBundle.getString("cbcb")); 
+			case 3: return(Locales.characteristicsBundle.getString("cbc"));
+
+			case 14: return(Locales.characteristicsBundle.getString("cscs"));
+			case 7: return(Locales.characteristicsBundle.getString("csc"));
+
+			case 10: return(Locales.characteristicsBundle.getString("cbcs")); 
+
+			default: return(returnError(locus));
+
+			}
+		}
+
+		case 3: {//D locus
+			//Masking check:
+			ArrayList<Integer> maskingLoci = new ArrayList<Integer>();
+			if (genome[0]!=0 && genome[5]==0) {
+				maskingLoci.add(0);
+			}
+			if (genome[2]!=1 && genome[2]!=2 && genome[2]!=4 && genome[2]!=8) {
+				maskingLoci.add(2);
+			}
+			if (genome[8]!=0) {
+				maskingLoci.add(8);
+			}
+			if (maskingLoci.isEmpty()) {
+				//Actual locus evaluation (only takes place if preceding things succeeded):
+				switch (genome[locus]) {
+				case 1: case 2: return(Locales.characteristicsBundle.getString("DD/Dd"));
+
+				case 0: {
+					switch (genome[5]) {
+					case 2: return(Locales.characteristicsBundle.getString("ddXOXO/ddXOY"));
+					case 1: return(Locales.characteristicsBundle.getString("ddXOXo"));
+					case 0: {
+						switch (genome[1]) {
+						case 6: return(Locales.characteristicsBundle.getString("aablblddXoXo/aablblddXoY"));                   
+						case 0: case 3: return(Locales.characteristicsBundle.getString("aabbddXoXo/aabbddXoY/aabblddXoXo/aabblddXoY"));                           
+						case 1: case 2: case 4: return(Locales.characteristicsBundle.getString("aaBBddXoXo/aaBBddXoY/aaBbddXoXo/aaBbddXoY/aaBblddXoXo/aaBblddXoY"));
 						}
 					}
-					else {
-						x="lookus ei AVALDU (A)"; break; //TODO localize
 					}
 				}
+				default: return(returnError(locus));
+				}
 			}
-			default: returnError(3); break;
-			}break;
-		}
-
-		case 4: {//L lookus
-			switch (dnaStrands[locus]) {
-			case 0: x=Locales.characteristicsBundle.getString("ll"); break; //$NON-NLS-1$
-			case 1: case 2: x=Locales.characteristicsBundle.getString("LL/Ll"); break; //$NON-NLS-1$
-			default: returnError(4); break;
-			}break;
-		}
-
-		case 5: {//O lookus. suguliiteline (hiljem vaatab kas kuidas muudab)
-			switch (dnaStrands[locus]) {
-			case 0: x=Locales.characteristicsBundle.getString("XoXo/XoY"); break; //$NON-NLS-1$
-			case 1: x=Locales.characteristicsBundle.getString("XOXo"); break; //$NON-NLS-1$
-			case 2: x=Locales.characteristicsBundle.getString("XOXO/XOY"); break; //$NON-NLS-1$
-			default: returnError(5); break;
-			}break;
-		}
-
-		case 6: {//S lookus. Laigud dominantsed. Semidominantsus
-			switch (dnaStrands[locus]) {
-			case 0: x=Locales.characteristicsBundle.getString("ss"); break; //$NON-NLS-1$
-			case 1: x=Locales.characteristicsBundle.getString("Ss"); break; //$NON-NLS-1$
-			case 2: x=Locales.characteristicsBundle.getString("SS");break; //$NON-NLS-1$
-			default: returnError(6); break;
-			}break;
-		}
-
-		case 7: {//T lookus
-			switch (dnaStrands[locus]) { // Ta-Abyssinian;T-Mackerel;tb-Classic
-			case 6: x=Locales.characteristicsBundle.getString("tbtb"); break; //tbtb //$NON-NLS-1$
-			case 2: case 4: x=Locales.characteristicsBundle.getString("TT/Ttb"); break; //TT;Ttb //$NON-NLS-1$
-			case 0: x=Locales.characteristicsBundle.getString("TaTa"); break; //TaTa //$NON-NLS-1$
-			case 1: case 3: x=Locales.characteristicsBundle.getString("TaT/Tatb"); break; //TaT;Tatb //$NON-NLS-1$
-			default: returnError(7); break;
-			}break;
-		}
-
-		case 8: {//W lookus. Valge dominantne. Dominantsus. Dominantne epistaas A,B,D,O,S,T üle
-			switch (dnaStrands[locus]) {
-			case 0: x=Locales.characteristicsBundle.getString("ww"); break; //$NON-NLS-1$
-			case 1: case 2: x=Locales.characteristicsBundle.getString("WW/Ww"); break; //$NON-NLS-1$
-			default: returnError(8); break;
-			}break;
-		}
-
-		case 9: {//sugukromosoomid
-			switch (dnaStrands[locus]) {
-			case 0: x=Locales.characteristicsBundle.getString("XX"); break; //$NON-NLS-1$
-			case 1: x=Locales.characteristicsBundle.getString("XY"); break; //$NON-NLS-1$
-			default: returnError(9); break;
-			}break;
-		}
-
-
-		default: x=Locales.characteristicsBundle.getString("NA");  //$NON-NLS-1$
-		}
-
-
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		//FOLLOWING:
-		//TODO Restructure_1
-		//IF these were moved into their respective "case n:"s then could use "return x;" right away. 
-		
-		
-		//The description of the locus has it's initial value
-		//Now we will check if some gene is epistatic over the one we are examining (when one gene suppresses another)
-
-		//Took this exception to the main switch element up 
-		//if (ahel[0]!=0 && lookus==1) x="B lookus ei avaldu(A)"; //Kontrollib kas kass on hoopis akuutvärvi
-
-		if ((dnaStrands[0]==0 && dnaStrands[5]==0) && locus==7) x=Locales.characteristicsBundle.getString("TneedsOA"); //$NON-NLS-1$
-
-		
-
-		if (dnaStrands[5]==2) {//Kontrollib kas kass on oranž
-			switch (locus) {
-			case 1: x=Locales.characteristicsBundle.getString("Bneeds!O");break; //$NON-NLS-1$
-			case 0: x=Locales.characteristicsBundle.getString("Aneeds!O");break; //$NON-NLS-1$
+			else {
+				return(returnMasked(locus, maskingLoci));
 			}
 		}
 
-		if (dnaStrands[8]!=0) { //Kontrollib kas kass on hoopis valge
-			switch (locus) {
-			case 0: x=Locales.characteristicsBundle.getString("Aneeds!W"); break; //$NON-NLS-1$
-			case 1: x=Locales.characteristicsBundle.getString("Bneeds!W"); break; //$NON-NLS-1$
-			case 3: x=Locales.characteristicsBundle.getString("Dneeds!W"); break; //$NON-NLS-1$
-			case 5: x=Locales.characteristicsBundle.getString("Oneeds!W"); break; //$NON-NLS-1$
-			case 6: x=Locales.characteristicsBundle.getString("Sneeds!W"); break; //$NON-NLS-1$
-			case 7: x=Locales.characteristicsBundle.getString("Tneeds!W"); break; //$NON-NLS-1$
+		case 4: {//L locus
+			//L locus doesn't need masking check, because it is masked by nothing.
+			switch (genome[locus]) {
+			case 0: return(Locales.characteristicsBundle.getString("ll"));
+			case 1: case 2: return(Locales.characteristicsBundle.getString("LL/Ll"));
+			default: return(returnError(locus));
 			}
 		}
 
-		if ((dnaStrands[2]!=1 && dnaStrands[2]!=2 && dnaStrands[2]!=4 && dnaStrands[2]!=8)) { //Kontrollib kas kass on üldse värvunud
-			switch (locus) {
-			case 0: x=Locales.characteristicsBundle.getString("Aneeds!cc"); break; //$NON-NLS-1$
-			case 1: x=Locales.characteristicsBundle.getString("Bneeds!cc"); break; //$NON-NLS-1$
-			case 3: x=Locales.characteristicsBundle.getString("Dneeds!cc"); break; //$NON-NLS-1$
-			case 5: x=Locales.characteristicsBundle.getString("Oneeds!cc"); break; //$NON-NLS-1$
-			case 6: x=Locales.characteristicsBundle.getString("Sneeds!cc"); break; //$NON-NLS-1$
-			case 7: x=Locales.characteristicsBundle.getString("Tneeds!cc"); break; //$NON-NLS-1$
-			case 8: x=Locales.characteristicsBundle.getString("Wneeds!cc"); break; //$NON-NLS-1$
-
+		case 5: {//O locus
+			//Masking check:
+			ArrayList<Integer> maskingLoci = new ArrayList<Integer>();
+			if (genome[2]!=1 && genome[2]!=2 && genome[2]!=4 && genome[2]!=8) {
+				maskingLoci.add(2);
+			}
+			if (genome[8]!=0) {
+				maskingLoci.add(8);
+			}
+			if (maskingLoci.isEmpty()) {
+				//Actual locus evaluation (only takes place if preceding things succeeded):
+				switch (genome[locus]) {
+				case 0: return(Locales.characteristicsBundle.getString("XoXo/XoY"));
+				case 1: return(Locales.characteristicsBundle.getString("XOXo"));
+				case 2: return(Locales.characteristicsBundle.getString("XOXO/XOY"));
+				default: return(returnError(locus));
+				}
+			}
+			else {
+				return(returnMasked(locus, maskingLoci));
 			}
 		}
 
-		return x;
+		case 6: {//S locus
+			//Masking check:
+			ArrayList<Integer> maskingLoci = new ArrayList<Integer>();
+			if (genome[2]!=1 && genome[2]!=2 && genome[2]!=4 && genome[2]!=8) {
+				maskingLoci.add(2);
+			}
+			if (genome[8]!=0) {
+				maskingLoci.add(8);
+			}
+			if (maskingLoci.isEmpty()) {
+				//Actual locus evaluation (only takes place if preceding things succeeded):
+				switch (genome[locus]) {
+				case 0: return(Locales.characteristicsBundle.getString("ss"));
+				case 1: return(Locales.characteristicsBundle.getString("Ss"));
+				case 2: return(Locales.characteristicsBundle.getString("SS"));
+				default: return(returnError(locus));
+				}
+			}
+			else {
+				return(returnMasked(locus, maskingLoci));
+			}
+		}
+
+		case 7: {//T locus
+			//Masking check:
+			ArrayList<Integer> maskingLoci = new ArrayList<Integer>();
+			if (genome[0]==0 && genome[5]==0) {
+				maskingLoci.add(0);
+				maskingLoci.add(5);
+			}
+			if (genome[2]!=1 && genome[2]!=2 && genome[2]!=4 && genome[2]!=8) {
+				maskingLoci.add(2);
+			}
+			if (genome[8]!=0) {
+				maskingLoci.add(8);
+			}
+			if (maskingLoci.isEmpty()) {
+				//Actual locus evaluation (only takes place if preceding things succeeded):
+				switch (genome[locus]) { // Ta-Abyssinian;T-Mackerel;tb-Classic
+				case 6: return(Locales.characteristicsBundle.getString("tbtb")); //tbtb
+				case 2: case 4: return(Locales.characteristicsBundle.getString("TT/Ttb")); //TT;Ttb
+				case 0: return(Locales.characteristicsBundle.getString("TaTa")); //TaTa
+				case 1: case 3: return(Locales.characteristicsBundle.getString("TaT/Tatb")); //TaT;Tatb
+				default: return(returnError(locus));
+				}
+			}
+			else {
+				return(returnMasked(locus, maskingLoci));
+			}
+		}
+
+		case 8: {//W locus
+			//Masking check:
+			ArrayList<Integer> maskingLoci = new ArrayList<Integer>();
+			if (genome[2]!=1 && genome[2]!=2 && genome[2]!=4 && genome[2]!=8) {
+				maskingLoci.add(2);
+			}
+			if (maskingLoci.isEmpty()) {
+				//Actual locus evaluation (only takes place if preceding things succeeded):
+				switch (genome[locus]) {
+				case 0: return(Locales.characteristicsBundle.getString("ww"));
+				case 1: case 2: return(Locales.characteristicsBundle.getString("WW/Ww"));
+				default: return(returnError(locus));
+				}
+			}
+			else {
+				return(returnMasked(locus, maskingLoci));
+			}
+		}
+
+		case 9: {//Sex locus
+			// Sex locus doesn't need masking check, because it is masked by nothing.
+			switch (genome[locus]) {
+			case 0: return(Locales.characteristicsBundle.getString("XX"));
+			case 1: return(Locales.characteristicsBundle.getString("XY"));
+			default: return(returnError(locus));
+			}
+		}
+
+		//If locus cannot be identified
+		default: return(Locales.characteristicsBundle.getString("NA")); 
+		}
 	}
-	
+
+
+	/** 
+	 * Generate error message
+	 * @param locus The locus which can't be displayed
+	 * @return The error message
+	 */
 	private static String returnError(int locus) {
-		MessageFormat formatter = new MessageFormat("");
-		formatter.setLocale(Locales.currentLocale);
-		Object[] messageArguments = { geneReference[locus] };
-		formatter.applyPattern(Locales.characteristicsBundle.getString("errors"));
+		MessageFormat formatter = new MessageFormat(Locales.characteristicsBundle.getString("errors"));
+		Object[] messageArguments = { locusLabelLetters[locus] };
+		return(formatter.format(messageArguments));
+	}
+
+	/** 
+	 * Generate masking message
+	 * @param originLocus The locus being masked
+	 * @param maskingLoci The loci masking it
+	 * @return The masking message
+	 */
+	private static String returnMasked(int originLocus, ArrayList<Integer> maskingLoci) {
+		int length = maskingLoci.size();
+		MessageFormat formatter = new MessageFormat(Locales.characteristicsBundle.getString("masking"));
+		StringBuilder maskingLociLetters= new StringBuilder();
+		for (int i = 0; i < length; i++) {
+			if (i>0) {
+				maskingLociLetters.append(", ");
+			}
+			maskingLociLetters.append(locusLabelLetters[maskingLoci.get(i)]);
+		}
+		Object[] messageArguments = { locusLabelLetters[originLocus], maskingLociLetters};
 		return(formatter.format(messageArguments));
 	}
 

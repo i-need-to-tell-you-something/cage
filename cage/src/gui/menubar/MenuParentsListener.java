@@ -13,7 +13,7 @@ public class MenuParentsListener implements ItemListener {
 	@Override
 	public void itemStateChanged(ItemEvent e) {
 		Menu.setOptionVanemad(( (JCheckBoxMenuItem) e.getItem()).getState());
-		CAGEFrame.getKassilist().repaint();
+		CAGEFrame.getKassiList().repaint();
 	}
 
 }

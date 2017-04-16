@@ -32,14 +32,14 @@ public class CAGEFrameToolbarButtonListener implements ActionListener {
 		switch (actionCommand) {
 
 		case "Eemalda": {
-			for (Kass kass : CAGEFrame.getKassilist().getSelectedValuesList()) {
+			for (Kass kass : CAGEFrame.getKassiList().getSelectedValuesList()) {
 				CAGEFrame.removeKass(kass);
 			}
 			break;
 		}
 
 		case "Muuda nime": {
-			for (Kass kass : CAGEFrame.getKassilist().getSelectedValuesList()) {
+			for (Kass kass : CAGEFrame.getKassiList().getSelectedValuesList()) {
 				new RenamingContainer(kass,
 						((Component) e.getSource()).getLocationOnScreen());
 			}
@@ -58,14 +58,14 @@ public class CAGEFrameToolbarButtonListener implements ActionListener {
 		}
 
 		case "Rista": {
-			CAGEFrame.addKass(Kass.viljastumine(CAGEFrame.getKassilist()
-					.getSelectedValuesList().get(0), CAGEFrame.getKassilist()
+			CAGEFrame.addKass(Kass.viljastumine(CAGEFrame.getKassiList()
+					.getSelectedValuesList().get(0), CAGEFrame.getKassiList()
 					.getSelectedValuesList().get(1)));
 			break;
 		}
 
 		case "Kuva omadusi": {
-			List<Kass> list = CAGEFrame.getKassilist().getSelectedValuesList();
+			List<Kass> list = CAGEFrame.getKassiList().getSelectedValuesList();
 			// lugejad aknate paremaks paigutuseks
 			int xLugeja = 10;
 			int yLugeja = 0;
@@ -100,7 +100,7 @@ public class CAGEFrameToolbarButtonListener implements ActionListener {
 		}
 
 		case "Kuva geene": {
-			List<Kass> list = CAGEFrame.getKassilist().getSelectedValuesList();
+			List<Kass> list = CAGEFrame.getKassiList().getSelectedValuesList();
 			// lugejad aknate paremaks paigutuseks
 			int xLugeja = 10;
 			int yLugeja = 0;
@@ -142,7 +142,7 @@ public class CAGEFrameToolbarButtonListener implements ActionListener {
 		}
 
 		case "Kuva pilt": {
-			List<Kass> list = CAGEFrame.getKassilist().getSelectedValuesList();
+			List<Kass> list = CAGEFrame.getKassiList().getSelectedValuesList();
 			// lugejad aknate paremaks paigutuseks
 			int xLugeja = 10;
 			int yLugeja = 0;
@@ -187,7 +187,7 @@ public class CAGEFrameToolbarButtonListener implements ActionListener {
 
 		// kui vastav option siis fookus listile uuesti
 		if (Menu.isOptionFookus()) {
-			CAGEFrame.getKassilist().requestFocusInWindow();
+			CAGEFrame.getKassiList().requestFocusInWindow();
 		}
 	}
 

@@ -24,12 +24,12 @@ import core.Kass;
 @SuppressWarnings("serial")
 public class RenamingContainer extends JFrame implements LocaleChangeListener {
 
-	JTextField lahter = new JTextField();
-	String kassinimi;
-	JLabel silt = new JLabel();
-	JButton nupp = new JButton();
+	JTextField textField = new JTextField();
+	String catName;
+	JLabel label = new JLabel();
+	JButton button = new JButton();
 
-	public RenamingContainer(Kass k, Point p) throws HeadlessException {
+	public RenamingContainer(Kass kass, Point p) throws HeadlessException {
 
 		// Listing that this component needs to fire whenever there's a locale
 		// change
@@ -39,35 +39,31 @@ public class RenamingContainer extends JFrame implements LocaleChangeListener {
 		this.setSize(300, 90);
 		this.setLocation(p);
 		this.getContentPane().setLayout(new BorderLayout());
-		kassinimi = k.getNimi();
+		catName = kass.getNimi();
 		// setting up things that are already defined in the method
 		// onLocaleChange()
 		this.onLocaleChange();
-		lahter.setText(kassinimi);
+		textField.setText(catName);
 
 		// button
-		nupp.setToolTipText(Locales.tipBundle.getString("tt12"));
-		nupp.addActionListener(new RenamingListener(k));
+		button.setToolTipText(Locales.tipBundle.getString("tt12"));
+		button.addActionListener(new RenamingListener(kass));
 
 		// enter key:
-		this.getRootPane().setDefaultButton(nupp);
+		this.getRootPane().setDefaultButton(button);
 
-		this.add(silt, BorderLayout.WEST);
-		this.add(lahter, BorderLayout.CENTER);
-		this.add(nupp, BorderLayout.SOUTH);
+		this.add(label, BorderLayout.WEST);
+		this.add(textField, BorderLayout.CENTER);
+		this.add(button, BorderLayout.SOUTH);
 
 		this.setVisible(true);
 	}
 
 	@Override
 	public void onLocaleChange() {
-		MessageFormat formatter = new MessageFormat("");
-		formatter.setLocale(Locales.currentLocale);
-		Object[] messageArguments = { kassinimi };
-		formatter.applyPattern(Locales.mainBundle.getString("title8"));
-		this.setTitle(formatter.format(messageArguments));
-		silt.setText(Locales.mainBundle.getString("label4"));
-		nupp.setText(Locales.mainBundle.getString("button11"));
+		this.setTitle(new MessageFormat(Locales.mainBundle.getString("title8")).format( new Object[] { catName } ) );
+		label.setText(Locales.mainBundle.getString("label4"));
+		button.setText(Locales.mainBundle.getString("button11"));
 
 	}
 

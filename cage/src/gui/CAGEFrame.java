@@ -97,14 +97,14 @@ public class CAGEFrame extends JFrame implements LocaleChangeListener {
 		vp.add(sildike, BorderLayout.NORTH);
 
 		// paneme kassilisti JList'i, mille paneme JScrollPane'i
-		getKassilist().setVisibleRowCount(-1);
-		getKassilist().setValueIsAdjusting(false);
-		getKassilist().addListSelectionListener(new CAGEFrameListListener());
+		getKassiList().setVisibleRowCount(-1);
+		getKassiList().setValueIsAdjusting(false);
+		getKassiList().addListSelectionListener(new CAGEFrameListListener());
 
-		JScrollPane vpvc = new JScrollPane(getKassilist());
+		JScrollPane vpvc = new JScrollPane(getKassiList());
 		vpvc.setPreferredSize(new Dimension(250, 250));
 		vp.add(vpvc, BorderLayout.CENTER);
-		getKassilist().setToolTipText(Locales.tipBundle.getString("tt1"));
+		getKassiList().setToolTipText(Locales.tipBundle.getString("tt1"));
 
 		// TOOLBAR
 		JToolBar toolbar = new JToolBar();
@@ -173,7 +173,7 @@ public class CAGEFrame extends JFrame implements LocaleChangeListener {
 				Locales.mainBundle.getString("title2"));
 		getCreationFrameOfConfirmation().setTitle(
 				Locales.mainBundle.getString("title3"));
-		getKassilist().setToolTipText(Locales.tipBundle.getString("tt1"));
+		getKassiList().setToolTipText(Locales.tipBundle.getString("tt1"));
 		sildike.setText(Locales.mainBundle.getString("label1"));
 		n1.setText(Locales.mainBundle.getString("button1"));
 		n2.setText(Locales.mainBundle.getString("button2"));
@@ -209,7 +209,7 @@ public class CAGEFrame extends JFrame implements LocaleChangeListener {
 	/**
 	 * @return The list of cats
 	 */
-	public static JList<Kass> getKassilist() {
+	public static JList<Kass> getKassiList() {
 		return kassilist;
 	}
 

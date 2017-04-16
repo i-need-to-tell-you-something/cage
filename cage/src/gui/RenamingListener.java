@@ -8,15 +8,15 @@ import core.Kass;
 
 
 /**
- * @author K Listener for renaming a cat.
+ * Listener for renaming a cat.
  *
  */
 public class RenamingListener implements ActionListener {
 
 	private Kass kass;
 
-	public RenamingListener(Kass k) {
-		this.kass = k;
+	public RenamingListener(Kass kass) {
+		this.kass = kass;
 	}
 
 	@Override
@@ -26,8 +26,8 @@ public class RenamingListener implements ActionListener {
 		RenamingContainer aken = (RenamingContainer)((Component)e.getSource()).getParent().getParent().getParent().getParent();
 
 		//muudame nime ära selleks mis on kastis
-		kass.setNimi(aken.lahter.getText());
-		CAGEFrame.getKassilist().repaint();
+		kass.setName(aken.textField.getText());
+		CAGEFrame.getKassiList().repaint();
 		aken.dispose();
 	}
 }

@@ -36,7 +36,7 @@ public class ImportExportListener implements ActionListener,
 	public void actionPerformed(ActionEvent e) {
 		if (e.getActionCommand().equals("Export")) {
 			// We'll take all the currently selected cats
-			for (Kass kiisu : CAGEFrame.getKassilist().getSelectedValuesList()) {
+			for (Kass kiisu : CAGEFrame.getKassiList().getSelectedValuesList()) {
 				try (ObjectOutputStream oos = new ObjectOutputStream(
 						new FileOutputStream(new File("save/" + kiisu.getNimi()
 								+ ".cage")))) {

@@ -199,7 +199,7 @@ public class Kass implements Serializable{
 	//Getterid ja setterid
 	public String getNimi() {return nimi;}
 
-	public void setNimi(String nimi) {this.nimi = nimi;}
+	public void setName(String nimi) {this.nimi = nimi;}
 
 	public int[] getAhel1() {return ahel1;}
 
