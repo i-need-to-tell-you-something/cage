@@ -21,8 +21,6 @@ public class FenotypeToStrings {
 	 * @return
 	 */
 	public static String giveText(int [] genome, int locus) {
-
-		System.out.println("going to switch loop again");
 		switch (locus) {
 
 		case 0: {//A locus
