@@ -194,7 +194,7 @@ public class Fenotyyp {
 
 			}
 		}
-		
+		//TODO: Fix:
 		//Overridib A lookuse ja ütleb A lookuses, et karv pole lahjendatud värvi, 
 		// Kuigi peaks lihtsalt ütlema, et on akuut/pole
 		if (ahel[3]!=0) { //Kontrollib kas värv on lahjendunud
