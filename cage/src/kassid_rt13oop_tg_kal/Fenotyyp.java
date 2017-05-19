@@ -102,6 +102,9 @@ public class Fenotyyp {
 			}break;
 		}
 
+		//TODO: Implementeerida, et kui isasel on ainult üks suur O, ehk case 1, siis ta pole kilpkonnamustriga 
+		// vaid ongi Oranž, juhul kui O asub X kromosoomi ahelal. 
+	
 		case 5: {//O lookus. suguliiteline (hiljem vaatab kas kuidas muudab)
 			switch (ahel[lookus]) {
 			case 0: x="Pole oranž"; break;
@@ -191,6 +194,9 @@ public class Fenotyyp {
 
 			}
 		}
+		
+		//Overridib A lookuse ja ütleb A lookuses, et karv pole lahjendatud värvi, 
+		// Kuigi peaks lihtsalt ütlema, et on akuut/pole
 		if (ahel[3]!=0) { //Kontrollib kas värv on lahjendunud
 			switch (lookus) {
 			case 0: x="Karv pole lahjendunud värvi"; break;			
