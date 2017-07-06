@@ -1,0 +1,40 @@
+1492006676053	Delete element
+1492006729196	Delete element
+1492006737270	Delete element
+1492007102022	Delete element
+1492008057921	Delete element
+1492008085448	Delete element
+1492009623425	Rename resource 'CharacteristicsBundle.properties'
+1492160456829	Rename field 'errbundle'
+1492160460912	Rename field 'tipbundle'
+1492160476575	Rename field 'mainbundle'
+1492166763419	Rename field 'GeneReference'
+1492168896199	Rename local variable 'lookus'
+1492168919687	Rename local variable 'ahel'
+1492169196225	Delete element
+1492173933421	Rename local variable 'dnaStrand'
+1492173961704	Delete elements
+1492175270702	Rename resource 'Konspekt.txt'
+1492175282989	Rename resource 'Aboutlingid.txt'
+1492175407126	Move folder
+1492178054137	Rename field 'kassinimi'
+1492178071169	Rename local variable 'k'
+1492178096832	Rename field 'lahter'
+1492178110188	Rename field 'silt'
+1492178115986	Rename field 'nupp'
+1492338760901	Rename field 'geneReference'
+1492340549106	Rename local variable 'suppressingLoci'
+1492340561176	Rename local variable 'suppressingLoci'
+1492340569683	Rename local variable 'suppressingLoci'
+1492340583706	Rename local variable 'suppressingLoci'
+1492340590752	Rename local variable 'suppressingLoci'
+1492340597762	Rename local variable 'suppressingLoci'
+1492340604289	Rename local variable 'suppressingLoci'
+1492340618812	Rename method 'returnSuppressed'
+1492340625865	Rename local variable 'suppressingLoci'
+1492340661406	Rename local variable 'suppressingLociLetters'
+1492340814397	Rename local variable 'dnaStrands'
+1492342275838	Rename local variable 'k'
+1492342306509	Rename method 'setNimi'
+1492342318454	Rename method 'getKassilist'
+1492342743007	Rename field 'geneLabelLetters'
