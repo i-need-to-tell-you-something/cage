@@ -1,8 +1,10 @@
 package core;
 
 import java.io.BufferedReader;
+import java.io.FileInputStream;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 
 /**
  * Reads 2 files and stores the obtained data 
@@ -145,7 +147,7 @@ public class DataReader {
 		String[] stringArray = new String[numberOfLines];
 		// Filling array with lines
 		try {
-			reader = new BufferedReader(new FileReader(fileName));
+			reader = new BufferedReader(new InputStreamReader(new FileInputStream(fileName), "UTF-8"));
 			for (int i = 0; i < numberOfLines; i++) {
 				String line = reader.readLine();
 				if (line != null) {

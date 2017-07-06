@@ -30,15 +30,15 @@ public class Locales {
 	public static void initResourceBundles() {
 		try {
 			Locales.mainBundle = ResourceBundle.getBundle(
-					"core.Locale.MainBundle", Locales.currentLocale);
+					"Locale.MainBundle", Locales.currentLocale);
 			Locales.tipBundle = ResourceBundle
-					.getBundle("core.Locale.Tooltips.TooltipBundle",
+					.getBundle("Locale.Tooltips.TooltipBundle",
 							Locales.currentLocale);
 			Locales.errBundle = ResourceBundle.getBundle(
-					"core.Locale.ErrorMessages.ErrorMessageBundle",
+					"Locale.ErrorMessages.ErrorMessageBundle",
 					Locales.currentLocale);
 			Locales.characteristicsBundle = ResourceBundle.getBundle(
-					"core.Locale.Characteristics.CharacteristicsBundle",
+					"Locale.Characteristics.CharacteristicsBundle",
 					Locales.currentLocale);
 		} catch (Exception e2) {
 			// TODO error standardisation
