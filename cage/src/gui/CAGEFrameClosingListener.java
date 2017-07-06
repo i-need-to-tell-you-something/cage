@@ -8,13 +8,15 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.Properties;
 
+import core.FilePaths;
+
 
 /**
  * This listener saves your settings when closing the program
  * 
  */
 public class CAGEFrameClosingListener implements WindowListener {
-	private static String configFail = "save/options.cfg";
+	private static String configFail = FilePaths.configFilePath;
 
 	@Override
 	public void windowClosing(WindowEvent arg0) {

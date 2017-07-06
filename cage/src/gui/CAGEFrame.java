@@ -21,6 +21,7 @@ import javax.swing.JList;
 import javax.swing.JScrollPane;
 import javax.swing.JToolBar;
 
+import core.FilePaths;
 import core.Kass;
 
 
@@ -76,8 +77,7 @@ public class CAGEFrame extends JFrame implements LocaleChangeListener {
 		this.addWindowListener(new CAGEFrameClosingListener());
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		try {
-			ImageIcon ikoon = new ImageIcon(
-					"data//gfx//icons//Program-Icon.png");
+			ImageIcon ikoon = new ImageIcon(FilePaths.imageIcon);
 			this.setIconImage(ikoon.getImage());
 		} catch (NullPointerException e) {
 			// TODO error standardization
