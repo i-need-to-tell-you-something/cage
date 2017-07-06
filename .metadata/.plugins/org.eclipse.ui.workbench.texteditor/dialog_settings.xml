@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
+		<item value="false" key="isRegEx"/>
+		<item value="" key="selection"/>
+		<item value="false" key="casesensitive"/>
+		<item value="false" key="incremental"/>
+		<item value="true" key="wrap"/>
+		<item value="false" key="wholeword"/>
+		<list key="findhistory">
+			<item value="print"/>
+			<item value="dna"/>
+			<item value="Suppress"/>
+			<item value="Suppression"/>
+			<item value="LocusSuppressed"/>
+			<item value="67"/>
+			<item value="needs"/>
+			<item value="returnError("/>
+		</list>
+		<list key="replacehistory">
+			<item value="mask"/>
+			<item value="masking"/>
+			<item value="Masking"/>
+			<item value="Mask"/>
+			<item value="return(returnError("/>
+			<item value="));"/>
+			<item value=");"/>
+			<item value="return("/>
+		</list>
+	</section>
+	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
+		<item value="290" key="DIALOG_WIDTH"/>
+		<item value="1|Noto Sans|10.0|0|GTK|1|" key="DIALOG_FONT_NAME"/>
+		<item value="368" key="DIALOG_HEIGHT"/>
+		<item value="909" key="DIALOG_X_ORIGIN"/>
+		<item value="106" key="DIALOG_Y_ORIGIN"/>
+	</section>
+</section>
