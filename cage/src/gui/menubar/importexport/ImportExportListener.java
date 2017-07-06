@@ -18,6 +18,7 @@ import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import core.FilePaths;
 import core.Kass;
 
 
@@ -38,7 +39,7 @@ public class ImportExportListener implements ActionListener,
 			// We'll take all the currently selected cats
 			for (Kass kiisu : CAGEFrame.getKassiList().getSelectedValuesList()) {
 				try (ObjectOutputStream oos = new ObjectOutputStream(
-						new FileOutputStream(new File("save/" + kiisu.getNimi()
+						new FileOutputStream(new File(FilePaths.savePath+ kiisu.getNimi()
 								+ ".cage")))) {
 					// And save each of them to a homonymous file
 					oos.writeObject(kiisu);
@@ -49,7 +50,7 @@ public class ImportExportListener implements ActionListener,
 				}
 			}
 		} else if (e.getActionCommand().equals("Import")) {
-			importer = new FileChooser("save/");
+			importer = new FileChooser(FilePaths.savePath);
 			importer.setFileFilter(new ImportExportFilter());
 
 			// Listing that this component needs to fire whenever there's a

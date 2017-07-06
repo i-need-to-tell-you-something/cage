@@ -19,6 +19,8 @@ import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 
+import core.FilePaths;
+
 
 @SuppressWarnings("serial")
 public class Menu extends JMenuBar implements LocaleChangeListener {
@@ -101,7 +103,7 @@ public class Menu extends JMenuBar implements LocaleChangeListener {
 
 		//Finds all available locale files and makes language option buttons out of them
 		try {
-			addAllLocalesInFolder(new File("data/Locale"));
+			addAllLocalesInFolder(new File(FilePaths.localePath));
 			for (Locale locale : localesInLanguageMenu) {
 				addLocaleButton(locale);
 			}

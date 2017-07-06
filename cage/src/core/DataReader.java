@@ -109,7 +109,7 @@ public class DataReader {
 	private static int[][] initializeLocusBonusTable() {
 		int[][] bonusTable = null;
 		try {
-			bonusTable = readBonus("data/locusbonus.txt");
+			bonusTable = readBonus(FilePaths.bonusPath);
 		} catch (IOException ex) {
 			//TODO error_standardization
 			System.out.println("jou. IO is a ... in boonustabel");
@@ -170,7 +170,7 @@ public class DataReader {
 	private static String[] initializeCatNames() {
 		String[] catNames = null;
 		try {
-			catNames = readLinesToStringArray("data/names.txt");
+			catNames = readLinesToStringArray(FilePaths.namesPath);
 		} catch (IOException ex) {
 			//TODO error_standardization
 			System.out.println("jou. IO is a ...");
