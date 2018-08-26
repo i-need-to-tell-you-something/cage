@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<qualifiedTypeNameHistroy>
-<fullyQualifiedTypeName name="core.DataReader"/>
-<fullyQualifiedTypeName name="gui.CAGEFrame"/>
-<fullyQualifiedTypeName name="gui.menubar.Locales"/>
-<fullyQualifiedTypeName name="java.text.MessageFormat"/>
-<fullyQualifiedTypeName name="java.lang.StringBuilder"/>
-<fullyQualifiedTypeName name="java.util.ArrayList"/>
-</qualifiedTypeNameHistroy>
